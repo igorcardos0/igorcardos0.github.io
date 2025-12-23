@@ -22,20 +22,7 @@ export const metadata: Metadata = {
   description:
     "Portfólio profissional de Igor Cardoso - Engenheiro de Software especializado em React.js, Next.js & Node.js. Master Resume e projetos desenvolvidos.",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/icon.svg",
   },
 }
 
