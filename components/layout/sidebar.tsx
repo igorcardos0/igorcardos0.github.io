@@ -27,74 +27,68 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
       <Button
         variant="ghost"
         size="icon"
-        className="fixed top-4 left-4 z-50 md:hidden bg-card/80 backdrop-blur-sm"
+        className="fixed top-4 left-4 z-50 md:hidden bg-card/80 backdrop-blur-sm border border-primary/30"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        {isOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
       </Button>
 
-      {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-full w-20 bg-card/50 backdrop-blur-sm border-r border-primary/30 z-40 flex flex-col items-center py-8 transition-transform duration-300 ${
+        className={`fixed left-0 top-0 h-full w-20 bg-card/50 backdrop-blur-sm border-r border-primary/30 z-40 flex flex-col items-center py-6 sm:py-8 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
-        <nav className="flex flex-col gap-8 flex-1 justify-center">
+        <nav className="flex flex-col gap-6 sm:gap-8 flex-1 justify-center">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="group flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-all relative cursor-pointer"
+              className="group flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-all relative cursor-pointer px-2"
             >
-              <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
+              <item.icon className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
               
-              {/* Texto Corrigido: Removido rotate e writing-mode */}
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase transition-colors">
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-colors text-center leading-tight">
                 {t(`nav.${item.href.replace("#", "")}`)}
               </span>
 
-              {/* Tooltip opcional que aparece ao passar o mouse */}
-              <div className="absolute left-full ml-4 px-3 py-1 bg-popover border border-primary/50 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap text-xs text-popover-foreground z-50">
+              <div className="absolute left-full ml-4 px-3 py-1 bg-popover border border-primary/50 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap text-xs text-popover-foreground z-50 hidden md:block">
                 {t(`nav.${item.href.replace("#", "")}`)}
               </div>
             </a>
           ))}
         </nav>
 
-        {/* Botões de Toggle de Tema e Idioma */}
-        <div className="mt-auto mb-8 flex flex-col gap-3">
+        <div className="mt-auto mb-6 sm:mb-8 flex flex-col gap-2 sm:gap-3">
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleLanguage}
-            className="w-10 h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all cursor-pointer"
             aria-label="Alternar idioma"
             title={language === "pt" ? "Switch to English" : "Mudar para Português"}
           >
-            <Languages className="h-5 w-5" />
+            <Languages className="h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all cursor-pointer"
             aria-label="Alternar tema"
           >
             {mounted && theme === "dark" ? (
-              <Sun className="h-5 w-5 text-yellow-400" />
+              <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" />
             ) : (
-              <Moon className="h-5 w-5 text-blue-400" />
+              <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-400" />
             )}
           </Button>
         </div>
       </aside>
 
-      {/* Mobile Overlay */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-background/80 backdrop-blur-sm z-30 md:hidden cursor-pointer" 

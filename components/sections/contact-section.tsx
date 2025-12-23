@@ -130,31 +130,31 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contato" className="min-h-screen py-20 px-6 md:px-12 lg:px-24 flex items-center">
+    <section id="contato" className="min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 flex items-center">
       <div className="max-w-6xl mx-auto w-full">
         <AnimateOnScroll animation="fade">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-primary">{t("contact.title")}</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-primary text-center md:text-left">{t("contact.title")}</h2>
         </AnimateOnScroll>
 
-        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
           <AnimateOnScroll animation="slide-right" delay={100} className="h-full">
-            <Card className="p-6 bg-card/50 border-primary/30 h-full flex flex-col">
-            <h3 className="text-xl font-bold mb-4 text-primary">{t("contact.connect")}</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <Card className="p-4 sm:p-6 bg-card/50 border-primary/30 h-full flex flex-col">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 md:mb-4 text-primary">{t("contact.connect")}</h3>
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 md:mb-6 leading-relaxed">
               {t("contact.connectDescription")}
             </p>
 
-            <div className="space-y-3 flex-1">
+            <div className="space-y-2 sm:space-y-3 flex-1">
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
+                className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
               >
-                <Linkedin className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">LINKEDIN</p>
-                  <p className="text-sm text-muted-foreground">{contactInfo.linkedin}</p>
+                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-xs sm:text-sm group-hover:text-primary transition-colors">LINKEDIN</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">{contactInfo.linkedin}</p>
                 </div>
               </a>
 
@@ -162,12 +162,12 @@ export function ContactSection() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
+                className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
               >
-                <Github className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">GITHUB</p>
-                  <p className="text-sm text-muted-foreground">{contactInfo.github}</p>
+                <Github className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-xs sm:text-sm group-hover:text-primary transition-colors">GITHUB</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">{contactInfo.github}</p>
                 </div>
               </a>
 
@@ -175,31 +175,31 @@ export function ContactSection() {
                 href={socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
+                className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
               >
-                <Phone className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">WHATSAPP</p>
-                  <p className="text-sm text-muted-foreground">{contactInfo.phone}</p>
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-xs sm:text-sm group-hover:text-primary transition-colors">WHATSAPP</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">{contactInfo.phone}</p>
                 </div>
               </a>
 
               <a
                 href={socialLinks.email}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
+                className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg hover:bg-primary/10 transition-colors group cursor-pointer"
               >
-                <Mail className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-semibold group-hover:text-primary transition-colors">EMAIL</p>
-                  <p className="text-sm text-muted-foreground">{contactInfo.email}</p>
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-xs sm:text-sm group-hover:text-primary transition-colors">EMAIL</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground truncate">{contactInfo.email}</p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-3 p-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="font-semibold">{t("contact.address")}</p>
-                  <p className="text-sm text-muted-foreground">{contactInfo.address}</p>
+              <div className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3">
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-xs sm:text-sm">{t("contact.address")}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{contactInfo.address}</p>
                 </div>
               </div>
             </div>
@@ -207,15 +207,15 @@ export function ContactSection() {
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="slide-left" delay={200} className="h-full">
-            <Card className="p-6 bg-card/50 border-primary/30 h-full flex flex-col">
-            <h3 className="text-xl font-bold mb-6 text-primary">{t("contact.getInTouch")}</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <Card className="p-4 sm:p-6 bg-card/50 border-primary/30 h-full flex flex-col">
+            <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6 text-primary">{t("contact.getInTouch")}</h3>
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 md:mb-6 leading-relaxed">
               {t("contact.getInTouchDescription")}
             </p>
             
-            <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col">
-              <div className="space-y-2">
-                <Label htmlFor="name">{t("contact.name")}</Label>
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 flex-1 flex flex-col">
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="name" className="text-sm">{t("contact.name")}</Label>
                 <Input
                   id="name"
                   name="name"
@@ -224,11 +224,12 @@ export function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  className="h-10 sm:h-11"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email">{t("contact.email")}</Label>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="email" className="text-sm">{t("contact.email")}</Label>
                 <Input
                   id="email"
                   name="email"
@@ -237,11 +238,12 @@ export function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  className="h-10 sm:h-11"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="subject">{t("contact.subject")}</Label>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="subject" className="text-sm">{t("contact.subject")}</Label>
                 <Input
                   id="subject"
                   name="subject"
@@ -249,29 +251,31 @@ export function ContactSection() {
                   placeholder={t("contact.subjectPlaceholder")}
                   value={formData.subject}
                   onChange={handleChange}
+                  className="h-10 sm:h-11"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="message">{t("contact.message")}</Label>
+              <div className="space-y-1.5 sm:space-y-2">
+                <Label htmlFor="message" className="text-sm">{t("contact.message")}</Label>
                 <Textarea
                   id="message"
                   name="message"
                   placeholder={t("contact.messagePlaceholder")}
                   value={formData.message}
                   onChange={handleChange}
-                  rows={5}
+                  rows={4}
                   required
+                  className="resize-none"
                 />
               </div>
 
-              <div className="flex flex-col gap-3 pt-2 mt-auto">
+              <div className="flex flex-col gap-2 sm:gap-3 pt-2 mt-auto">
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold h-12"
+                  className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold h-11 sm:h-12 text-sm sm:text-base"
                 >
-                  <Send className="h-5 w-5 mr-2" />
+                  <Send className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   {isSubmitting ? t("contact.sending") : t("contact.send")}
                 </Button>
 
@@ -279,10 +283,10 @@ export function ContactSection() {
                   type="button"
                   variant="outline"
                   asChild
-                  className="w-full border-primary text-primary hover:bg-primary/10 font-semibold h-12 bg-transparent"
+                  className="w-full border-primary text-primary hover:bg-primary/10 font-semibold h-11 sm:h-12 bg-transparent text-sm sm:text-base"
                 >
                   <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer">
-                    <Phone className="h-5 w-5 mr-2" />
+                    <Phone className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                     {t("contact.whatsapp")}
                   </a>
                 </Button>

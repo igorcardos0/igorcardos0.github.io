@@ -41,20 +41,21 @@ export const experiences: Experience[] = [
     company: "V4 Company",
     period: "Set 2025 - Presente",
     description:
-      "Atuo no desenvolvimento e sustentação de infraestrutura web focada em conversão e vendas para clientes de alta performance. Performance Web: Desenvolvimento de aplicações com Next.js e React otimizadas para Core Web Vitals, garantindo carregamento rápido e melhor rankeamento orgânico. Growth Ops: Criação de automações via n8n e Webhooks que integram campanhas de mídia paga (Ads) diretamente ao CRM, eliminando processos manuais e reduzindo o tempo de resposta aos leads. Qualidade: Implementação de rotinas de testes e monitoramento de erros para assegurar a estabilidade das operações de vendas em produção.",
+      "Atuo no desenvolvimento e sustentação de infraestrutura web focada em conversão e vendas para clientes de alta performance.\n\nPerformance Web: Desenvolvimento de aplicações com Next.js e React otimizadas para Core Web Vitals, garantindo carregamento rápido e melhor rankeamento orgânico.\n\nGrowth Ops: Criação de automações via n8n e Webhooks que integram campanhas de mídia paga (Ads) diretamente ao CRM, eliminando processos manuais e reduzindo o tempo de resposta aos leads.\n\nQualidade: Implementação de rotinas de testes e monitoramento de erros para assegurar a estabilidade das operações de vendas em produção.",
   },
   {
     title: "Desenvolvedor de Software",
     company: "ALPLATECH",
-    period: "Ago 2025 - Set 2025",
+    period: "Nov 2024 - Set 2025",
     description:
-      "Desenvolvimento de sistemas customizados para digitalização de processos de negócios locais. Arquitetura: Criação de soluções em Node.js e Express para migrar fluxos de trabalho manuais para sistemas digitais centralizados. Banco de Dados: Modelagem e implementação de bancos relacionais (PostgreSQL) para garantir a integridade e escalabilidade dos dados dos clientes.",
+      "Atuei no desenvolvimento de sistemas customizados para digitalização de processos de negócios locais, transformando operações manuais em fluxos digitais eficientes.\n\nArquitetura: Criação de soluções em Node.js e Express para migrar fluxos de trabalho manuais para sistemas digitais centralizados, melhorando a produtividade e reduzindo erros operacionais.\n\nBanco de Dados: Modelagem e implementação de bancos relacionais (PostgreSQL) para garantir a integridade, segurança e escalabilidade dos dados dos clientes.\n\nIntegração: Desenvolvimento de APIs e integrações para conectar sistemas legados com novas plataformas digitais, facilitando a transição tecnológica dos clientes.",
   },
   {
-    title: "Desenvolvedor Web Full Stack",
-    company: "Autônomo",
-    period: "Set 2020 - Jan 2024",
-    description: "Entrega de soluções web focadas em performance e experiência do usuário. Desenvolvimento de interfaces responsivas e integração de APIs de pagamento e marketing, focando na experiência do usuário final e na facilidade de gestão pelo cliente.",
+    title: "Técnico de TI",
+    company: "Studio Games Franchising",
+    period: "Jan 2024 - Ago 2024",
+    description:
+      "Atuei na manutenção e suporte técnico de infraestrutura de TI, garantindo a operação contínua dos sistemas e equipamentos da empresa.\n\nManutenção: Realizei manutenção preventiva e corretiva em computadores e consoles, incluindo upgrades de hardware, formatação e montagem de PCs gamer para otimizar performance.\n\nSuporte: Ofereci suporte técnico presencial a clientes, garantindo agilidade na resolução de problemas e organização do ambiente de trabalho para maximizar a produtividade.\n\nInfraestrutura: Atuei na administração e manutenção de redes locais, assegurando conectividade e segurança dos sistemas para proteger dados e garantir acesso contínuo.\n\nAutomação: Desenvolvi e mantive softwares em Python para atualização de jogos e aplicativos, além de gerenciar sistemas de login, garantindo eficiência e continuidade operacional.",
   },
 ]
 

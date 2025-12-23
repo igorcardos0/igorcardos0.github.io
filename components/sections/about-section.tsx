@@ -13,8 +13,7 @@ function NextJsIcon() {
       alt="Next.js"
       width={60}
       height={60}
-      className="object-contain"
-      style={{ width: '3.5rem', height: '3.5rem', minWidth: '3.5rem', minHeight: '3.5rem' }}
+      className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
     />
   )
 }
@@ -26,8 +25,7 @@ function N8nIcon() {
       alt="n8n"
       width={60}
       height={60}
-      className="object-contain"
-      style={{ width: '3.5rem', height: '3.5rem', minWidth: '3.5rem', minHeight: '3.5rem' }}
+      className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
     />
   )
 }
@@ -39,8 +37,7 @@ function GA4Icon() {
       alt="Google Analytics 4"
       width={60}
       height={60}
-      className="object-contain"
-      style={{ width: '3.5rem', height: '3.5rem', minWidth: '3.5rem', minHeight: '3.5rem' }}
+      className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
     />
   )
 }
@@ -52,8 +49,7 @@ function VercelIcon() {
       alt="Vercel"
       width={60}
       height={60}
-      className="object-contain"
-      style={{ width: '3.5rem', height: '3.5rem', minWidth: '3.5rem', minHeight: '3.5rem' }}
+      className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
     />
   )
 }
@@ -77,14 +73,14 @@ export function AboutSection() {
   }
 
   return (
-    <section id="sobre" className="min-h-screen py-20 px-6 md:px-12 lg:px-24">
+    <section id="sobre" className="min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         <AnimateOnScroll animation="fade">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-primary">{t("about.title")}</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-primary text-center md:text-left">{t("about.title")}</h2>
         </AnimateOnScroll>
 
         <AnimateOnScroll animation="slide-up" delay={100}>
-          <div className="space-y-6 text-lg leading-relaxed mb-12">
+          <div className="space-y-4 md:space-y-6 text-base sm:text-lg leading-relaxed mb-8 md:mb-12">
             <p>{t("about.description1")}</p>
             <p>{t("about.description2")}</p>
             <p>{t("about.description3")}</p>
@@ -92,24 +88,24 @@ export function AboutSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll animation="scale" delay={200}>
-          <Card className="p-6 mb-8 bg-card/50 border-primary/30">
-            <h3 className="text-xl font-bold mb-6 text-primary">{t("about.skills")}</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <Card className="p-4 sm:p-6 mb-6 md:mb-8 bg-card/50 border-primary/30">
+            <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6 text-primary">{t("about.skills")}</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
               {techSkills.map((skill, index) => {
                 const customIcon = getCustomIcon(skill.name)
                 return (
                   <AnimateOnScroll key={skill.name} animation="fade" delay={300 + index * 50}>
-                    <div className="flex flex-col items-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/30 hover:bg-primary/20 transition-colors">
+                    <div className="flex flex-col items-center gap-1.5 sm:gap-2 p-2 sm:p-3 bg-primary/10 rounded-lg border border-primary/30 hover:bg-primary/20 transition-colors">
                       {customIcon ? (
-                        <div className="flex items-center justify-center" style={{ width: '3.5rem', height: '3.5rem', minWidth: '3.5rem', minHeight: '3.5rem' }}>
+                        <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
                           {customIcon}
                         </div>
                       ) : (
-                        <div className="flex items-center justify-center" style={{ width: '3.5rem', height: '3.5rem', minWidth: '3.5rem', minHeight: '3.5rem' }}>
-                          <i className={`${skill.deviconClass} colored`} style={{ fontSize: '3.5rem' }}></i>
+                        <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
+                          <i className={`${skill.deviconClass} colored text-2xl sm:text-3xl md:text-4xl`}></i>
                         </div>
                       )}
-                      <span className="text-sm font-medium text-center">{skill.name}</span>
+                      <span className="text-xs sm:text-sm font-medium text-center leading-tight">{skill.name}</span>
                     </div>
                   </AnimateOnScroll>
                 )
@@ -119,19 +115,26 @@ export function AboutSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll animation="slide-up" delay={300}>
-          <Card className="p-6 mb-8 bg-card/50 border-primary/30">
-            <h3 className="text-xl font-bold mb-6 text-primary">{t("about.experience")}</h3>
-            <div className="space-y-6">
+          <Card className="p-4 sm:p-6 mb-6 md:mb-8 bg-card/50 border-primary/30">
+            <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6 text-primary">{t("about.experience")}</h3>
+            <div className="space-y-4 md:space-y-6">
               {experiences.map((exp, index) => {
-                const expKey = exp.company === "V4 Company" ? "v4" : exp.company === "ALPLATECH" ? "alplatech" : "freelance"
+                let expKey = "freelance"
+                if (exp.company === "V4 Company") {
+                  expKey = "v4"
+                } else if (exp.company === "ALPLATECH") {
+                  expKey = "alplatech"
+                } else if (exp.company === "Studio Games Franchising") {
+                  expKey = "studiogames"
+                }
                 const period = exp.period.replace("Presente", t("exp.period.present"))
                 return (
                   <AnimateOnScroll key={index} animation="slide-right" delay={400 + index * 100}>
-                    <div className="border-l-2 border-primary/50 pl-4">
-                      <h4 className="font-bold text-lg">{t(`exp.${expKey}.title`)}</h4>
-                      <p className="text-primary font-semibold">{exp.company}</p>
-                      <p className="text-sm text-muted-foreground mb-2">{period}</p>
-                      <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
+                    <div className="border-l-2 border-primary/50 pl-3 md:pl-4">
+                      <h4 className="font-bold text-base sm:text-lg">{t(`exp.${expKey}.title`)}</h4>
+                      <p className="text-primary font-semibold text-sm sm:text-base">{exp.company}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-2">{period}</p>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">{exp.description}</p>
                     </div>
                   </AnimateOnScroll>
                 )
@@ -141,14 +144,14 @@ export function AboutSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll animation="slide-up" delay={400}>
-          <Card className="p-6 bg-card/50 border-primary/30">
-            <h3 className="text-xl font-bold mb-6 text-primary">{t("about.education")}</h3>
-          <div className="space-y-6">
+          <Card className="p-4 sm:p-6 bg-card/50 border-primary/30">
+            <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6 text-primary">{t("about.education")}</h3>
+          <div className="space-y-4 md:space-y-6">
             {education.map((edu, index) => {
               const eduKey = edu.institution.includes("UniMax") ? "bachelor" : "trybe"
               return (
                 <AnimateOnScroll key={index} animation="slide-right" delay={500 + index * 100}>
-                  <div className="border-l-2 border-primary/50 pl-4">
+                  <div className="border-l-2 border-primary/50 pl-3 md:pl-4">
                     {edu.link ? (
                       <a
                         href={edu.link}
@@ -156,17 +159,17 @@ export function AboutSection() {
                         rel="noopener noreferrer"
                         className="group block cursor-pointer"
                       >
-                        <h4 className="font-bold text-lg group-hover:text-primary transition-colors">
+                        <h4 className="font-bold text-base sm:text-lg group-hover:text-primary transition-colors">
                           {t(`edu.${eduKey}.title`)}
                         </h4>
-                        <p className="text-primary font-semibold group-hover:underline">{edu.institution}</p>
-                        <p className="text-sm text-muted-foreground">{edu.period}</p>
+                        <p className="text-primary font-semibold text-sm sm:text-base group-hover:underline">{edu.institution}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{edu.period}</p>
                       </a>
                     ) : (
                       <>
-                        <h4 className="font-bold text-lg">{t(`edu.${eduKey}.title`)}</h4>
-                        <p className="text-primary font-semibold">{edu.institution}</p>
-                        <p className="text-sm text-muted-foreground">{edu.period}</p>
+                        <h4 className="font-bold text-base sm:text-lg">{t(`edu.${eduKey}.title`)}</h4>
+                        <p className="text-primary font-semibold text-sm sm:text-base">{edu.institution}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{edu.period}</p>
                       </>
                     )}
                   </div>
