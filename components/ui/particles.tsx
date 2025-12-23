@@ -51,12 +51,24 @@ export function Particles({
   const mousePosition = useRef({ x: 0, y: 0 })
   const mouseMoveHandler = useRef<((e: MouseEvent) => void) | null>(null)
   const [canvasSize, setCanvasSize] = useState({ w: 0, h: 0 })
+  const animationFrameId = useRef<number | null>(null)
+  const isVisibleRef = useRef(true)
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
 
   useEffect(() => {
     if (canvasRef.current) {
-      context.current = canvasRef.current.getContext("2d")
+      context.current = canvasRef.current.getContext("2d", { alpha: true, desynchronized: true })
     }
+    
+    // Detectar quando a aba está visível/oculta
+    const handleVisibilityChange = () => {
+      isVisibleRef.current = !document.hidden
+      if (isVisibleRef.current && !animationFrameId.current) {
+        animate()
+      }
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+    
     const timeoutId = setTimeout(() => {
       initCanvas()
       animate()
@@ -67,6 +79,10 @@ export function Particles({
     return () => {
       clearTimeout(timeoutId)
       window.removeEventListener("resize", initCanvas)
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current)
+      }
     }
   }, [color])
 
@@ -189,22 +205,31 @@ export function Particles({
     const rgb = hexToRgb(color)
     const mouseX = mousePosition.current.x
     const mouseY = mousePosition.current.y
+    const circlesArray = circles.current
+    const circlesLength = circlesArray.length
     
-    for (let i = 0; i < circles.current.length; i++) {
-      const circle1 = circles.current[i]
+    // Otimização: reduzir cálculos desnecessários
+    const lineDistanceSquared = lineDistance * lineDistance
+    
+    for (let i = 0; i < circlesLength; i++) {
+      const circle1 = circlesArray[i]
       const x1 = circle1.x + circle1.translateX
       const y1 = circle1.y + circle1.translateY
 
-      for (let j = i + 1; j < circles.current.length; j++) {
-        const circle2 = circles.current[j]
+      // Limitar busca para melhor performance
+      const maxJ = Math.min(i + 50, circlesLength)
+      for (let j = i + 1; j < maxJ; j++) {
+        const circle2 = circlesArray[j]
         const x2 = circle2.x + circle2.translateX
         const y2 = circle2.y + circle2.translateY
 
         const dx = x1 - x2
         const dy = y1 - y2
-        const distance = Math.sqrt(dx * dx + dy * dy)
+        const distanceSquared = dx * dx + dy * dy
 
-        if (distance < lineDistance) {
+        // Usar distância ao quadrado para evitar sqrt quando possível
+        if (distanceSquared < lineDistanceSquared) {
+          const distance = Math.sqrt(distanceSquared)
           let opacity = (1 - distance / lineDistance) * lineOpacity * Math.min(circle1.alpha, circle2.alpha)
           
           const midX = (x1 + x2) / 2
@@ -213,7 +238,7 @@ export function Particles({
           const mouseInfluence = Math.max(0, 1 - distToMouse / 200)
           opacity = Math.min(1, opacity + mouseInfluence * 0.3)
           
-          if (opacity > 0) {
+          if (opacity > 0.01) {
             context.current.beginPath()
             context.current.moveTo(x1, y1)
             context.current.lineTo(x2, y2)
@@ -264,11 +289,16 @@ export function Particles({
   }
 
   const animate = () => {
+    if (!isVisibleRef.current) {
+      animationFrameId.current = null
+      return
+    }
+    
     const width = canvasSize.w || (canvasContainerRef.current?.offsetWidth || window.innerWidth)
     const height = canvasSize.h || (canvasContainerRef.current?.offsetHeight || window.innerHeight)
     
     if (width === 0 || height === 0) {
-      window.requestAnimationFrame(animate)
+      animationFrameId.current = requestAnimationFrame(animate)
       return
     }
     
@@ -335,7 +365,7 @@ export function Particles({
         )
       }
     })
-    window.requestAnimationFrame(animate)
+    animationFrameId.current = requestAnimationFrame(animate)
   }
 
   return (

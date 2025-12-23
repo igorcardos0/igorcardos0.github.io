@@ -64,6 +64,7 @@ export function AnimateOnScroll({
       style={{
         transitionDuration: `${duration}ms`,
         transitionDelay: `${delay}ms`,
+        willChange: isVisible ? "auto" : "transform, opacity",
       }}
     >
       {children}

@@ -14,6 +14,7 @@ function NextJsIcon() {
       width={60}
       height={60}
       className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+      loading="lazy"
     />
   )
 }
@@ -26,6 +27,7 @@ function N8nIcon() {
       width={60}
       height={60}
       className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+      loading="lazy"
     />
   )
 }
@@ -38,6 +40,7 @@ function GA4Icon() {
       width={60}
       height={60}
       className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+      loading="lazy"
     />
   )
 }
@@ -50,6 +53,7 @@ function VercelIcon() {
       width={60}
       height={60}
       className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+      loading="lazy"
     />
   )
 }

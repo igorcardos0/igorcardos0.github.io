@@ -4,6 +4,7 @@ import { JetBrains_Mono, Fira_Code } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { BackgroundParticles } from "@/components/layout/background-particles"
+import { ResourceHints } from "@/components/layout/resource-hints"
 import { Toaster } from "@/components/ui/toaster"
 import { LanguageProvider } from "@/lib/contexts/language-context"
 import "./globals.css"
@@ -11,10 +12,13 @@ import "./globals.css"
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+  preload: true,
 })
 const firaCode = Fira_Code({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -34,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${jetbrainsMono.className} antialiased`} suppressHydrationWarning>
+        <ResourceHints />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LanguageProvider>
             <BackgroundParticles />

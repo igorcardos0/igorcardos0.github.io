@@ -5,6 +5,7 @@ import { ExternalLink } from "lucide-react"
 import { projects } from "@/lib/constants/projects"
 import { useLanguage } from "@/lib/contexts/language-context"
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll"
+import Image from "next/image"
 
 export function ProjectsSection() {
   const { t } = useLanguage()
@@ -21,10 +22,14 @@ export function ProjectsSection() {
               <Card className="group overflow-hidden bg-card/50 border-primary/30 hover:border-primary transition-all cursor-pointer h-full flex flex-col">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="block cursor-pointer flex flex-col h-full">
                 <div className="relative aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
+                    width={800}
+                    height={450}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    style={{ willChange: "transform" }}
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
                     <ExternalLink className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
