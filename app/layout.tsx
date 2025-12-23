@@ -18,9 +18,9 @@ const firaCode = Fira_Code({
 })
 
 export const metadata: Metadata = {
-  title: "Igor Cardoso | Engenheiro de Software",
+  title: "Igor Cardoso | Engenheiro de Software & Growth Ops",
   description:
-    "Portfólio profissional de Igor Cardoso - Engenheiro de Software especializado em React.js, Next.js & Node.js. Master Resume e projetos desenvolvidos.",
+    "Especialista em React.js, Next.js e Automação de Processos. Transformo estratégias de marketing em software escalável e de alta performance.",
   icons: {
     icon: "/icon.svg",
   },

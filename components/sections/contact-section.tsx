@@ -60,28 +60,28 @@ export function ContactSection() {
     }
 
     if (!emailjsConfig.serviceId || !emailjsConfig.templateId || !emailjsConfig.publicKey) {
-      const greeting = language === "pt" ? "Olá Igor" : "Hello Igor"
-      const nameLabel = language === "pt" ? "Meu nome é" : "My name is"
-      const subject = encodeURIComponent(formData.subject || `${greeting} - ${formData.name}`)
-      const body = encodeURIComponent(
-        `${greeting},\n\n${nameLabel} ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}`
-      )
+    const greeting = language === "pt" ? "Olá Igor" : "Hello Igor"
+    const nameLabel = language === "pt" ? "Meu nome é" : "My name is"
+    const subject = encodeURIComponent(formData.subject || `${greeting} - ${formData.name}`)
+    const body = encodeURIComponent(
+      `${greeting},\n\n${nameLabel} ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}`
+    )
       const mailtoLink = `mailto:${emailjsConfig.toEmail}?subject=${subject}&body=${body}`
-      window.location.href = mailtoLink
-      
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        })
-        setIsSubmitting(false)
-        showToast({
-          title: t("contact.toast.sent"),
-          description: t("contact.toast.sentDesc"),
-        })
-      }, 500)
+    window.location.href = mailtoLink
+
+    setTimeout(() => {
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+      setIsSubmitting(false)
+      showToast({
+        title: t("contact.toast.sent"),
+        description: t("contact.toast.sentDesc"),
+      })
+    }, 500)
       return
     }
 

@@ -1,10 +1,10 @@
+@import url('https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Light theme - White background with blue accents */
   --background: oklch(1 0 0);
   --foreground: oklch(0.15 0.02 240);
   --card: oklch(0.98 0 0);
@@ -76,7 +76,6 @@
 }
 
 @theme inline {
-  /* Configurando fontes monoespaçadas estilo terminal */
   --font-sans: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   --color-background: var(--background);
@@ -129,7 +128,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Animação inicial da página */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -143,13 +141,11 @@
     animation: fadeIn 0.6s ease-in-out;
   }
 
-  /* Custom Scrollbar Styles - Light Theme */
   :root {
     scrollbar-width: thin;
     scrollbar-color: oklch(0.5 0.2 240) oklch(0.95 0.01 240);
   }
 
-  /* Webkit Scrollbar (Chrome, Safari, Edge) - Light Theme */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -170,7 +166,6 @@
     background: oklch(0.45 0.2 240);
   }
 
-  /* Dark Theme Scrollbar */
   .dark {
     scrollbar-color: oklch(0.985 0 0) oklch(0.269 0 0);
   }
