@@ -1,14 +1,14 @@
 export const contactInfo = {
-  email: "contato@igorcardoso.dev",
+  email: "dev.igordesouzacardoso@gmail.com",
   phone: "+55 (19) 99922-3452",
   address: "Indaiatuba, São Paulo, Brasil",
-  linkedin: "igor-de-souza-cardoso",
-  github: "@igorsouzacardoso",
+  linkedin: "igor-s-cardoso",
+  github: "@igorcardos0",
 }
 
 export const socialLinks = {
-  email: "mailto:contato@igorcardoso.dev",
-  linkedin: "https://www.linkedin.com/in/igor-de-souza-cardoso",
-  github: "https://github.com/igorsouzacardoso",
+  email: "mailto:dev.igordesouzacardoso@gmail.com",
+  linkedin: "https://www.linkedin.com/in/igor-s-cardoso/",
+  github: "https://github.com/igorcardos0",
   whatsapp: "https://wa.me/5519999223452",
 }

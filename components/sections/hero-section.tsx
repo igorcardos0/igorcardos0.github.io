@@ -31,7 +31,7 @@ export function HeroSection() {
             <AnimateOnScroll animation="fade" delay={400}>
               <div className="flex gap-4 mt-8 flex-wrap">
               <a
-                href="https://github.com/igorsouzacardoso"
+                href="https://github.com/igorcardos0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer"
@@ -40,7 +40,7 @@ export function HeroSection() {
                 <Github className="h-6 w-6" />
               </a>
               <a
-                href="https://www.linkedin.com/in/igor-de-souza-cardoso"
+                href="https://www.linkedin.com/in/igor-s-cardoso/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer"
@@ -82,4 +82,3 @@ export function HeroSection() {
     </section>
   )
 }
-
