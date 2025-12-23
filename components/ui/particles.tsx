@@ -57,7 +57,6 @@ export function Particles({
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
-    // Aguarda o próximo frame para garantir que o DOM está pronto
     const timeoutId = setTimeout(() => {
       initCanvas()
       animate()
@@ -77,7 +76,6 @@ export function Particles({
 
   const initCanvas = () => {
     resizeCanvas()
-    // Aguarda um frame para garantir que o canvasSize foi atualizado
     requestAnimationFrame(() => {
       drawParticles()
     })
@@ -94,7 +92,6 @@ export function Particles({
   }
 
   const onMouseLeave = () => {
-    // Quando o mouse sai, reseta para o centro para um efeito suave
     if (canvasContainerRef.current) {
       const rect = canvasContainerRef.current.getBoundingClientRect()
       mousePosition.current = {
@@ -108,7 +105,6 @@ export function Particles({
     mouseMoveHandler.current = onMouseMove
     const container = canvasContainerRef.current
     
-    // Adiciona listener na janela para capturar movimento em toda a tela
     if (typeof window !== "undefined") {
       window.addEventListener("mousemove", onMouseMove)
       
@@ -140,7 +136,6 @@ export function Particles({
   }
 
   const circleParams = (): Circle | null => {
-    // Garante que temos dimensões válidas
     const width = canvasSize.w || (canvasContainerRef.current?.offsetWidth || 0)
     const height = canvasSize.h || (canvasContainerRef.current?.offsetHeight || 0)
     
@@ -210,14 +205,12 @@ export function Particles({
         const distance = Math.sqrt(dx * dx + dy * dy)
 
         if (distance < lineDistance) {
-          // Calcula a opacidade baseada na distância (mais próximo = mais opaco)
           let opacity = (1 - distance / lineDistance) * lineOpacity * Math.min(circle1.alpha, circle2.alpha)
           
-          // Aumenta a opacidade das linhas próximas ao mouse
           const midX = (x1 + x2) / 2
           const midY = (y1 + y2) / 2
           const distToMouse = Math.sqrt((midX - mouseX) ** 2 + (midY - mouseY) ** 2)
-          const mouseInfluence = Math.max(0, 1 - distToMouse / 200) // 200px de influência
+          const mouseInfluence = Math.max(0, 1 - distToMouse / 200)
           opacity = Math.min(1, opacity + mouseInfluence * 0.3)
           
           if (opacity > 0) {
@@ -246,7 +239,6 @@ export function Particles({
     const height = canvasSize.h || (canvasContainerRef.current?.offsetHeight || 0)
     
     if (width === 0 || height === 0) {
-      // Tenta novamente após um pequeno delay
       setTimeout(() => {
         if (canvasContainerRef.current) {
           resizeCanvas()
@@ -282,17 +274,14 @@ export function Particles({
     
     clearContext()
     
-    // Desenha as linhas primeiro (atrás das partículas)
     drawLines()
     
-    // Depois desenha as partículas
     circles.current.forEach((circle: Circle, i: number) => {
-      // Handle the alpha value
       const edge = [
-        circle.x + circle.translateX - circle.size, // distance from left edge
-        width - circle.x - circle.translateX - circle.size, // distance from right edge
-        circle.y + circle.translateY - circle.size, // distance from top edge
-        height - circle.y - circle.translateY - circle.size, // distance from bottom edge
+        circle.x + circle.translateX - circle.size,
+        width - circle.x - circle.translateX - circle.size,
+        circle.y + circle.translateY - circle.size,
+        height - circle.y - circle.translateY - circle.size,
       ]
       const closestEdge = edge.reduce((a, b) => Math.min(a, b))
       const remapClosestEdge = Number.parseFloat(remapValue(closestEdge, 0, 20, 0, 1).toFixed(2))
@@ -307,20 +296,16 @@ export function Particles({
       circle.x += circle.dx + vx
       circle.y += circle.dy + vy
       
-      // Interação com o mouse - partículas são atraídas/repelidas pelo mouse
       const dx = mousePosition.current.x - (circle.x + circle.translateX)
       const dy = mousePosition.current.y - (circle.y + circle.translateY)
       const distance = Math.sqrt(dx * dx + dy * dy)
       
-      // Efeito de repulsão/atração baseado na distância do mouse
       if (distance > 0 && distance < 200) {
-        const force = (200 - distance) / 200 // Força diminui com a distância
+        const force = (200 - distance) / 200
         const angle = Math.atan2(dy, dx)
-        // Repulsão suave - partículas se afastam do mouse
         circle.translateX -= (Math.cos(angle) * force * circle.magnetism) / ease
         circle.translateY -= (Math.sin(angle) * force * circle.magnetism) / ease
       } else {
-        // Retorna suavemente à posição original quando longe do mouse
         circle.translateX += (0 - circle.translateX) / ease
         circle.translateY += (0 - circle.translateY) / ease
       }
@@ -331,9 +316,7 @@ export function Particles({
         circle.y < -circle.size ||
         circle.y > height + circle.size
       ) {
-        // Remove the circle from the array
         circles.current.splice(i, 1)
-        // Create a new circle
         const newCircle = circleParams()
         if (newCircle) {
           drawCircle(newCircle)
@@ -363,10 +346,8 @@ export function Particles({
 }
 
 function hexToRgb(hex: string): string {
-  // Remove the "#" if present
   hex = hex.replace("#", "")
 
-  // Check if it's a valid hex color
   if (hex.length === 3) {
     hex = hex
       .split("")

@@ -26,7 +26,6 @@ export function AnimateOnScroll({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          // Desconecta após a primeira animação para melhor performance
           observer.disconnect()
         }
       },
@@ -71,4 +70,3 @@ export function AnimateOnScroll({
     </div>
   )
 }
-

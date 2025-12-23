@@ -12,14 +12,12 @@ export function BackgroundParticles() {
     setMounted(true)
   }, [])
 
-  // Determina a cor e quantidade baseada no tema
   const currentTheme = mounted ? (resolvedTheme || theme || "dark") : "dark"
   const isDark = currentTheme === "dark"
   const color = isDark ? "#ffffff" : "#3b82f6"
-  // Ajusta quantidade para ficarem iguais visualmente: reduz no dark, aumenta no light
   const quantity = isDark ? 130 : 230
   const lineDistance = 150
-  const lineOpacity = isDark ? 0.35 : 0.75 // Aumenta opacidade no light mode para melhor visibilidade
+  const lineOpacity = isDark ? 0.35 : 0.75
 
   return (
     <div className="fixed inset-0 w-screen h-screen -z-[1] pointer-events-auto" style={{ width: '100vw', height: '100vh' }}>
@@ -37,4 +35,3 @@ export function BackgroundParticles() {
     </div>
   )
 }
-

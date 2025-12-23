@@ -1,27 +1,20 @@
-# Workflow para fazer deploy do Next.js para GitHub Pages
 name: Deploy Next.js to GitHub Pages
 
 on:
-  # Executa em pushes para a branch main
   push:
     branches: ["main"]
-
-  # Permite executar manualmente pela aba Actions
   workflow_dispatch:
 
-# Define permissões do GITHUB_TOKEN para permitir deploy no GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Permite apenas um deploy concorrente
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Job de build
   build:
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +41,6 @@ jobs:
         with:
           path: ./out
 
-  # Job de deploy
   deploy:
     environment:
       name: github-pages

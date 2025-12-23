@@ -11,6 +11,8 @@ import { contactInfo, socialLinks } from "@/lib/constants/contact"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/contexts/language-context"
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll"
+import { emailjsConfig } from "@/lib/config/emailjs"
+import emailjs from "@emailjs/browser"
 
 interface FormData {
   name: string
@@ -35,10 +37,9 @@ export function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Validação básica
     if (!formData.name || !formData.email || !formData.message) {
       showToast({
         title: t("contact.toast.required"),
@@ -48,7 +49,6 @@ export function ContactSection() {
       return
     }
 
-    // Validação de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       showToast({
@@ -59,34 +59,74 @@ export function ContactSection() {
       return
     }
 
+    if (!emailjsConfig.serviceId || !emailjsConfig.templateId || !emailjsConfig.publicKey) {
+      const greeting = language === "pt" ? "Olá Igor" : "Hello Igor"
+      const nameLabel = language === "pt" ? "Meu nome é" : "My name is"
+      const subject = encodeURIComponent(formData.subject || `${greeting} - ${formData.name}`)
+      const body = encodeURIComponent(
+        `${greeting},\n\n${nameLabel} ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}`
+      )
+      const mailtoLink = `mailto:${emailjsConfig.toEmail}?subject=${subject}&body=${body}`
+      window.location.href = mailtoLink
+      
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
+        setIsSubmitting(false)
+        showToast({
+          title: t("contact.toast.sent"),
+          description: t("contact.toast.sentDesc"),
+        })
+      }, 500)
+      return
+    }
+
     setIsSubmitting(true)
 
-    // Cria o link mailto com os dados do formulário
-    const greeting = language === "pt" ? "Olá Igor" : "Hello Igor"
-    const nameLabel = language === "pt" ? "Meu nome é" : "My name is"
-    const subject = encodeURIComponent(formData.subject || `${greeting} - ${formData.name}`)
-    const body = encodeURIComponent(
-      `${greeting},\n\n${nameLabel} ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}`
-    )
-    const mailtoLink = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || `Contato do Portfólio - ${formData.name}`,
+        message: formData.message,
+        to_email: emailjsConfig.toEmail,
+      }
 
-    // Abre o cliente de email
-    window.location.href = mailtoLink
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        templateParams,
+        emailjsConfig.publicKey
+      )
 
-    // Reseta o formulário após um delay
-    setTimeout(() => {
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       })
-      setIsSubmitting(false)
+
       showToast({
         title: t("contact.toast.sent"),
-        description: t("contact.toast.sentDesc"),
+        description: language === "pt" 
+          ? "Mensagem enviada com sucesso! Entrarei em contato em breve." 
+          : "Message sent successfully! I'll get back to you soon.",
       })
-    }, 500)
+    } catch (error: any) {
+      showToast({
+        title: language === "pt" ? "Erro ao enviar" : "Error sending",
+        description: language === "pt"
+          ? error?.text || "Ocorreu um erro ao enviar a mensagem. Verifique as configurações do EmailJS."
+          : error?.text || "An error occurred while sending the message. Please check EmailJS configuration.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -255,4 +295,3 @@ export function ContactSection() {
     </section>
   )
 }
-
