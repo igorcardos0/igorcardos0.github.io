@@ -60,8 +60,8 @@ export function ContactSection() {
     }
 
     if (!emailjsConfig.serviceId || !emailjsConfig.templateId || !emailjsConfig.publicKey) {
-    const greeting = language === "pt" ? "Olá Igor" : "Hello Igor"
-    const nameLabel = language === "pt" ? "Meu nome é" : "My name is"
+    const greeting = t("contact.email.greeting")
+    const nameLabel = t("contact.email.nameLabel")
     const subject = encodeURIComponent(formData.subject || `${greeting} - ${formData.name}`)
     const body = encodeURIComponent(
       `${greeting},\n\n${nameLabel} ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}`
@@ -91,7 +91,7 @@ export function ContactSection() {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        subject: formData.subject || `Contato do Portfólio - ${formData.name}`,
+        subject: formData.subject || `${t("contact.email.subjectPrefix")} - ${formData.name}`,
         message: formData.message,
         to_email: emailjsConfig.toEmail,
       }
@@ -112,16 +112,12 @@ export function ContactSection() {
 
       showToast({
         title: t("contact.toast.sent"),
-        description: language === "pt" 
-          ? "Mensagem enviada com sucesso! Entrarei em contato em breve." 
-          : "Message sent successfully! I'll get back to you soon.",
+        description: t("contact.toast.sentSuccess"),
       })
     } catch (error: any) {
       showToast({
-        title: language === "pt" ? "Erro ao enviar" : "Error sending",
-        description: language === "pt"
-          ? error?.text || "Ocorreu um erro ao enviar a mensagem. Verifique as configurações do EmailJS."
-          : error?.text || "An error occurred while sending the message. Please check EmailJS configuration.",
+        title: t("contact.toast.error"),
+        description: error?.text || t("contact.toast.errorDesc"),
         variant: "destructive",
       })
     } finally {

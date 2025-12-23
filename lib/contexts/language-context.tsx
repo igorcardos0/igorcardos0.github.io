@@ -43,6 +43,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "hero.title": { pt: "Engenheiro de Software & Growth Ops", en: "Software Engineer & Growth Ops" },
       "hero.description": { pt: "Especialista em React.js, Next.js e Automação de Processos. Transformo estratégias de marketing em software escalável e de alta performance.", en: "Expert in React.js, Next.js and Process Automation. I transform marketing strategies into scalable, high-performance software." },
       "hero.resume": { pt: "Curriculo PDF", en: "Resume PDF" },
+      "hero.aria.github": { pt: "GitHub", en: "GitHub" },
+      "hero.aria.linkedin": { pt: "LinkedIn", en: "LinkedIn" },
+      "hero.aria.contact": { pt: "Contato", en: "Contact" },
+      "hero.aria.resume": { pt: "Download Currículo", en: "Download Resume" },
       
       "about.title": { pt: "Sobre Mim", en: "About Me" },
       "about.description1": { pt: "Não atuo apenas escrevendo código; atuo na engenharia de soluções que geram resultado financeiro.", en: "I don't just write code; I engineer solutions that generate financial results." },
@@ -77,6 +81,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "contact.toast.invalidEmailDesc": { pt: "Por favor, insira um endereço de email válido.", en: "Please enter a valid email address." },
       "contact.toast.sent": { pt: "Formulário enviado", en: "Form sent" },
       "contact.toast.sentDesc": { pt: "Seu cliente de email será aberto. Obrigado pelo contato!", en: "Your email client will open. Thank you for contacting!" },
+      "contact.toast.sentSuccess": { pt: "Mensagem enviada com sucesso! Entrarei em contato em breve.", en: "Message sent successfully! I'll get back to you soon." },
+      "contact.toast.error": { pt: "Erro ao enviar", en: "Error sending" },
+      "contact.toast.errorDesc": { pt: "Ocorreu um erro ao enviar a mensagem. Verifique as configurações do EmailJS.", en: "An error occurred while sending the message. Please check EmailJS configuration." },
+      "contact.email.greeting": { pt: "Olá Igor", en: "Hello Igor" },
+      "contact.email.nameLabel": { pt: "Meu nome é", en: "My name is" },
+      "contact.email.subjectPrefix": { pt: "Contato do Portfólio", en: "Portfolio Contact" },
       
       "exp.v4.title": { pt: "Engenheiro de Software Full Stack", en: "Full Stack Software Engineer" },
       "exp.v4.description": { pt: "Atuo no desenvolvimento e sustentação de infraestrutura web focada em conversão e vendas para clientes de alta performance.\n\nPerformance Web: Desenvolvimento de aplicações com Next.js e React otimizadas para Core Web Vitals, garantindo carregamento rápido e melhor rankeamento orgânico.\n\nGrowth Ops: Criação de automações via n8n e Webhooks que integram campanhas de mídia paga (Ads) diretamente ao CRM, eliminando processos manuais e reduzindo o tempo de resposta aos leads.\n\nQualidade: Implementação de rotinas de testes e monitoramento de erros para assegurar a estabilidade das operações de vendas em produção.", en: "I work on the development and maintenance of web infrastructure focused on conversion and sales for high-performance clients.\n\nWeb Performance: Development of applications with Next.js and React optimized for Core Web Vitals, ensuring fast loading and better organic ranking.\n\nGrowth Ops: Creation of automations via n8n and Webhooks that integrate paid media campaigns (Ads) directly into CRM, eliminating manual processes and reducing lead response time.\n\nQuality: Implementation of test routines and error monitoring to ensure the stability of sales operations in production." },

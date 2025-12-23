@@ -138,7 +138,7 @@ export function AboutSection() {
                       <h4 className="font-bold text-base sm:text-lg">{t(`exp.${expKey}.title`)}</h4>
                       <p className="text-primary font-semibold text-sm sm:text-base">{exp.company}</p>
                       <p className="text-xs sm:text-sm text-muted-foreground mb-2">{period}</p>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">{exp.description}</p>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">{t(`exp.${expKey}.description`)}</p>
                     </div>
                   </AnimateOnScroll>
                 )

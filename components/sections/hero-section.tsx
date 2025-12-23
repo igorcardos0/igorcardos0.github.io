@@ -36,7 +36,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 md:p-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer"
-                aria-label="GitHub"
+                aria-label={t("hero.aria.github")}
               >
                 <Github className="h-5 w-5 md:h-6 md:w-6" />
               </a>
@@ -45,14 +45,14 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 md:p-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer"
-                aria-label="LinkedIn"
+                aria-label={t("hero.aria.linkedin")}
               >
                 <Linkedin className="h-5 w-5 md:h-6 md:w-6" />
               </a>
               <a
                 href="#contato"
                 className="p-2.5 md:p-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer"
-                aria-label="Contato"
+                aria-label={t("hero.aria.contact")}
               >
                 <Mail className="h-5 w-5 md:h-6 md:w-6" />
               </a>
@@ -60,7 +60,7 @@ export function HeroSection() {
                 href="/curriculo.pdf"
                 download
                 className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer text-xs md:text-sm"
-                aria-label="Download Currículo"
+                aria-label={t("hero.aria.resume")}
               >
                 <Download className="h-4 w-4 md:h-5 md:w-5" />
                 <span className="font-medium">{t("hero.resume")}</span>
