@@ -68,7 +68,7 @@ function ProjectModal({
 
         <div className="p-4 sm:p-6">
           {/* Carrossel em maior escala */}
-          <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-lg bg-muted">
+          <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-lg bg-black">
             {total > 0 && (
               <>
                 <Image
@@ -76,7 +76,7 @@ function ProjectModal({
                   alt={`${project.title[language]} - ${modalImageIndex + 1}`}
                   width={1200}
                   height={675}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                   priority
                 />
                 {total > 1 && (
@@ -217,7 +217,7 @@ export function ProjectsSection() {
                           </span>
                         </>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                      <div className="absolute inset-0 bg-linear-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
                         <ExternalLink className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                       </div>
                     </div>
