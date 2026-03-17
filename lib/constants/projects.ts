@@ -83,4 +83,29 @@ export const projects: Project[] = [
     ],
     link: "/#projetos",
   },
+  {
+    id: 3,
+    title: {
+      pt: "Landing Pages Diversas",
+      en: "Multiple Landing Pages",
+    },
+    description: {
+      pt: "Coleção de landing pages otimizadas para performance e testes de aquisição em diferentes nichos.",
+      en: "Collection of high-performing landing pages built for acquisition experiments across different niches.",
+    },
+    longDescription: {
+      pt:
+        "Contexto: empresas em fase de crescimento precisam testar rapidamente propostas de valor, ofertas e mensagens diferentes sem depender de um ciclo lento de desenvolvimento.\n\n" +
+        "Ação: desenvolvi um conjunto de landing pages focadas em captação de leads e vendas, usando Next.js e Tailwind CSS, sempre com atenção a tempo de carregamento, rastreabilidade de eventos (GA4/Pixel) e facilidade de iteração.\n\n" +
+        "Resultado: criação de uma base de páginas reutilizáveis e fáceis de adaptar para novos produtos e campanhas, reduzindo o tempo entre a ideia e o teste em tráfego pago.",
+      en:
+        "Context: growing companies need to quickly test different value propositions, offers and messaging without being blocked by slow development cycles.\n\n" +
+        "Action: I built a set of landing pages focused on lead generation and sales using Next.js and Tailwind CSS, with special attention to load time, tracking (GA4/Pixel) and ease of iteration.\n\n" +
+        "Result: a reusable library of landing pages that can be quickly adapted to new products and campaigns, reducing the time from idea to paid-traffic test.",
+    },
+    stacks: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GA4", "Landing Pages"],
+    folder: "projetos-lps-diversas",
+    images: [],
+    link: "/#projetos",
+  },
 ]
