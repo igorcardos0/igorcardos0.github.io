@@ -57,7 +57,7 @@ export function HeroSection() {
                 <Mail className="h-5 w-5 md:h-6 md:w-6" />
               </a>
               <a
-                href="/curriculo.pdf"
+                href="/Igor%20de%20Souza%20Cardoso%20-%20Growth%20Ops.pdf"
                 download
                 className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer text-xs md:text-sm"
                 aria-label={t("hero.aria.resume")}
