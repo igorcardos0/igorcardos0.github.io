@@ -22,13 +22,12 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "Projeto Atlas",
-    description: "Plataforma interna de inteligência de dados da V4 Company — operacional, comercial e ADS.",
+    description:
+      "Internal data intelligence platform for V4 Company. I architected the integration between Operational, Commercial, and Paid Ads data.",
     longDescription:
-      "O Atlas é uma plataforma interna de inteligência de dados desenvolvida para a V4 Company, criada para substituir a dependência de planilhas e de soluções externas (como Power BI terceirizado), centralizando a visibilidade de dados da empresa em um único sistema.\n\n" +
-      "• ADS — Integração com Meta Ads e Google Ads: visão unificada das campanhas, envio de vitórias, métricas e conquistas em anúncios.\n\n" +
-      "• Operacional — Conexão com o Ecite: acompanhamento de tarefas, performance da equipe, horas trabalhadas e custos operacionais em tempo real.\n\n" +
-      "• Comercial — Gestão de leads: cadastro, pipeline (vendido, perdido, em andamento), valores, faturamento por cliente e métricas comerciais que antes ficavam dispersas em planilhas.\n\n" +
-      "Inclui ainda um sistema de calculadora para definição de metas e métricas do comercial, projeção de custos e metas mensais, apoiando o planejamento e a tomada de decisão com base em dados.",
+      "Contexto: a V4 Company operava com dados espalhados entre planilhas, ferramentas externas e times diferentes (Operacional, Comercial e Ads). Isso gerava silos de informação, dificuldade de leitura de lucro real e lentidão para decidir onde investir o próximo real de mídia.\n\n" +
+      "Ação: desenhei e desenvolvi o Atlas, uma plataforma interna de inteligência de dados que unifica as frentes Operacional, Comercial e de Ads em uma única interface. Estruturei integrações com Meta Ads e Google Ads, Ecite (operacional) e dados comerciais, criando uma camada única de visualização e controle.\n\n" +
+      "Resultado: transformei dados dispersos em uma single source of truth, reduzindo o tempo de geração de relatórios e permitindo alocação de orçamento em tempo quase real, baseada em ROI e lucro — em vez de feeling ou planilhas manuais.",
     stacks: ["React", "TypeScript", "Next.js", "Dashboards", "Analytics", "Data visualization"],
     folder: "projeto-atlas",
     images: [
@@ -41,12 +40,12 @@ export const projects: Project[] = [
   {
     id: 2,
     title: "TurboLead",
-    description: "Primeiro SDR com IA para concessionárias — auditoria de vendas em tempo real e triagem automática de leads.",
+    description:
+      "AI-powered SDR for the automotive industry. Real-time sales auditing and automated lead qualification.",
     longDescription:
-      "O TurboLead é uma plataforma de atendimento inteligente focada em concessionárias, que transforma o WhatsApp em uma máquina de vendas.\n\n" +
-      "Funciona como o primeiro SDR com Inteligência Artificial: atende em segundos, filtra curiosos, faz a triagem de crédito, de troca e de intenção real de compra antes de passar o lead para o time humano.\n\n" +
-      "Além disso, a plataforma audita as conversas em tempo real, avaliando tempo de resposta, qualidade do atendimento e gerando uma nota objetiva de 0 a 10 para cada vendedor. Isso elimina a 'cegueira gerencial': o dono passa a enxergar exatamente o que acontece entre o anúncio e o contrato assinado — fim do conflito entre marketing e vendas.\n\n" +
-      "Com dashboards de performance, distribuição inteligente de leads por performance, previsibilidade de receita e insights de estoque (quais modelos mais pedidos, como SUV, Hatch e Sedan), o TurboLead ajuda a reduzir CAC, aumentar conversão e profissionalizar a operação comercial das revendas.",
+      "Contexto: concessionárias investem pesado em tráfego pago, mas perdem dinheiro no básico — demora na resposta, leads frios chegando no CRM e zero visibilidade sobre a qualidade do atendimento.\n\n" +
+      "Ação: desenvolvi o TurboLead, o primeiro SDR com IA focado no setor automotivo. A plataforma assume a primeira abordagem no WhatsApp, responde em segundos, faz triagem de crédito, troca e intenção real de compra, e só então encaminha o lead qualificado para o vendedor. Em paralelo, audita cada conversa em tempo real, medindo tempo de resposta, qualidade das mensagens e gerando uma nota objetiva por atendimento.\n\n" +
+      "Resultado: automação de 100% da triagem inicial de leads, aumento da velocidade de resposta (speed-to-lead) e filtro automático de curiosos e contatos desqualificados antes de chegarem ao CRM, elevando a taxa de conversão da operação.",
     stacks: ["N8N", "Python", "React", "Node.js", "WhatsApp Business API", "IA aplicada a vendas"],
     folder: "projeto-turbo-lead",
     images: [

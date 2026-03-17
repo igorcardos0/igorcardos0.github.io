@@ -40,8 +40,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "nav.projetos": { pt: "PROJETOS", en: "PROJECTS" },
       "nav.contato": { pt: "CONTATO", en: "CONTACT" },
       
-      "hero.title": { pt: "Engenheiro de Software & Growth Ops", en: "Software Engineer & Growth Ops" },
-      "hero.description": { pt: "Especialista em React.js, Next.js e Automação de Processos. Transformo estratégias de marketing em software escalável e de alta performance.", en: "Expert in React.js, Next.js and Process Automation. I transform marketing strategies into scalable, high-performance software." },
+      "hero.title": {
+        pt: "Engenheiro de Software & Growth Ops | Focado em Escala e ROI.",
+        en: "Software Engineer & Growth Ops | Building High-Conversion Ecosystems.",
+      },
+      "hero.description": {
+        pt: "Construo pontes entre código e faturamento. Especialista em arquiteturas Next.js e automações inteligentes que reduzem o CAC e aceleram a operação comercial.",
+        en: "I bridge the gap between code and revenue. Specialist in automating sales funnels and building scalable, data-driven applications that slash CAC and boost ROI.",
+      },
       "hero.resume": { pt: "Curriculo PDF", en: "Resume PDF" },
       "hero.aria.github": { pt: "GitHub", en: "GitHub" },
       "hero.aria.linkedin": { pt: "LinkedIn", en: "LinkedIn" },
@@ -49,9 +55,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "hero.aria.resume": { pt: "Download Currículo", en: "Download Resume" },
       
       "about.title": { pt: "Sobre Mim", en: "About Me" },
-      "about.description1": { pt: "Não atuo apenas escrevendo código; atuo na engenharia de soluções que geram resultado financeiro.", en: "I don't just write code; I engineer solutions that generate financial results." },
-      "about.description2": { pt: "Com experiência prática em ambientes de alta performance (atualmente na V4 Company), combino a base técnica da Ciência da Computação com uma visão orientada a vendas e eficiência operacional. Atuo como um desenvolvedor \"Full Cycle\", gerenciando desde a arquitetura e desenvolvimento até os testes (QA), deploy e monitoramento.", en: "With practical experience in high-performance environments (currently at V4 Company), I combine the technical foundation of Computer Science with a sales and operational efficiency-oriented vision. I work as a \"Full Cycle\" developer, managing from architecture and development to testing (QA), deployment and monitoring." },
-      "about.description3": { pt: "Meu diferencial está na interseção entre Marketing e Tecnologia: construo aplicações robustas que não apenas funcionam, mas que se integram a CRMs, automatizam processos manuais complexos e garantem que o time comercial receba dados limpos e rápidos.", en: "My differential is at the intersection of Marketing and Technology: I build robust applications that not only work, but integrate with CRMs, automate complex manual processes and ensure that the sales team receives clean and fast data." },
+      "about.description1": {
+        pt: "Não escrevo apenas linhas de código; engenho soluções que impactam o balanço financeiro. Com background em Ciência da Computação e atuação em ambientes de altíssima pressão (V4 Company), opero como um Engenheiro Full Cycle.",
+        en: "I don’t just write code; I build financial results. With a background in Computer Science and a daily grind in high-stakes environments (V4 Company), I operate as a Full-Cycle Engineer.",
+      },
+      "about.description2": {
+        pt: "Gargalos Operacionais: elimino processos manuais complexos com automações via n8n e Python.",
+        en: "Operational Efficiency: eliminate complex manual overhead through n8n and Python automation.",
+      },
+      "about.description3": {
+        pt: "Performance de Conversão: desenvolvo interfaces Next.js ultra-rápidas focadas em Core Web Vitals. Integridade de Dados: garanto que o time de vendas receba leads qualificados e dados limpos em tempo real via integração de CRMs.",
+        en: "Conversion Performance: develop ultra-fast Next.js interfaces optimized for Core Web Vitals. Data Integrity: ensure sales teams receive qualified leads and clean data in real-time through seamless CRM integrations.",
+      },
       "about.skills": { pt: "Competências Técnicas", en: "Technical Skills" },
       "about.experience": { pt: "Experiência Profissional", en: "Professional Experience" },
       "about.education": { pt: "Formação Acadêmica", en: "Education" },
@@ -89,7 +104,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "contact.email.subjectPrefix": { pt: "Contato do Portfólio", en: "Portfolio Contact" },
       
       "exp.v4.title": { pt: "Engenheiro de Software Full Stack", en: "Full Stack Software Engineer" },
-      "exp.v4.description": { pt: "Atuo no desenvolvimento e sustentação de infraestrutura web focada em conversão e vendas para clientes de alta performance.\n\nPerformance Web: Desenvolvimento de aplicações com Next.js e React otimizadas para Core Web Vitals, garantindo carregamento rápido e melhor rankeamento orgânico.\n\nGrowth Ops: Criação de automações via n8n e Webhooks que integram campanhas de mídia paga (Ads) diretamente ao CRM, eliminando processos manuais e reduzindo o tempo de resposta aos leads.\n\nQualidade: Implementação de rotinas de testes e monitoramento de erros para assegurar a estabilidade das operações de vendas em produção.", en: "I work on the development and maintenance of web infrastructure focused on conversion and sales for high-performance clients.\n\nWeb Performance: Development of applications with Next.js and React optimized for Core Web Vitals, ensuring fast loading and better organic ranking.\n\nGrowth Ops: Creation of automations via n8n and Webhooks that integrate paid media campaigns (Ads) directly into CRM, eliminating manual processes and reducing lead response time.\n\nQuality: Implementation of test routines and error monitoring to ensure the stability of sales operations in production." },
+      "exp.v4.description": {
+        pt: "Otimização de Ecossistemas de Vendas: lidero a arquitetura de interfaces focadas em taxa de conversão (CRO), garantindo performance máxima para clientes de grande porte.\n\nGrowth Ops: desenvolvimento de automações que integram campanhas de Ads diretamente ao CRM, reduzindo o time-to-response e aumentando a eficiência comercial.\n\nDados e ROI: ajudo times de marketing e vendas a enxergarem, em tempo quase real, o impacto das campanhas em faturamento, margem e CAC.",
+        en: "Sales Ecosystem Optimization: leading the architecture of high-conversion interfaces (CRO), ensuring maximum performance for enterprise-level clients.\n\nGrowth Ops: developing smart automations that link paid ads campaigns directly to CRM systems, drastically reducing lead response time and increasing commercial efficiency.\n\nData & ROI: helping marketing and sales teams see, almost in real time, how campaigns impact revenue, margin, and CAC.",
+      },
       "exp.alplatech.title": { pt: "Desenvolvedor de Software", en: "Software Developer" },
       "exp.alplatech.description": { pt: "Atuei no desenvolvimento de sistemas customizados para digitalização de processos de negócios locais, transformando operações manuais em fluxos digitais eficientes.\n\nArquitetura: Criação de soluções em Node.js e Express para migrar fluxos de trabalho manuais para sistemas digitais centralizados, melhorando a produtividade e reduzindo erros operacionais.\n\nBanco de Dados: Modelagem e implementação de bancos relacionais (PostgreSQL) para garantir a integridade, segurança e escalabilidade dos dados dos clientes.\n\nIntegração: Desenvolvimento de APIs e integrações para conectar sistemas legados com novas plataformas digitais, facilitando a transição tecnológica dos clientes.", en: "I worked on the development of customized systems for digitization of local business processes, transforming manual operations into efficient digital flows.\n\nArchitecture: Creation of solutions in Node.js and Express to migrate manual workflows to centralized digital systems, improving productivity and reducing operational errors.\n\nDatabase: Modeling and implementation of relational databases (PostgreSQL) to ensure data integrity, security and scalability for clients.\n\nIntegration: Development of APIs and integrations to connect legacy systems with new digital platforms, facilitating clients' technological transition." },
       "exp.studiogames.title": { pt: "Técnico de TI", en: "IT Technician" },
