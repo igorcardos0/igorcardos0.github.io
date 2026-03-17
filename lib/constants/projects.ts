@@ -105,7 +105,7 @@ export const projects: Project[] = [
     },
     stacks: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GA4", "Landing Pages"],
     folder: "projetos-lps-diversas",
-    images: [],
+    images: ["bins lp.png", "cardamomo.png", "ozzy lp.png", "temakeria.png"],
     link: "/#projetos",
   },
 ]
