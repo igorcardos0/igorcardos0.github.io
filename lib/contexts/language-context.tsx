@@ -41,12 +41,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "nav.contato": { pt: "CONTATO", en: "CONTACT" },
       
       "hero.title": {
-        pt: "Engenheiro de Software & Growth Ops | Focado em Escala e ROI.",
-        en: "Software Engineer & Growth Ops | Building High-Conversion Ecosystems.",
+        pt: "Engenheiro de Software & Growth Ops",
+        en: "Software Engineer & Growth Ops",
       },
       "hero.description": {
-        pt: "Construo pontes entre código e faturamento. Especialista em arquiteturas Next.js e automações inteligentes que reduzem o CAC e aceleram a operação comercial.",
-        en: "I bridge the gap between code and revenue. Specialist in automating sales funnels and building scalable, data-driven applications that slash CAC and boost ROI.",
+        pt: "Transformo desafios operacionais em sistemas escaláveis. Desenvolvedor Full Stack focado em viabilizar o crescimento de negócios através da tecnologia.",
+        en: "I turn operational challenges into scalable systems. Full Stack developer focused on enabling business growth through technology.",
       },
       "hero.resume": { pt: "Curriculo PDF", en: "Resume PDF" },
       "hero.aria.github": { pt: "GitHub", en: "GitHub" },
@@ -56,16 +56,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       
       "about.title": { pt: "Sobre Mim", en: "About Me" },
       "about.description1": {
-        pt: "Não escrevo apenas linhas de código; engenho soluções que impactam o balanço financeiro. Com background em Ciência da Computação e atuação em ambientes de altíssima pressão (V4 Company), opero como um Engenheiro Full Cycle.",
-        en: "I don’t just write code; I build financial results. With a background in Computer Science and a daily grind in high-stakes environments (V4 Company), I operate as a Full-Cycle Engineer.",
+        pt: "Acredito que um bom código deve, acima de tudo, resolver um problema real. Com experiência na V4 Company, aprendi a alinhar o desenvolvimento de software às necessidades do negócio, garantindo que a tecnologia seja um motor de eficiência, e não apenas um custo.",
+        en: "I believe good code should, above all, solve real problems. Working at V4 Company taught me how to align software development with business needs, ensuring technology becomes a driver of efficiency, not just a cost.",
       },
       "about.description2": {
-        pt: "Gargalos Operacionais: elimino processos manuais complexos com automações via n8n e Python.",
-        en: "Operational Efficiency: eliminate complex manual overhead through n8n and Python automation.",
+        pt: "No dia a dia, trabalho construindo aplicações web com foco em performance, manutenção e clareza de arquitetura, sempre buscando reduzir retrabalho e dependência de processos manuais.",
+        en: "On a daily basis, I build web applications focused on performance, maintainability and clear architecture, always aiming to reduce rework and dependency on manual processes.",
       },
       "about.description3": {
-        pt: "Performance de Conversão: desenvolvo interfaces Next.js ultra-rápidas focadas em Core Web Vitals. Integridade de Dados: garanto que o time de vendas receba leads qualificados e dados limpos em tempo real via integração de CRMs.",
-        en: "Conversion Performance: develop ultra-fast Next.js interfaces optimized for Core Web Vitals. Data Integrity: ensure sales teams receive qualified leads and clean data in real-time through seamless CRM integrations.",
+        pt: "Uso ferramentas como Next.js, n8n e Python para automatizar tarefas repetitivas, integrar sistemas e dar mais visibilidade para quem está executando na ponta — seja o time técnico ou as equipes operacionais.",
+        en: "I use tools like Next.js, n8n and Python to automate repetitive tasks, integrate systems and give more visibility to the people executing on the front line — whether technical teams or operational squads.",
       },
       "about.skills": { pt: "Competências Técnicas", en: "Technical Skills" },
       "about.experience": { pt: "Experiência Profissional", en: "Professional Experience" },
@@ -105,8 +105,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       
       "exp.v4.title": { pt: "Engenheiro de Software Full Stack", en: "Full Stack Software Engineer" },
       "exp.v4.description": {
-        pt: "Otimização de Ecossistemas de Vendas: lidero a arquitetura de interfaces focadas em taxa de conversão (CRO), garantindo performance máxima para clientes de grande porte.\n\nGrowth Ops: desenvolvimento de automações que integram campanhas de Ads diretamente ao CRM, reduzindo o time-to-response e aumentando a eficiência comercial.\n\nDados e ROI: ajudo times de marketing e vendas a enxergarem, em tempo quase real, o impacto das campanhas em faturamento, margem e CAC.",
-        en: "Sales Ecosystem Optimization: leading the architecture of high-conversion interfaces (CRO), ensuring maximum performance for enterprise-level clients.\n\nGrowth Ops: developing smart automations that link paid ads campaigns directly to CRM systems, drastically reducing lead response time and increasing commercial efficiency.\n\nData & ROI: helping marketing and sales teams see, almost in real time, how campaigns impact revenue, margin, and CAC.",
+        pt: "Atuo na V4 Company construindo e sustentando aplicações web que dão suporte ao trabalho diário das equipes de marketing e operações.\n\nTrabalho com interfaces de alta performance e boa experiência de uso, utilizando principalmente Next.js e React.\n\nTambém desenvolvo automações e integrações que conectam diferentes sistemas entre si, reduzindo processos manuais repetitivos e melhorando o fluxo de informação entre áreas.",
+        en: "At V4 Company I build and maintain web applications that support the day-to-day work of marketing and operations teams.\n\nI focus on high-performance interfaces with a strong user experience, mainly using Next.js and React.\n\nI also develop automations and integrations that connect different systems, reducing repetitive manual work and improving information flow between teams.",
       },
       "exp.alplatech.title": { pt: "Desenvolvedor de Software", en: "Software Developer" },
       "exp.alplatech.description": { pt: "Atuei no desenvolvimento de sistemas customizados para digitalização de processos de negócios locais, transformando operações manuais em fluxos digitais eficientes.\n\nArquitetura: Criação de soluções em Node.js e Express para migrar fluxos de trabalho manuais para sistemas digitais centralizados, melhorando a produtividade e reduzindo erros operacionais.\n\nBanco de Dados: Modelagem e implementação de bancos relacionais (PostgreSQL) para garantir a integridade, segurança e escalabilidade dos dados dos clientes.\n\nIntegração: Desenvolvimento de APIs e integrações para conectar sistemas legados com novas plataformas digitais, facilitando a transição tecnológica dos clientes.", en: "I worked on the development of customized systems for digitization of local business processes, transforming manual operations into efficient digital flows.\n\nArchitecture: Creation of solutions in Node.js and Express to migrate manual workflows to centralized digital systems, improving productivity and reducing operational errors.\n\nDatabase: Modeling and implementation of relational databases (PostgreSQL) to ensure data integrity, security and scalability for clients.\n\nIntegration: Development of APIs and integrations to connect legacy systems with new digital platforms, facilitating clients' technological transition." },
