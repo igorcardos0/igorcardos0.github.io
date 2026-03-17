@@ -21,6 +21,7 @@ function ProjectModal({
   project: Project
   onClose: () => void
 }) {
+  const { language } = useLanguage()
   const [modalImageIndex, setModalImageIndex] = useState(0)
   const total = project.images.length
 
@@ -72,7 +73,7 @@ function ProjectModal({
               <>
                 <Image
                   src={getImageSrc(project.folder, project.images[modalImageIndex])}
-                  alt={`${project.title} - ${modalImageIndex + 1}`}
+                  alt={`${project.title[language]} - ${modalImageIndex + 1}`}
                   width={1200}
                   height={675}
                   className="w-full h-full object-contain"
@@ -106,10 +107,10 @@ function ProjectModal({
           </div>
 
           <h2 id="project-modal-title" className="text-2xl font-bold text-primary mb-2">
-            {project.title}
+            {project.title[language]}
           </h2>
           <p className="text-muted-foreground mb-4 whitespace-pre-line">
-            {project.longDescription}
+            {project.longDescription[language]}
           </p>
 
           {project.stacks.length > 0 && (
@@ -148,7 +149,7 @@ function ProjectModal({
 }
 
 export function ProjectsSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState<Record<number, number>>({})
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
@@ -180,7 +181,7 @@ export function ProjectsSection() {
                     <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={src}
-                        alt={`${project.title} - ${idx + 1}`}
+                        alt={`${project.title[language]} - ${idx + 1}`}
                         width={800}
                         height={450}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -221,8 +222,12 @@ export function ProjectsSection() {
                       </div>
                     </div>
                     <div className="p-3 sm:p-4 flex-1 flex flex-col">
-                      <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground flex-1">{project.description}</p>
+                      <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                        {project.title[language]}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground flex-1">
+                        {project.description[language]}
+                      </p>
                     </div>
                   </div>
                 </Card>
