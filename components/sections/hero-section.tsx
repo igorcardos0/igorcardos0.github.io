@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Linkedin, Mail, Download } from "lucide-react"
+import { Github, Linkedin, Mail, Download, Sparkles } from "lucide-react"
 import { useLanguage } from "@/lib/contexts/language-context"
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll"
 import Image from "next/image"
@@ -64,6 +64,16 @@ export function HeroSection() {
               >
                 <Download className="h-4 w-4 md:h-5 md:w-5" />
                 <span className="font-medium">{t("hero.resume")}</span>
+              </a>
+              <a
+                href="https://freelancer-navigator.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 rounded-lg bg-card hover:bg-primary/20 border border-primary/50 transition-colors cursor-pointer text-xs md:text-sm"
+                aria-label={t("hero.aria.luciaCta")}
+              >
+                <Sparkles className="h-4 w-4 md:h-5 md:w-5" />
+                <span className="font-medium">{t("hero.luciaCta")}</span>
               </a>
               </div>
             </AnimateOnScroll>

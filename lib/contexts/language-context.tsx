@@ -49,10 +49,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         en: "I turn operational challenges into scalable systems. Full Stack developer focused on enabling business growth through technology.",
       },
       "hero.resume": { pt: "Curriculo PDF", en: "Resume PDF" },
+      "hero.luciaCta": { pt: "Use minha Plataforma de Inteligência para Freelancers", en: "Use my Intelligence Platform for Freelancers" },
       "hero.aria.github": { pt: "GitHub", en: "GitHub" },
       "hero.aria.linkedin": { pt: "LinkedIn", en: "LinkedIn" },
       "hero.aria.contact": { pt: "Contato", en: "Contact" },
       "hero.aria.resume": { pt: "Download Currículo", en: "Download Resume" },
+      "hero.aria.luciaCta": { pt: "Abrir LucIA — Plataforma de Inteligência para Freelancers", en: "Open LucIA — Intelligence Platform for Freelancers" },
       
       "about.title": { pt: "Sobre Mim", en: "About Me" },
       "about.description1": {

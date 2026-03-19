@@ -108,4 +108,29 @@ export const projects: Project[] = [
     images: ["bins lp.png", "cardamomo.png", "ozzy lp.png", "temakeria.png"],
     link: "/#projetos",
   },
+  {
+    id: 4,
+    title: {
+      pt: "LucIA — Plataforma de Inteligência para Freelancers",
+      en: "LucIA — Intelligence Platform for Freelancers",
+    },
+    description: {
+      pt: "SaaS full stack que combina IA generativa com dados reais do mercado para ajudar freelancers a ganhar mais e perder menos tempo. Propostas personalizadas por plataforma (Workana, 99Freelas, Upwork) via Gemini API.",
+      en: "Full-stack SaaS that combines generative AI with real market data to help freelancers earn more and waste less time. Personalized proposals per platform (Workana, 99Freelas, Upwork) via Gemini API.",
+    },
+    longDescription: {
+      pt:
+        "Contexto: desenvolvedores freelancers perdem tempo com propostas genéricas e precificação insegura, espalhados entre Workana, 99Freelas e Upwork, sem visão clara de receita, pipeline ou viabilidade de projeto.\n\n" +
+        "Ação: desenvolvi o LucIA, um SaaS full stack que integra IA generativa (Gemini API) com dados reais do mercado. O sistema gera propostas personalizadas por plataforma, com tom e estrutura adaptados ao perfil do usuário. Inclui motor de precificação com gross-up, custo/hora real, gerador de pacotes em 3 níveis e tabela de retainer. Painel de decisão com score de viabilidade por projeto, comparativo de plataformas e checklists de red flags. Dashboard financeiro com receita, metas mensais, pipeline e LTV por cliente.\n\n" +
+        "Resultado: centralização da decisão (qual projeto vale a pena), precificação baseada em dados e propostas otimizadas por canal, reduzindo tempo em escrita e aumentando taxa de conversão em oportunidades.",
+      en:
+        "Context: freelance developers waste time on generic proposals and guesswork pricing, spread across Workana, 99Freelas and Upwork, with no clear view of revenue, pipeline or project viability.\n\n" +
+        "Action: I built LucIA, a full-stack SaaS that combines generative AI (Gemini API) with real market data. The system generates personalized proposals per platform, with tone and structure adapted to the user profile. It includes a pricing engine with gross-up, real cost/hour, 3-tier package generator and retainer table. Decision panel with project viability score, platform comparison and red-flag checklists. Financial dashboard with revenue, monthly goals, pipeline and LTV per client.\n\n" +
+        "Result: centralized decision-making (which projects are worth it), data-driven pricing and channel-optimized proposals, cutting time spent on writing and increasing conversion on opportunities.",
+    },
+    stacks: ["React", "TypeScript", "Vite", "Supabase", "Gemini API", "SaaS"],
+    folder: "projeto-lucia",
+    images: ["luci1.png", "luci2.png", "luci3.png", "luci4.png", "dash1.png", "dash2.png", "dash3.png", "dash4.png", "dash5.png"],
+    link: "https://freelancer-navigator.vercel.app/",
+  },
 ]
