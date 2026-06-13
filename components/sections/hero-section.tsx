@@ -65,7 +65,7 @@ export function HeroSection() {
                 <Download className="h-4 w-4 md:h-5 md:w-5" />
                 <span className="font-medium">{t("hero.resume")}</span>
               </a>
-              <a
+              {/* <a
                 href="https://freelancer-navigator.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -74,7 +74,7 @@ export function HeroSection() {
               >
                 <Sparkles className="h-4 w-4 md:h-5 md:w-5" />
                 <span className="font-medium">{t("hero.luciaCta")}</span>
-              </a>
+              </a> */}
               </div>
             </AnimateOnScroll>
           </AnimateOnScroll>
