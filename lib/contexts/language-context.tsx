@@ -41,12 +41,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "nav.contato": { pt: "CONTATO", en: "CONTACT" },
       
       "hero.title": {
-        pt: "Engenheiro de Software & Growth Ops",
-        en: "Software Engineer & Growth Ops",
+        pt: "Software Engineer",
+        en: "Software Engineer",
       },
       "hero.description": {
-        pt: "Transformo desafios operacionais em sistemas escaláveis. Desenvolvedor Full Stack focado em viabilizar o crescimento de negócios através da tecnologia.",
-        en: "I turn operational challenges into scalable systems. Full Stack developer focused on enabling business growth through technology.",
+        pt: "Desenvolvedor Full Stack focado em arquitetura de software, APIs e ecossistemas de alta performance.",
+        en: "Full Stack Developer focused on software architecture, APIs, and high-performance ecosystems.",
       },
       "hero.resume": { pt: "Curriculo PDF", en: "Resume PDF" },
       "hero.luciaCta": { pt: "Use minha Plataforma de Inteligência para Freelancers", en: "Use my Intelligence Platform for Freelancers" },
@@ -58,16 +58,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       
       "about.title": { pt: "Sobre Mim", en: "About Me" },
       "about.description1": {
-        pt: "Acredito que um bom código deve, acima de tudo, resolver um problema real. Com experiência na V4 Company, aprendi a alinhar o desenvolvimento de software às necessidades do negócio, garantindo que a tecnologia seja um motor de eficiência, e não apenas um custo.",
-        en: "I believe good code should, above all, solve real problems. Working at V4 Company taught me how to align software development with business needs, ensuring technology becomes a driver of efficiency, not just a cost.",
+        pt: "Acredito que um bom código deve resolver problemas reais com foco em performance e manutenibilidade.",
+        en: "I believe good code should solve real problems focusing on performance and maintainability.",
       },
       "about.description2": {
-        pt: "No dia a dia, trabalho construindo aplicações web com foco em performance, manutenção e clareza de arquitetura, sempre buscando reduzir retrabalho e dependência de processos manuais.",
-        en: "On a daily basis, I build web applications focused on performance, maintainability and clear architecture, always aiming to reduce rework and dependency on manual processes.",
+        pt: "Com experiência consolidada na V4 Company, alinho engenharia de software a objetivos de eficiência operacional.",
+        en: "With solid experience at V4 Company, I align software engineering with operational efficiency goals.",
       },
       "about.description3": {
-        pt: "Uso ferramentas como Next.js, n8n e Python para automatizar tarefas repetitivas, integrar sistemas e dar mais visibilidade para quem está executando na ponta — seja o time técnico ou as equipes operacionais.",
-        en: "I use tools like Next.js, n8n and Python to automate repetitive tasks, integrate systems and give more visibility to the people executing on the front line — whether technical teams or operational squads.",
+        pt: "No dia a dia, construo APIs robustas, integro ecossistemas complexos via n8n e desenvolvo pipelines de dados escaláveis utilizando Next.js, Node.js e Python.",
+        en: "On a daily basis, I build robust APIs, integrate complex ecosystems via n8n, and develop scalable data pipelines using Next.js, Node.js, and Python.",
       },
       "about.skills": { pt: "Competências Técnicas", en: "Technical Skills" },
       "about.experience": { pt: "Experiência Profissional", en: "Professional Experience" },
@@ -105,15 +105,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "contact.email.nameLabel": { pt: "Meu nome é", en: "My name is" },
       "contact.email.subjectPrefix": { pt: "Contato do Portfólio", en: "Portfolio Contact" },
       
-      "exp.v4.title": { pt: "Engenheiro de Software Full Stack", en: "Full Stack Software Engineer" },
+      "exp.v4.title": { pt: "Engenheiro de Software Full Stack Pleno", en: "Mid-Level Full Stack Software Engineer" },
       "exp.v4.description": {
-        pt: "Atuo na V4 Company construindo e sustentando aplicações web que dão suporte ao trabalho diário das equipes de marketing e operações.\n\nTrabalho com interfaces de alta performance e boa experiência de uso, utilizando principalmente Next.js e React.\n\nTambém desenvolvo automações e integrações que conectam diferentes sistemas entre si, reduzindo processos manuais repetitivos e melhorando o fluxo de informação entre áreas.",
-        en: "At V4 Company I build and maintain web applications that support the day-to-day work of marketing and operations teams.\n\nI focus on high-performance interfaces with a strong user experience, mainly using Next.js and React.\n\nI also develop automations and integrations that connect different systems, reducing repetitive manual work and improving information flow between teams.",
+        pt: "Desenvolvimento e sustentação de interfaces web de alta performance utilizando React, Next.js e TypeScript.\n\nConstrução de APIs RESTful, pipelines de sincronização de dados e automações de processos via n8n e webhooks.\n\nGerenciamento de infraestrutura em nuvem (AWS/VPS) e implementação de soluções inteligentes baseadas em LLMs.",
+        en: "Development and maintenance of high-performance web interfaces using React, Next.js, and TypeScript.\n\nBuilding RESTful APIs, data synchronization pipelines, and process automation via n8n and webhooks.\n\nCloud infrastructure management (AWS/VPS) and implementation of intelligent solutions based on LLMs.",
       },
       "exp.alplatech.title": { pt: "Desenvolvedor de Software", en: "Software Developer" },
-      "exp.alplatech.description": { pt: "Atuei no desenvolvimento de sistemas customizados para digitalização de processos de negócios locais, transformando operações manuais em fluxos digitais eficientes.\n\nArquitetura: Criação de soluções em Node.js e Express para migrar fluxos de trabalho manuais para sistemas digitais centralizados, melhorando a produtividade e reduzindo erros operacionais.\n\nBanco de Dados: Modelagem e implementação de bancos relacionais (PostgreSQL) para garantir a integridade, segurança e escalabilidade dos dados dos clientes.\n\nIntegração: Desenvolvimento de APIs e integrações para conectar sistemas legados com novas plataformas digitais, facilitando a transição tecnológica dos clientes.", en: "I worked on the development of customized systems for digitization of local business processes, transforming manual operations into efficient digital flows.\n\nArchitecture: Creation of solutions in Node.js and Express to migrate manual workflows to centralized digital systems, improving productivity and reducing operational errors.\n\nDatabase: Modeling and implementation of relational databases (PostgreSQL) to ensure data integrity, security and scalability for clients.\n\nIntegration: Development of APIs and integrations to connect legacy systems with new digital platforms, facilitating clients' technological transition." },
-      "exp.studiogames.title": { pt: "Técnico de TI", en: "IT Technician" },
-      "exp.studiogames.description": { pt: "Atuei na manutenção e suporte técnico de infraestrutura de TI, garantindo a operação contínua dos sistemas e equipamentos da empresa.\n\nManutenção: Realizei manutenção preventiva e corretiva em computadores e consoles, incluindo upgrades de hardware, formatação e montagem de PCs gamer para otimizar performance.\n\nSuporte: Ofereci suporte técnico presencial a clientes, garantindo agilidade na resolução de problemas e organização do ambiente de trabalho para maximizar a produtividade.\n\nInfraestrutura: Atuei na administração e manutenção de redes locais, assegurando conectividade e segurança dos sistemas para proteger dados e garantir acesso contínuo.\n\nAutomação: Desenvolvi e mantive softwares em Python para atualização de jogos e aplicativos, além de gerenciar sistemas de login, garantindo eficiência e continuidade operacional.", en: "I worked on maintenance and technical support of IT infrastructure, ensuring continuous operation of company systems and equipment.\n\nMaintenance: Performed preventive and corrective maintenance on computers and consoles, including hardware upgrades, formatting and gaming PC assembly to optimize performance.\n\nSupport: Provided on-site technical support to customers, ensuring quick problem resolution and workplace organization to maximize productivity.\n\nInfrastructure: Worked on local network administration and maintenance, ensuring connectivity and system security to protect data and guarantee continuous access.\n\nAutomation: Developed and maintained Python software for game and application updates, as well as managing login systems, ensuring efficiency and operational continuity." },
+      "exp.alplatech.description": { pt: "Liderança técnica no desenvolvimento de produtos digitais, sites e sistemas web sob medida para negócios.\n\nArquitetura e implementação de soluções de ponta a ponta utilizando a stack React, Node.js e PostgreSQL.\n\nTransformação de processos operacionais manuais em fluxos digitais, desde a prototipagem no Figma até o deploy.", en: "Technical leadership in the development of digital products, websites, and custom web systems for businesses.\n\nArchitecture and implementation of end-to-end solutions using the React, Node.js, and PostgreSQL stack.\n\nTransformation of manual operational processes into digital flows, from Figma prototyping to deployment." },
+      "exp.studiogames.title": { pt: "Técnico de TI & Automação", en: "IT & Automation Technician" },
+      "exp.studiogames.description": { pt: "Desenvolvimento de ferramentas em Python para automação de rotinas internas e atualização automatizada de sistemas.\n\nSuporte técnico especializado e manutenção preventiva/corretiva de hardware e setups de alta performance.\n\nAdministração de redes locais, assegurando a conectividade, segurança e integridade dos sistemas da empresa.", en: "Development of Python tools for automating internal routines and automated system updates.\n\nSpecialized technical support and preventive/corrective maintenance of hardware and high-performance setups.\n\nAdministration of local networks, ensuring connectivity, security, and integrity of company systems." },
       "exp.period.present": { pt: "Presente", en: "Present" },
       
       "edu.bachelor.title": { pt: "Bacharelado em Ciência da Computação", en: "Bachelor's in Computer Science" },
