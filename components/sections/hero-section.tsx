@@ -80,7 +80,7 @@ export function HeroSection() {
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="slide-left" delay={200} className="flex justify-center items-center w-full order-1 md:order-2 mb-6 md:mb-0">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-lg overflow-hidden border-2 border-primary">
+            <div className="relative w-[21rem] h-[21rem] sm:w-[23.5rem] sm:h-[23.5rem] md:w-[26rem] md:h-[26rem] lg:w-[31rem] lg:h-[31rem] rounded-lg overflow-hidden border-2 border-primary">
               <Image
                 src="/profile.png"
                 alt="Igor Cardoso"
