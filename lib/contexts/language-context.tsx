@@ -50,6 +50,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         en: "Full Stack Developer focused on software architecture, APIs, and high-performance ecosystems.",
       },
       "hero.resume": { pt: "Curriculo PDF", en: "Resume PDF" },
+      "hero.contact": { pt: "Entrar em contato", en: "Get in touch" },
       "hero.luciaCta": { pt: "Use minha Plataforma de Inteligência para Freelancers", en: "Use my Intelligence Platform for Freelancers" },
       "hero.aria.github": { pt: "GitHub", en: "GitHub" },
       "hero.aria.linkedin": { pt: "LinkedIn", en: "LinkedIn" },
