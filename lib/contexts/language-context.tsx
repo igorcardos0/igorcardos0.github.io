@@ -44,6 +44,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         pt: "Software Engineer",
         en: "Software Engineer",
       },
+      "hero.subtitle": { pt: "Frontend, Automações e Integrações", en: "Frontend, Automation and Integrations" },
       "hero.description": {
         pt: "Desenvolvedor Full Stack focado em arquitetura de software, APIs e ecossistemas de alta performance.",
         en: "Full Stack Developer focused on software architecture, APIs, and high-performance ecosystems.",
@@ -106,18 +107,26 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       "contact.email.subjectPrefix": { pt: "Contato do Portfólio", en: "Portfolio Contact" },
       
       "exp.v4.title": { pt: "Engenheiro de Software Full Stack Pleno", en: "Mid-Level Full Stack Software Engineer" },
+      "exp.v4.period": { pt: "Set 2025 — Jul 2026", en: "Sep 2025 — Jul 2026" },
       "exp.v4.description": {
         pt: "Desenvolvimento e sustentação de interfaces web de alta performance utilizando React, Next.js e TypeScript.\nConstrução de APIs RESTful, pipelines de sincronização de dados e automações de processos via n8n e webhooks.\nGerenciamento de infraestrutura em nuvem (AWS/VPS) e implementação de soluções inteligentes baseadas em LLMs.",
         en: "Development and maintenance of high-performance web interfaces using React, Next.js, and TypeScript.\nBuilding RESTful APIs, data synchronization pipelines, and process automation via n8n and webhooks.\nCloud infrastructure management (AWS/VPS) and implementation of intelligent solutions based on LLMs.",
       },
       "exp.alplatech.title": { pt: "Desenvolvedor de Software", en: "Software Developer" },
+      "exp.alplatech.period": { pt: "Nov 2024 — Set 2025", en: "Nov 2024 — Sep 2025" },
       "exp.alplatech.description": { pt: "Liderança técnica no desenvolvimento de produtos digitais, sites e sistemas web sob medida para negócios.\nArquitetura e implementação de soluções de ponta a ponta utilizando a stack React, Node.js e PostgreSQL.\nTransformação de processos operacionais manuais em fluxos digitais, desde a prototipagem no Figma até o deploy.", en: "Technical leadership in the development of digital products, websites, and custom web systems for businesses.\nArchitecture and implementation of end-to-end solutions using the React, Node.js, and PostgreSQL stack.\nTransformation of manual operational processes into digital flows, from Figma prototyping to deployment." },
       "exp.studiogames.title": { pt: "Técnico de TI & Automação", en: "IT & Automation Technician" },
+      "exp.studiogames.period": { pt: "Jan 2024 — Ago 2024", en: "Jan 2024 — Aug 2024" },
       "exp.studiogames.description": { pt: "Desenvolvimento de ferramentas em Python para automação de rotinas internas e atualização automatizada de sistemas.\nSuporte técnico especializado e manutenção preventiva/corretiva de hardware e setups de alta performance.\nAdministração de redes locais, assegurando a conectividade, segurança e integridade dos sistemas da empresa.", en: "Development of Python tools for automating internal routines and automated system updates.\nSpecialized technical support and preventive/corrective maintenance of hardware and high-performance setups.\nAdministration of local networks, ensuring connectivity, security, and integrity of company systems." },
       "exp.period.present": { pt: "Presente", en: "Present" },
       
       "edu.bachelor.title": { pt: "Bacharelado em Ciência da Computação", en: "Bachelor's in Computer Science" },
+      "edu.bachelor.period": { pt: "Fev 2025 — Jan 2029", en: "Feb 2025 — Jan 2029" },
+      "edu.bachelor.description": { pt: "Graduação voltada aos fundamentos da computação, desenvolvimento de software, bancos de dados, engenharia de software e arquitetura de sistemas.", en: "Degree focused on computer science fundamentals, software development, databases, software engineering and system architecture." },
       "edu.trybe.title": { pt: "Desenvolvimento Web Full Stack", en: "Full Stack Web Development" },
+      "edu.trybe.period": { pt: "Mar 2020 — Dez 2022 · +1.500 horas", en: "Mar 2020 — Dec 2022 · 1,500+ hours" },
+      "edu.trybe.description": { pt: "Formação prática em desenvolvimento frontend, backend, bancos de dados, testes, metodologias ágeis e construção de aplicações completas.", en: "Practical training in frontend development, backend development, databases, testing, agile methodologies and full application development." },
+      "skills.restApisWebhooks": { pt: "APIs REST e Webhooks", en: "REST APIs and Webhooks" },
     }
 
     return translations[key]?.[language] || key

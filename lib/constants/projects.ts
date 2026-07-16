@@ -30,20 +30,16 @@ export const projects: Project[] = [
       en: "Atlas Project",
     },
     description: {
-      pt: "Plataforma interna de inteligência de dados que unifica Operacional, Comercial e Ads na V4 Company.",
-      en: "Internal data intelligence platform for V4 Company. I architected the integration between Operational, Commercial, and Paid Ads data.",
+      pt: "Plataforma interna de inteligência operacional desenvolvida para centralizar dados de campanhas, vendas, financeiro e operação dentro da unidade da V4 Company.",
+      en: "Internal operational intelligence platform developed to centralize campaign, sales, financial and operational data inside a V4 Company unit.",
     },
     longDescription: {
       pt:
-        "Contexto: a V4 Company operava com dados espalhados entre planilhas, ferramentas externas e times diferentes (Operacional, Comercial e Ads). Isso gerava silos de informação, dificuldade de leitura de lucro real e lentidão para decidir onde investir o próximo real de mídia.\n\n" +
-        "Ação: desenhei e desenvolvi o Atlas, uma plataforma interna de inteligência de dados que unifica as frentes Operacional, Comercial e de Ads em uma única interface. Estruturei integrações com Meta Ads e Google Ads, Ecite (operacional) e dados comerciais, criando uma camada única de visualização e controle.\n\n" +
-        "Resultado: transformei dados dispersos em uma single source of truth, reduzindo o tempo de geração de relatórios e permitindo alocação de orçamento em tempo quase real, baseada em lucro e retorno sobre investimento — em vez de feeling ou planilhas manuais.",
+        "O Atlas foi uma plataforma interna criada para centralizar informações operacionais, comerciais, financeiras e de mídia dentro da unidade da V4 Company.\n\nA operação lidava com dados distribuídos entre planilhas, ferramentas externas, grupos de WhatsApp e processos manuais. Isso dificultava a visualização de indicadores importantes, o acompanhamento de campanhas e a comunicação entre áreas.\n\nAtuei no desenvolvimento e evolução da plataforma, trabalhando em interfaces, APIs, integrações, automações e processamento de dados.\n\nEntre as funcionalidades desenvolvidas estavam dashboards operacionais, integração com dados de campanhas, monitoramento de saldo de contas Meta Ads, acompanhamento comercial, notificações de vendas em tempo real, controle diário da operação e automações com IA para análise de interações em grupos de WhatsApp.\n\nO projeto utilizou tecnologias como React, Next.js, TypeScript, Node.js, Python, PostgreSQL, Supabase, n8n, Redis, Docker, APIs REST e webhooks.\n\nO Atlas ajudou a transformar dados dispersos em uma plataforma centralizada, facilitando o acompanhamento da operação e reduzindo etapas manuais em processos importantes.",
       en:
-        "Context: V4 Company had data scattered across spreadsheets, external tools and different teams (Operations, Sales and Ads). This created silos, made it hard to see true profit and slowed down decisions on where to invest the next real in media.\n\n" +
-        "Action: I designed and developed Atlas, an internal data intelligence platform that unifies Operational, Commercial and Ads fronts in a single interface. I structured integrations with Meta Ads, Google Ads, Ecite (operations) and commercial data, creating one consolidated layer of visibility and control.\n\n" +
-        "Result: turned dispersed data into a single source of truth, reducing reporting time and enabling near real‑time budget allocation decisions based on profit and ROI instead of gut feeling or manual spreadsheets.",
+        "Atlas was an internal platform developed inside a V4 Company unit to centralize operational, commercial, financial and media-related information in a single environment.\n\nThe operation handled data across spreadsheets, external tools, WhatsApp groups and manual processes. This made it harder to view key indicators, track campaigns and communicate across teams.\n\nI worked on the development and evolution of the platform, contributing to interfaces, APIs, integrations, automations and data processing.\n\nThe features included operational dashboards, campaign-data integrations, Meta Ads balance monitoring, commercial tracking, real-time sales notifications, daily operation tracking and AI-powered automations for analyzing WhatsApp group interactions.\n\nThe project used technologies such as React, Next.js, TypeScript, Node.js, Python, PostgreSQL, Supabase, n8n, Redis, Docker, REST APIs and webhooks.\n\nAtlas helped transform scattered data into a centralized platform, making it easier to monitor operations and reducing manual steps in important processes.",
     },
-    stacks: ["React", "TypeScript", "Next.js", "Dashboards", "Analytics", "Data visualization"],
+    stacks: ["React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", "Supabase", "n8n", "Redis", "Docker", "REST APIs", "Webhooks"],
     folder: "projeto-atlas",
     images: [
       "atlas1 operacional.png",
@@ -55,82 +51,23 @@ export const projects: Project[] = [
   {
     id: 2,
     title: {
-      pt: "TurboLead",
-      en: "TurboLead",
-    },
-    description: {
-      pt: "Primeiro SDR com IA focado no setor automotivo, com auditoria de vendas em tempo real e qualificação automática de leads.",
-      en: "AI-powered SDR for the automotive industry. Real-time sales auditing and automated lead qualification.",
-    },
-    longDescription: {
-      pt:
-        "Contexto: concessionárias investem pesado em tráfego pago, mas perdem dinheiro no básico — demora na resposta, leads frios chegando no CRM e pouca visibilidade sobre a qualidade do atendimento.\n\n" +
-        "Ação: desenvolvi o TurboLead, o primeiro SDR com IA focado no setor automotivo. A plataforma assume a primeira abordagem no WhatsApp, responde em segundos, faz triagem de crédito, troca e intenção real de compra, e só então encaminha o lead qualificado para o vendedor. Em paralelo, audita cada conversa em tempo real, medindo tempo de resposta, qualidade das mensagens e gerando uma nota objetiva por atendimento.\n\n" +
-        "Resultado: automação de 100% da triagem inicial de leads, aumento da velocidade de resposta (speed‑to‑lead) e filtro automático de curiosos e contatos desqualificados antes de chegarem ao CRM, elevando a taxa de conversão da operação.",
-      en:
-        "Context: automotive dealerships invest heavily in paid traffic but lose money on the basics — slow response times, cold leads hitting the CRM and very little visibility into service quality.\n\n" +
-        "Action: I built TurboLead, the first AI‑powered SDR focused on the automotive sector. The platform takes over the first contact on WhatsApp, replies in seconds, performs credit, trade‑in and real purchase‑intent qualification, and only then hands over the qualified lead to the sales rep. In parallel, it audits each conversation in real time, tracking response time, message quality and generating an objective score per interaction.\n\n" +
-        "Result: automated 100% of initial lead triage, improved speed‑to‑lead and automatically filtered out low‑intent contacts before they hit the CRM, increasing the overall conversion rate of the sales operation.",
-    },
-    stacks: ["N8N", "Python", "React", "Node.js", "WhatsApp Business API", "IA aplicada a vendas"],
-    folder: "projeto-turbo-lead",
-    images: [
-      "turbolead.lp.png",
-      "turbolead.lp2.png",
-      "turbolead.lp3.png",
-      "turbolead.dash.png",
-      "turbolead2.png",
-    ],
-    link: "/#projetos",
-  },
-  {
-    id: 3,
-    title: {
       pt: "Landing Pages Diversas",
       en: "Multiple Landing Pages",
     },
     description: {
-      pt: "Coleção de landing pages otimizadas para performance e testes de aquisição em diferentes nichos.",
-      en: "Collection of high-performing landing pages built for acquisition experiments across different niches.",
+      pt: "Desenvolvimento de páginas para campanhas e negócios.",
+      en: "Pages focused on performance, conversion and integration.",
     },
     longDescription: {
       pt:
-        "Contexto: empresas em fase de crescimento precisam testar rapidamente propostas de valor, ofertas e mensagens diferentes sem depender de um ciclo lento de desenvolvimento.\n\n" +
-        "Ação: desenvolvi um conjunto de landing pages focadas em captação de leads e vendas, usando Next.js e Tailwind CSS, sempre com atenção a tempo de carregamento, rastreabilidade de eventos (GA4/Pixel) e facilidade de iteração.\n\n" +
-        "Resultado: criação de uma base de páginas reutilizáveis e fáceis de adaptar para novos produtos e campanhas, reduzindo o tempo entre a ideia e o teste em tráfego pago.",
+        "Coleção de landing pages e sites desenvolvidos para diferentes empresas, segmentos e objetivos de aquisição.\n\nOs projetos foram construídos com foco em responsividade, clareza da comunicação, velocidade de carregamento e integração com ferramentas de marketing.\n\nPrincipais entregas\n• Desenvolvimento de interfaces responsivas.\n• Criação de componentes reutilizáveis.\n• Implementação de formulários de captação.\n• Integração com APIs, webhooks e automações.\n• Configuração de eventos no Google Analytics 4.\n• Implementação do Google Tag Manager.\n• Otimização de performance e Core Web Vitals.\n• Aplicação de boas práticas de SEO técnico.\n• Configuração de domínio e deploy.",
       en:
-        "Context: growing companies need to quickly test different value propositions, offers and messaging without being blocked by slow development cycles.\n\n" +
-        "Action: I built a set of landing pages focused on lead generation and sales using Next.js and Tailwind CSS, with special attention to load time, tracking (GA4/Pixel) and ease of iteration.\n\n" +
-        "Result: a reusable library of landing pages that can be quickly adapted to new products and campaigns, reducing the time from idea to paid-traffic test.",
+        "Collection of landing pages and websites developed for campaigns, local businesses and different acquisition goals.\n\n" +
+        "The projects were built with a focus on responsiveness, loading speed, clear communication, integrated forms, event tracking and technical SEO best practices.",
     },
-    stacks: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GA4", "Landing Pages"],
+    stacks: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "GA4", "Google Tag Manager", "SEO", "Vercel"],
     folder: "projetos-lps-diversas",
     images: ["bins lp.png", "cardamomo.png", "ozzy lp.png", "temakeria.png"],
     link: "/#projetos",
-  },
-  {
-    id: 4,
-    title: {
-      pt: "LucIA — Plataforma de Inteligência para Freelancers",
-      en: "LucIA — Intelligence Platform for Freelancers",
-    },
-    description: {
-      pt: "SaaS full stack que combina IA generativa com dados reais do mercado para ajudar freelancers a ganhar mais e perder menos tempo. Propostas personalizadas por plataforma (Workana, 99Freelas, Upwork) via Gemini API.",
-      en: "Full-stack SaaS that combines generative AI with real market data to help freelancers earn more and waste less time. Personalized proposals per platform (Workana, 99Freelas, Upwork) via Gemini API.",
-    },
-    longDescription: {
-      pt:
-        "Contexto: desenvolvedores freelancers perdem tempo com propostas genéricas e precificação insegura, espalhados entre Workana, 99Freelas e Upwork, sem visão clara de receita, pipeline ou viabilidade de projeto.\n\n" +
-        "Ação: desenvolvi o LucIA, um SaaS full stack que integra IA generativa (Gemini API) com dados reais do mercado. O sistema gera propostas personalizadas por plataforma, com tom e estrutura adaptados ao perfil do usuário. Inclui motor de precificação com gross-up, custo/hora real, gerador de pacotes em 3 níveis e tabela de retainer. Painel de decisão com score de viabilidade por projeto, comparativo de plataformas e checklists de red flags. Dashboard financeiro com receita, metas mensais, pipeline e LTV por cliente.\n\n" +
-        "Resultado: centralização da decisão (qual projeto vale a pena), precificação baseada em dados e propostas otimizadas por canal, reduzindo tempo em escrita e aumentando taxa de conversão em oportunidades.",
-      en:
-        "Context: freelance developers waste time on generic proposals and guesswork pricing, spread across Workana, 99Freelas and Upwork, with no clear view of revenue, pipeline or project viability.\n\n" +
-        "Action: I built LucIA, a full-stack SaaS that combines generative AI (Gemini API) with real market data. The system generates personalized proposals per platform, with tone and structure adapted to the user profile. It includes a pricing engine with gross-up, real cost/hour, 3-tier package generator and retainer table. Decision panel with project viability score, platform comparison and red-flag checklists. Financial dashboard with revenue, monthly goals, pipeline and LTV per client.\n\n" +
-        "Result: centralized decision-making (which projects are worth it), data-driven pricing and channel-optimized proposals, cutting time spent on writing and increasing conversion on opportunities.",
-    },
-    stacks: ["React", "TypeScript", "Vite", "Supabase", "Gemini API", "SaaS"],
-    folder: "projeto-lucia",
-    images: ["luci1.png", "luci2.png", "luci3.png", "luci4.png", "dash1.png", "dash2.png", "dash3.png", "dash4.png", "dash5.png"],
-    link: "https://freelancer-navigator.vercel.app/",
   },
 ]

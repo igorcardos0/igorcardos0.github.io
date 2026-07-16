@@ -59,7 +59,7 @@ function VercelIcon() {
 }
 
 export function AboutSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   const getCustomIcon = (skillName: string) => {
     switch (skillName) {
@@ -109,7 +109,9 @@ export function AboutSection() {
                           <i className={`${skill.deviconClass} colored text-2xl sm:text-3xl md:text-4xl`}></i>
                         </div>
                       )}
-                      <span className="text-xs sm:text-sm font-medium text-center leading-tight">{skill.name}</span>
+                      <span className="text-xs sm:text-sm font-medium text-center leading-tight">
+                        {skill.name === "APIs REST e Webhooks" ? t("skills.restApisWebhooks") : skill.name}
+                      </span>
                     </div>
                   </AnimateOnScroll>
                 )
@@ -131,14 +133,14 @@ export function AboutSection() {
                 } else if (exp.company === "Studio Games Franchising") {
                   expKey = "studiogames"
                 }
-                const period = exp.period.replace("Presente", t("exp.period.present"))
+                const period = language === "pt" ? exp.period : t(`exp.${expKey}.period`)
                 return (
                   <AnimateOnScroll key={index} animation="slide-right" delay={400 + index * 100}>
                     <div className="border-l-2 border-primary/50 pl-3 md:pl-4">
-                      <h4 className="font-bold text-base sm:text-lg">{t(`exp.${expKey}.title`)}</h4>
+                      <h4 className="font-bold text-base sm:text-lg">{language === "pt" ? exp.title : t(`exp.${expKey}.title`)}</h4>
                       <p className="text-primary font-semibold text-sm sm:text-base">{exp.company}</p>
                       <p className="text-xs sm:text-sm text-muted-foreground mb-2">{period}</p>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">{t(`exp.${expKey}.description`)}</p>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">{language === "pt" ? exp.description : t(`exp.${expKey}.description`)}</p>
                     </div>
                   </AnimateOnScroll>
                 )
@@ -167,13 +169,15 @@ export function AboutSection() {
                           {t(`edu.${eduKey}.title`)}
                         </h4>
                         <p className="text-primary font-semibold text-sm sm:text-base group-hover:underline">{edu.institution}</p>
-                        <p className="text-xs sm:text-sm text-muted-foreground">{edu.period}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{language === "pt" ? edu.period : t(`edu.${eduKey}.period`)}</p>
+                        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{language === "pt" ? edu.description : t(`edu.${eduKey}.description`)}</p>
                       </a>
                     ) : (
                       <>
                         <h4 className="font-bold text-base sm:text-lg">{t(`edu.${eduKey}.title`)}</h4>
                         <p className="text-primary font-semibold text-sm sm:text-base">{edu.institution}</p>
-                        <p className="text-xs sm:text-sm text-muted-foreground">{edu.period}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{language === "pt" ? edu.period : t(`edu.${eduKey}.period`)}</p>
+                        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{language === "pt" ? edu.description : t(`edu.${eduKey}.description`)}</p>
                       </>
                     )}
                   </div>

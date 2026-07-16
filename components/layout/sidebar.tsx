@@ -9,12 +9,30 @@ import { useLanguage } from "@/lib/contexts/language-context"
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
   const { theme, setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.querySelector(item.href))
+      .filter((section): section is Element => Boolean(section))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) setActiveSection(visible.target.id)
+      },
+      { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] }
+    )
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
   const toggleTheme = () => {
@@ -47,9 +65,11 @@ export function Sidebar() {
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="group flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-all relative cursor-pointer px-2"
+              aria-current={activeSection === item.href.slice(1) ? "page" : undefined}
+              className={"group interactive-control flex flex-col items-center gap-1 hover:text-primary transition-all relative cursor-pointer px-2 " + (activeSection === item.href.slice(1) ? "text-primary" : "text-muted-foreground")}
             >
-              <item.icon className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
+              <span className={"absolute -left-2 h-8 w-0.5 bg-primary transition-opacity duration-200 " + (activeSection === item.href.slice(1) ? "opacity-100" : "opacity-0")} aria-hidden="true" />
+              <item.icon className={"h-4 w-4 sm:h-5 sm:w-5 transition-transform " + (activeSection === item.href.slice(1) ? "scale-110" : "group-hover:scale-110")} />
               
               <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-colors text-center leading-tight">
                 {t(`nav.${item.href.replace("#", "")}`)}
@@ -67,7 +87,7 @@ export function Sidebar() {
             variant="ghost"
             size="icon"
             onClick={toggleLanguage}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all cursor-pointer"
+            className="interactive-control w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 cursor-pointer"
             aria-label="Alternar idioma"
             title={language === "pt" ? "Switch to English" : "Mudar para Português"}
           >
@@ -77,7 +97,7 @@ export function Sidebar() {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all cursor-pointer"
+            className="interactive-control w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary/30 hover:bg-primary/10 hover:border-primary/50 cursor-pointer"
             aria-label="Alternar tema"
           >
             {mounted && theme === "dark" ? (

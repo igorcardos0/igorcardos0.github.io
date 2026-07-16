@@ -8,11 +8,13 @@ export function BackgroundParticles() {
   const { theme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     if (typeof window !== "undefined") {
       const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+      setIsTouchDevice(window.matchMedia("(pointer: coarse)").matches)
       setPrefersReducedMotion(mediaQuery.matches)
       
       const handleChange = (e: MediaQueryListEvent) => {
@@ -28,13 +30,13 @@ export function BackgroundParticles() {
   const isDark = currentTheme === "dark"
   const color = isDark ? "#ffffff" : "#3b82f6"
   // Reduzir quantidade de partículas para melhor performance, ainda mais se reduzir movimento
-  const baseQuantity = prefersReducedMotion ? 30 : (isDark ? 80 : 120)
+  const baseQuantity = prefersReducedMotion ? 24 : (isTouchDevice ? 42 : (isDark ? 70 : 90))
   const quantity = baseQuantity
   const lineDistance = 150
   const lineOpacity = isDark ? 0.35 : 0.75
 
   return (
-    <div className="fixed inset-0 w-screen h-screen -z-[1] pointer-events-auto" style={{ width: '100vw', height: '100vh' }}>
+    <div className="fixed inset-0 w-screen h-screen -z-[1] pointer-events-none" style={{ width: '100vw', height: '100vh' }}>
       <Particles
         className="absolute inset-0 w-full h-full"
         quantity={quantity}
@@ -45,6 +47,7 @@ export function BackgroundParticles() {
         lineDistance={lineDistance}
         lineOpacity={lineOpacity}
         lineWidth={1}
+        interactive={!prefersReducedMotion && !isTouchDevice}
       />
     </div>
   )

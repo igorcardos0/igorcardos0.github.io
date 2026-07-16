@@ -15,6 +15,7 @@ interface ParticlesProps {
   lineDistance?: number
   lineOpacity?: number
   lineWidth?: number
+  interactive?: boolean
 }
 
 interface Circle {
@@ -43,6 +44,7 @@ export function Particles({
   lineDistance = 150,
   lineOpacity = 0.4,
   lineWidth = 1,
+  interactive = true,
 }: ParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
@@ -53,7 +55,7 @@ export function Particles({
   const [canvasSize, setCanvasSize] = useState({ w: 0, h: 0 })
   const animationFrameId = useRef<number | null>(null)
   const isVisibleRef = useRef(true)
-  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
+  const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 2) : 1
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -121,14 +123,14 @@ export function Particles({
     mouseMoveHandler.current = onMouseMove
     const container = canvasContainerRef.current
     
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && interactive) {
       window.addEventListener("mousemove", onMouseMove)
       
       return () => {
         window.removeEventListener("mousemove", onMouseMove)
       }
     }
-  }, [])
+  }, [interactive])
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
@@ -330,7 +332,7 @@ export function Particles({
       const dy = mousePosition.current.y - (circle.y + circle.translateY)
       const distance = Math.sqrt(dx * dx + dy * dy)
       
-      if (distance > 0 && distance < 200) {
+      if (interactive && distance > 0 && distance < 200) {
         const force = (200 - distance) / 200
         const angle = Math.atan2(dy, dx)
         circle.translateX -= (Math.cos(angle) * force * circle.magnetism) / ease
