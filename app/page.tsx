@@ -172,6 +172,46 @@ const projectsEn = [
   },
 ];
 
+const atlasCaseStudy = {
+  title: "Atlas — Plataforma Interna de Automação & Inteligência Operacional",
+  category: "ESTUDO DE CASO / V4 COMPANY",
+  summary:
+    "Plataforma de inteligência e automação criada para transformar dados dispersos em decisões estratégicas, centralizando mídia paga, operação, performance comercial e monitoramento de clientes via WhatsApp.",
+  challenge: [
+    "Dados fragmentados em diversas plataformas e planilhas.",
+    "Processos manuais de coleta e apresentação de resultados.",
+    "Baixa visibilidade estratégica em tempo real para a diretoria.",
+    "Dificuldade para mensurar eficiência da equipe e margem operacional por cliente.",
+  ],
+  solution:
+    "O Atlas foi construído do zero. O backend começou em PHP e evoluiu para uma arquitetura moderna baseada em serviços com Node.js, NestJS, Laravel 11 e Python/FastAPI, criando um hub centralizado para dados operacionais, financeiros, comerciais e de mídia.",
+  stack: [
+    ["Frontend", "Next.js · Tailwind CSS · Dashboards dinâmicos · Painéis para TVs corporativas"],
+    ["Backend", "Node.js · NestJS · Laravel 11 · Python · FastAPI"],
+    ["Dados & cache", "PostgreSQL via Supabase · MySQL · Redis"],
+    ["Integrações", "Meta Marketing API · Google Ads API · Evolution API · Ekite"],
+    ["Infraestrutura", "Docker · CI/CD · VPS · Workers · Logs estruturados"],
+  ],
+  modules: [
+    ["Inteligência de mídia paga", "Integração com Meta e Google Ads para ROAS, CPA, pacing de budget e performance em tempo real."],
+    ["Eficiência operacional", "Cruzamento entre horas estimadas e realizadas, rentabilidade, margem operacional e capacidade por cliente e squad."],
+    ["Dashboard comercial & telão", "Painéis em tempo real com metas, gamificação e transparência das métricas comerciais."],
+    ["Monitoramento com IA", "Análise de sentimento em grupos de WhatsApp com Google Gemini, Health Score e alertas de risco."],
+  ],
+  role: [
+    "Concepção estratégica e arquitetura junto à diretoria executiva.",
+    "Desenvolvimento Full Stack, do banco relacional ao frontend em Next.js.",
+    "Engenharia de dados, ETL e integração com APIs complexas.",
+    "Infraestrutura, filas com Redis, workers, Docker e CI/CD.",
+  ],
+  impact: [
+    "Redução drástica do trabalho manual em controles e relatórios.",
+    "Fonte única de verdade para o C-Level e a operação.",
+    "Maior previsibilidade na entrega de projetos e no burn rate de campanhas.",
+    "Evolução de planilhas isoladas para um ecossistema próprio de engenharia de software.",
+  ],
+};
+
 const freelanceCtas = [
   { pt: "Ver Serviços de Freelance", en: "View Freelance Services" },
   { pt: "Solicitar Serviço Freelance", en: "Request Freelance Service" },
@@ -208,6 +248,7 @@ export default function Home() {
   const [formData, setFormData] = useState<ContactFormData>({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const isEn = language === "en";
   const siteNav = isEn ? navEn : nav;
   const siteSkills = isEn ? skillsEn : skills;
@@ -427,7 +468,20 @@ export default function Home() {
           <div className="project-gallery">
             <div className="project-track">
               {[...siteProjects, ...siteProjects].map((project, index) => (
-                <article className="project-card" key={`${project.title}-${index}`} aria-hidden={index >= siteProjects.length}>
+                <article
+                  className={`project-card ${project.type === "atlas" ? "has-case-study" : ""}`}
+                  key={`${project.title}-${index}`}
+                  aria-hidden={index >= siteProjects.length}
+                  onClick={() => project.type === "atlas" && setSelectedProject("atlas")}
+                  onKeyDown={(event) => {
+                    if (project.type === "atlas" && (event.key === "Enter" || event.key === " ")) {
+                      event.preventDefault();
+                      setSelectedProject("atlas");
+                    }
+                  }}
+                  role={project.type === "atlas" ? "button" : undefined}
+                  tabIndex={project.type === "atlas" ? 0 : undefined}
+                >
                   <div className={`project-visual ${project.type}`}>
                     <div className="visual-bar"><span>{project.category}</span><i /><i /><i /></div>
                     <div className="visual-content">
@@ -515,6 +569,55 @@ export default function Home() {
                 {isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"} <Arrow />
               </a>
             </div>
+          </section>
+        </div>
+      )}
+
+      {selectedProject === "atlas" && (
+        <div className="case-study-backdrop" role="presentation" onClick={() => setSelectedProject(null)}>
+          <section
+            className="case-study-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="atlas-case-study-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button className="case-study-close" type="button" aria-label="Fechar estudo de caso" onClick={() => setSelectedProject(null)}>×</button>
+            <div className="case-study-header">
+              <span className="section-index">01 / {atlasCaseStudy.category}</span>
+              <h2 id="atlas-case-study-title">{atlasCaseStudy.title}</h2>
+              <p>{atlasCaseStudy.summary}</p>
+            </div>
+
+            <div className="case-study-content">
+              <div className="case-study-section">
+                <span className="case-study-label">01 / O CENÁRIO E O DESAFIO</span>
+                <ul>{atlasCaseStudy.challenge.map((item) => <li key={item}>{item}</li>)}</ul>
+              </div>
+              <div className="case-study-section">
+                <span className="case-study-label">02 / A SOLUÇÃO</span>
+                <p>{atlasCaseStudy.solution}</p>
+              </div>
+              <div className="case-study-section">
+                <span className="case-study-label">03 / ARQUITETURA & STACK</span>
+                <div className="case-study-stack">{atlasCaseStudy.stack.map(([label, value]) => <div key={label}><strong>{label}</strong><span>{value}</span></div>)}</div>
+              </div>
+              <div className="case-study-section">
+                <span className="case-study-label">04 / PRINCIPAIS MÓDULOS</span>
+                <div className="case-study-modules">{atlasCaseStudy.modules.map(([title, description]) => <article key={title}><strong>{title}</strong><p>{description}</p></article>)}</div>
+              </div>
+              <div className="case-study-columns">
+                <div className="case-study-section">
+                  <span className="case-study-label">05 / MEU PAPEL</span>
+                  <ul>{atlasCaseStudy.role.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
+                <div className="case-study-section">
+                  <span className="case-study-label">06 / IMPACTO</span>
+                  <ul>{atlasCaseStudy.impact.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
+              </div>
+            </div>
+            <button className="button primary case-study-back" type="button" onClick={() => setSelectedProject(null)}>Voltar aos projetos <span>↓</span></button>
           </section>
         </div>
       )}
