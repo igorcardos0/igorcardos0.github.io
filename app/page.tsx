@@ -27,7 +27,7 @@ const nav = [
 
 const skills = [
   ["Frontend", "React.js · Next.js · TypeScript · JavaScript · HTML · CSS · Tailwind CSS · Framer Motion · tsParticles · Three.js · React Three Fiber"],
-  ["Backend & dados", "Node.js · NestJS · Express · Python · REST · Webhooks · PostgreSQL · Supabase · MySQL · MongoDB"],
+  ["Backend & dados", "Node.js · NestJS · Express · Laravel · Python · REST · Webhooks · PostgreSQL · Supabase · MySQL · MongoDB"],
   ["Operação", "n8n · GA4 · Docker · AWS · Linux · Vercel · Git · GitHub · Jest"],
   ["Produto", "Figma · WordPress · Arquitetura · Performance · Automações"],
 ];
@@ -54,7 +54,7 @@ const experience = [
       "Soluções digitais para campanhas, aquisição e presença online, apoiando marketing, tráfego, vendas e design.",
     bullets: [
       "Landing pages, sites institucionais, campanhas e e-commerces",
-      "WordPress, WooCommerce, PHP, React, Next.js e Tailwind CSS",
+      "WordPress, WooCommerce, Laravel, React, Next.js e Tailwind CSS",
       "Formulários, pixels, eventos de conversão e integrações com IA",
       "GA4, GTM, performance, SEO técnico e experiência do usuário",
     ],
@@ -92,8 +92,8 @@ const projects = [
     title: "Projeto Atlas",
     category: "INTELIGÊNCIA OPERACIONAL",
     description:
-      "Plataforma interna criada para centralizar dados operacionais, financeiros, comerciais e de mídia. O backend nasceu em PHP e evoluiu para uma arquitetura moderna com Express e NestJS.",
-    tags: ["Next.js", "TypeScript", "PHP", "Express", "NestJS", "PostgreSQL", "Supabase"],
+      "Plataforma interna criada para centralizar dados operacionais, financeiros, comerciais e de mídia. O backend nasceu em Laravel e evoluiu para uma arquitetura moderna com Express e NestJS.",
+    tags: ["Next.js", "TypeScript", "Laravel", "Express", "NestJS", "PostgreSQL", "Supabase"],
     type: "atlas",
   },
   {
@@ -111,7 +111,7 @@ const projects = [
     category: "COMÉRCIO DIGITAL",
     description:
       "Experiências de compra completas com catálogo, páginas de produto, checkout, integrações comerciais e customizações para operações digitais.",
-    tags: ["WooCommerce", "WordPress", "PHP", "JavaScript", "APIs", "Analytics"],
+    tags: ["WooCommerce", "WordPress", "Laravel", "JavaScript", "APIs", "Analytics"],
     type: "commerce",
   },
 ];
@@ -126,7 +126,7 @@ const navEn = [
 
 const skillsEn = [
   ["Frontend", "React.js · Next.js · TypeScript · JavaScript · HTML · CSS · Tailwind CSS · Framer Motion · tsParticles · Three.js · React Three Fiber"],
-  ["Backend & data", "Node.js · NestJS · Express · Python · REST · Webhooks · PostgreSQL · Supabase · MySQL · MongoDB"],
+  ["Backend & data", "Node.js · NestJS · Express · Laravel · Python · REST · Webhooks · PostgreSQL · Supabase · MySQL · MongoDB"],
   ["Operations", "n8n · GA4 · Docker · AWS · Linux · Vercel · Git · GitHub · Jest"],
   ["Product", "Figma · WordPress · Architecture · Performance · Automations"],
 ];
@@ -140,7 +140,7 @@ const experienceEn = [
   {
     role: "Full Stack Web Software Engineer · Martech", company: "V4 Company", period: "Sep 2025 — Dec 2025 · 4 months",
     description: "Digital solutions for campaigns, acquisition and online presence, supporting marketing, paid media, sales and design.",
-    bullets: ["Landing pages, institutional websites, campaigns and e-commerce", "WordPress, WooCommerce, PHP, React, Next.js and Tailwind CSS", "Forms, pixels, conversion events and AI integrations", "GA4, GTM, performance, technical SEO and user experience"],
+    bullets: ["Landing pages, institutional websites, campaigns and e-commerce", "WordPress, WooCommerce, Laravel, React, Next.js and Tailwind CSS", "Forms, pixels, conversion events and AI integrations", "GA4, GTM, performance, technical SEO and user experience"],
   },
   {
     role: "Full Stack Software Engineer", company: "ALPLATECH", period: "Nov 2024 — Sep 2025 · 11 months",
@@ -157,8 +157,8 @@ const experienceEn = [
 const projectsEn = [
   {
     number: "01", title: "Atlas Project", category: "OPERATIONAL INTELLIGENCE",
-    description: "Internal platform built to centralize operational, financial, commercial and media data. The backend started in PHP and evolved into a modern architecture with Express and NestJS.",
-    tags: ["Next.js", "TypeScript", "PHP", "Express", "NestJS", "PostgreSQL", "Supabase"], type: "atlas",
+    description: "Internal platform built to centralize operational, financial, commercial and media data. The backend started in Laravel and evolved into a modern architecture with Express and NestJS.",
+    tags: ["Next.js", "TypeScript", "Laravel", "Express", "NestJS", "PostgreSQL", "Supabase"], type: "atlas",
   },
   {
     number: "02", title: "Landing Pages", category: "PERFORMANCE & CONVERSION",
@@ -168,7 +168,7 @@ const projectsEn = [
   {
     number: "03", title: "E-commerce", category: "DIGITAL COMMERCE",
     description: "Complete shopping experiences with catalogs, product pages, checkout flows, commercial integrations and customizations for digital operations.",
-    tags: ["WooCommerce", "WordPress", "PHP", "JavaScript", "APIs", "Analytics"], type: "commerce",
+    tags: ["WooCommerce", "WordPress", "Laravel", "JavaScript", "APIs", "Analytics"], type: "commerce",
   },
 ];
 
@@ -184,7 +184,7 @@ const atlasCaseStudy = {
     "Dificuldade para mensurar eficiência da equipe e margem operacional por cliente.",
   ],
   solution:
-    "O Atlas foi construído do zero. O backend começou em PHP e evoluiu para uma arquitetura moderna baseada em serviços com Node.js, NestJS, Laravel 11 e Python/FastAPI, criando um hub centralizado para dados operacionais, financeiros, comerciais e de mídia.",
+    "O Atlas foi construído do zero. O backend começou em Laravel e evoluiu para uma arquitetura moderna baseada em serviços com Node.js, NestJS, Laravel 11 e Python/FastAPI, criando um hub centralizado para dados operacionais, financeiros, comerciais e de mídia.",
   stack: [
     ["Frontend", "Next.js · Tailwind CSS · Dashboards dinâmicos · Painéis para TVs corporativas"],
     ["Backend", "Node.js · NestJS · Laravel 11 · Python · FastAPI"],
@@ -230,7 +230,7 @@ const commerceCaseStudy = {
   summary: "Experiências de compra completas e escaláveis, com catálogo, páginas de produto focadas em conversão, checkout otimizado e integrações comerciais complexas.",
   challenge: ["Digitalização segura e escalável de canais de vendas físicos.", "Abandono de carrinho causado por checkouts complexos ou lentos.", "Sistemas engessados para catálogo e controle de estoque.", "Falta de sincronização entre loja, pagamentos e logística."],
   solution: "Construção de plataformas de comércio digital robustas e customizadas, removendo atritos da jornada de compra e garantindo segurança transacional e autonomia administrativa para os lojistas.",
-  stack: [["Plataforma & core", "WooCommerce · WordPress"], ["Backend & lógica", "PHP · APIs REST"], ["Frontend", "JavaScript · CSS customizado"], ["Dados", "Analytics para e-commerce"]],
+  stack: [["Plataforma & core", "WooCommerce · WordPress"], ["Backend & lógica", "Laravel · APIs REST"], ["Frontend", "JavaScript · CSS customizado"], ["Dados", "Analytics para e-commerce"]],
   modules: [["Vitrine & catálogo dinâmico", "Filtros avançados, busca otimizada, variações, galerias e cross-sell."], ["Checkout frictionless", "Fluxo de pagamento simples, transparente e seguro."], ["Integrações de negócio", "Stripe, Mercado Pago, Pagar.me e APIs de logística."], ["Painel administrativo", "Gestão de pedidos, clientes e estoque automatizado."]],
   role: ["Desenvolvimento Full Stack e customização de temas e plugins.", "Integrações com gateways, CRMs e ERPs via APIs.", "Otimização de segurança e vulnerabilidades em transações.", "Refatoração de checkout para testes A/B e melhoria de UX."],
   impact: ["Crescimento do faturamento e aumento do ticket médio.", "Redução do abandono de carrinho com checkout otimizado.", "Maior autonomia operacional para o cliente.", "Estabilidade durante Black Friday e grandes campanhas."],
