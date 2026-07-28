@@ -212,6 +212,30 @@ const atlasCaseStudy = {
   ],
 };
 
+const landingCaseStudy = {
+  title: "Landing Pages Orientadas à Conversão",
+  category: "02 / PERFORMANCE & CONVERSÃO / LANDING PAGES",
+  summary: "Páginas de campanha responsivas e otimizadas, com integrações avançadas, rastreamento de dados, SEO técnico e alto desempenho para maximizar resultados em diferentes segmentos.",
+  challenge: ["Baixas taxas de conversão causadas por páginas genéricas ou lentas.", "Falta de rastreamento preciso para campanhas de mídia paga.", "Dificuldade de retenção da atenção do usuário no mobile.", "Necessidade de cumprir os requisitos do Core Web Vitals."],
+  solution: "Desenvolvimento de ecossistemas de alta conversão, unindo design focado em UX/UI com engenharia de front-end para garantir carregamento rápido e coleta de dados confiável para as equipes de marketing.",
+  stack: [["Frontend", "Next.js · React · Tailwind CSS"], ["CMS & gestão", "WordPress Headless ou Monolítico"], ["Tracking & analytics", "Google Analytics 4 · Google Tag Manager"], ["Infraestrutura", "Vercel · Edge Computing"]],
+  modules: [["Otimização de performance", "Arquitetura estática e SSR para tempos de carregamento na casa dos milissegundos."], ["Rastreamento avançado", "Datalayer e eventos personalizados para mapear toda a jornada do lead."], ["SEO técnico", "Semântica HTML, meta tags dinâmicas e otimização de imagens."], ["Design mobile-first", "Adaptação fluida para qualquer tela, priorizando smartphones."]],
+  role: ["Desenvolvimento front-end com componentização e reutilização de código.", "Implementação e validação de Pixel, Conversions API, GA4 e GTM.", "Otimização contínua com Lighthouse e Web Vitals.", "Deploy e gerenciamento de infraestrutura na Vercel."],
+  impact: ["Aumento expressivo na conversão das campanhas.", "Redução do CPA com velocidade e melhoria do Índice de Qualidade.", "Clareza total dos dados de jornada para otimização de campanhas."],
+};
+
+const commerceCaseStudy = {
+  title: "E-commerces e Operações Digitais",
+  category: "03 / COMÉRCIO DIGITAL / E-COMMERCE",
+  summary: "Experiências de compra completas e escaláveis, com catálogo, páginas de produto focadas em conversão, checkout otimizado e integrações comerciais complexas.",
+  challenge: ["Digitalização segura e escalável de canais de vendas físicos.", "Abandono de carrinho causado por checkouts complexos ou lentos.", "Sistemas engessados para catálogo e controle de estoque.", "Falta de sincronização entre loja, pagamentos e logística."],
+  solution: "Construção de plataformas de comércio digital robustas e customizadas, removendo atritos da jornada de compra e garantindo segurança transacional e autonomia administrativa para os lojistas.",
+  stack: [["Plataforma & core", "WooCommerce · WordPress"], ["Backend & lógica", "PHP · APIs REST"], ["Frontend", "JavaScript · CSS customizado"], ["Dados", "Analytics para e-commerce"]],
+  modules: [["Vitrine & catálogo dinâmico", "Filtros avançados, busca otimizada, variações, galerias e cross-sell."], ["Checkout frictionless", "Fluxo de pagamento simples, transparente e seguro."], ["Integrações de negócio", "Stripe, Mercado Pago, Pagar.me e APIs de logística."], ["Painel administrativo", "Gestão de pedidos, clientes e estoque automatizado."]],
+  role: ["Desenvolvimento Full Stack e customização de temas e plugins.", "Integrações com gateways, CRMs e ERPs via APIs.", "Otimização de segurança e vulnerabilidades em transações.", "Refatoração de checkout para testes A/B e melhoria de UX."],
+  impact: ["Crescimento do faturamento e aumento do ticket médio.", "Redução do abandono de carrinho com checkout otimizado.", "Maior autonomia operacional para o cliente.", "Estabilidade durante Black Friday e grandes campanhas."],
+};
+
 const freelanceCtas = [
   { pt: "Ver Serviços de Freelance", en: "View Freelance Services" },
   { pt: "Solicitar Serviço Freelance", en: "Request Freelance Service" },
@@ -254,6 +278,13 @@ export default function Home() {
   const siteSkills = isEn ? skillsEn : skills;
   const siteExperience = isEn ? experienceEn : experience;
   const siteProjects = isEn ? projectsEn : projects;
+  const selectedCaseStudy = selectedProject === "atlas"
+    ? atlasCaseStudy
+    : selectedProject === "landing"
+      ? landingCaseStudy
+      : selectedProject === "commerce"
+        ? commerceCaseStudy
+        : null;
 
   function toggleLanguage() {
     const nextLanguage = isEn ? "pt" : "en";
@@ -469,18 +500,18 @@ export default function Home() {
             <div className="project-track">
               {[...siteProjects, ...siteProjects].map((project, index) => (
                 <article
-                  className={`project-card ${project.type === "atlas" ? "has-case-study" : ""}`}
+                  className={`project-card ${["atlas", "landing", "commerce"].includes(project.type) ? "has-case-study" : ""}`}
                   key={`${project.title}-${index}`}
                   aria-hidden={index >= siteProjects.length}
-                  onClick={() => project.type === "atlas" && setSelectedProject("atlas")}
+                  onClick={() => ["atlas", "landing", "commerce"].includes(project.type) && setSelectedProject(project.type)}
                   onKeyDown={(event) => {
-                    if (project.type === "atlas" && (event.key === "Enter" || event.key === " ")) {
+                    if (["atlas", "landing", "commerce"].includes(project.type) && (event.key === "Enter" || event.key === " ")) {
                       event.preventDefault();
-                      setSelectedProject("atlas");
+                      setSelectedProject(project.type);
                     }
                   }}
-                  role={project.type === "atlas" ? "button" : undefined}
-                  tabIndex={project.type === "atlas" ? 0 : undefined}
+                  role={["atlas", "landing", "commerce"].includes(project.type) ? "button" : undefined}
+                  tabIndex={["atlas", "landing", "commerce"].includes(project.type) ? 0 : undefined}
                 >
                   <div className={`project-visual ${project.type}`}>
                     <div className="visual-bar"><span>{project.category}</span><i /><i /><i /></div>
@@ -573,7 +604,7 @@ export default function Home() {
         </div>
       )}
 
-      {selectedProject === "atlas" && (
+      {selectedCaseStudy && (
         <div className="case-study-backdrop" role="presentation" onClick={() => setSelectedProject(null)}>
           <section
             className="case-study-modal"
@@ -584,36 +615,36 @@ export default function Home() {
           >
             <button className="case-study-close" type="button" aria-label="Fechar estudo de caso" onClick={() => setSelectedProject(null)}>×</button>
             <div className="case-study-header">
-              <span className="section-index">01 / {atlasCaseStudy.category}</span>
-              <h2 id="atlas-case-study-title">{atlasCaseStudy.title}</h2>
-              <p>{atlasCaseStudy.summary}</p>
+              <span className="section-index">{selectedCaseStudy.category}</span>
+              <h2 id="atlas-case-study-title">{selectedCaseStudy.title}</h2>
+              <p>{selectedCaseStudy.summary}</p>
             </div>
 
             <div className="case-study-content">
               <div className="case-study-section">
                 <span className="case-study-label">01 / O CENÁRIO E O DESAFIO</span>
-                <ul>{atlasCaseStudy.challenge.map((item) => <li key={item}>{item}</li>)}</ul>
+                <ul>{selectedCaseStudy.challenge.map((item) => <li key={item}>{item}</li>)}</ul>
               </div>
               <div className="case-study-section">
                 <span className="case-study-label">02 / A SOLUÇÃO</span>
-                <p>{atlasCaseStudy.solution}</p>
+                <p>{selectedCaseStudy.solution}</p>
               </div>
               <div className="case-study-section">
                 <span className="case-study-label">03 / ARQUITETURA & STACK</span>
-                <div className="case-study-stack">{atlasCaseStudy.stack.map(([label, value]) => <div key={label}><strong>{label}</strong><span>{value}</span></div>)}</div>
+                <div className="case-study-stack">{selectedCaseStudy.stack.map(([label, value]) => <div key={label}><strong>{label}</strong><span>{value}</span></div>)}</div>
               </div>
               <div className="case-study-section">
                 <span className="case-study-label">04 / PRINCIPAIS MÓDULOS</span>
-                <div className="case-study-modules">{atlasCaseStudy.modules.map(([title, description]) => <article key={title}><strong>{title}</strong><p>{description}</p></article>)}</div>
+                <div className="case-study-modules">{selectedCaseStudy.modules.map(([title, description]) => <article key={title}><strong>{title}</strong><p>{description}</p></article>)}</div>
               </div>
               <div className="case-study-columns">
                 <div className="case-study-section">
                   <span className="case-study-label">05 / MEU PAPEL</span>
-                  <ul>{atlasCaseStudy.role.map((item) => <li key={item}>{item}</li>)}</ul>
+                  <ul>{selectedCaseStudy.role.map((item) => <li key={item}>{item}</li>)}</ul>
                 </div>
                 <div className="case-study-section">
                   <span className="case-study-label">06 / IMPACTO</span>
-                  <ul>{atlasCaseStudy.impact.map((item) => <li key={item}>{item}</li>)}</ul>
+                  <ul>{selectedCaseStudy.impact.map((item) => <li key={item}>{item}</li>)}</ul>
                 </div>
               </div>
             </div>
