@@ -1,7 +1,7 @@
 export type Language = "pt" | "en";
 
 export interface Job {
-  logo: "lusa" | "v4" | "alplatech" | "games" | "person";
+  logo: "lusa" | "v4" | "alplatech" | "games" | "person" | "study";
   current?: boolean;
   start: string;
   end: string;
@@ -94,6 +94,7 @@ export const experience: Record<Language, Job[]> = {
     { logo: "alplatech", start: "Nov 2024", end: "Set 2025", company: "ALPLATECH", role: "Engenheiro de Software Full Stack", description: "Sistemas web sob medida, APIs e integrações com Node.js e PostgreSQL, da descoberta e prototipação ao deploy.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
     { logo: "games", start: "Jan 2024", end: "Ago 2024", company: "Studio Games Franchising", role: "Técnico de TI e Automação", description: "Suporte técnico, infraestrutura local e automação de rotinas.", tags: ["Python", "Redes", "Automação"] },
     { logo: "person", start: "Dez 2022", end: "Jan 2024", company: "Autônomo", role: "Desenvolvedor Web Freelance", description: "Projetos web para pequenos negócios, sites e lojas online.", tags: ["WordPress", "PHP", "React", "Node.js"] },
+    { logo: "study", start: "2019", end: "2022", company: "Autodidata e Trybe", role: "Formação e primeiros projetos", description: "Comecei a programar sozinho com cursos, vídeos e documentação. Na Trybe, fiz a formação full stack de 1.500h+, com projetos de front-end, back-end e banco de dados, e peguei os primeiros trabalhos freelance.", tags: ["JavaScript", "React", "Node.js", "SQL", "Python"] },
   ],
   en: [
     { logo: "lusa", current: true, start: "Oct 2026", end: "Present", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer · Tech Lead", description: "Technical leadership of the animal sector: system architecture, AI agents and automation, plus building the back-end, payments and the donation app.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "AI"] },
@@ -103,6 +104,7 @@ export const experience: Record<Language, Job[]> = {
     { logo: "alplatech", start: "Nov 2024", end: "Sep 2025", company: "ALPLATECH", role: "Full Stack Software Engineer", description: "Custom web systems, APIs and integrations with Node.js and PostgreSQL, from discovery and prototyping to deploy.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
     { logo: "games", start: "Jan 2024", end: "Aug 2024", company: "Studio Games Franchising", role: "IT & Automation Technician", description: "Technical support, local infrastructure and automation of routines.", tags: ["Python", "Networking", "Automation"] },
     { logo: "person", start: "Dec 2022", end: "Jan 2024", company: "Self-employed", role: "Freelance Web Developer", description: "Web projects for small businesses: websites and online stores.", tags: ["WordPress", "PHP", "React", "Node.js"] },
+    { logo: "study", start: "2019", end: "2022", company: "Self-taught and Trybe", role: "Education and first projects", description: "I started coding on my own with courses, videos and documentation. At Trybe I completed the 1,500h+ full stack program, with front-end, back-end and database projects, and took my first freelance jobs.", tags: ["JavaScript", "React", "Node.js", "SQL", "Python"] },
   ],
 };
 

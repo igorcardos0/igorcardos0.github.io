@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
   ArrowRight, ArrowUpRight, BrainCircuit, Building2, ChartColumn, CircleCheck, Cloud, CodeXml, Database, 
-  Globe, Heart, Layers, Lightbulb, Lock, Mail, Menu, MessageCircle, MessageSquare, Monitor, Search, Settings,
+  Globe, GraduationCap, Heart, Layers, Lightbulb, Lock, Mail, Menu, MessageCircle, MessageSquare, Monitor, Search, Settings,
   Star, Target, User, Users, X, Zap, type LucideIcon,
 } from "lucide-react";
 import { atlasCaseStudy, caseStudies, deliveries, deliveryStudies, experience, nav, skills, type Job } from "./content";
@@ -89,7 +89,7 @@ function Books({ titles }: { titles: readonly string[] }) {
   );
 }
 
-const jobLogos: Record<Exclude<Job["logo"], "person">, { src: string; name: string }> = {
+const jobLogos: Record<Exclude<Job["logo"], "person" | "study">, { src: string; name: string }> = {
   lusa: { src: "/logos/lusa.webp", name: "LUSA" },
   v4: { src: "/logos/v4.png", name: "COMPANY" },
   alplatech: { src: "/logos/alplatech.svg", name: "ALPLATECH" },
@@ -107,6 +107,7 @@ function Laptop() {
 
 function JobLogo({ logo }: { logo: Job["logo"] }) {
   if (logo === "person") return <span className="job-logo"><User size={30} strokeWidth={1.6} /></span>;
+  if (logo === "study") return <span className="job-logo"><GraduationCap size={30} strokeWidth={1.6} /></span>;
   const { src, name } = jobLogos[logo];
   return (
     <span className={`job-logo logo-${logo}`}>

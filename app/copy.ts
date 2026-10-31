@@ -4,14 +4,14 @@ export type StatIcon = "code" | "layers" | "users" | "star";
 
 export const stats: Record<Language, { icon: StatIcon; value: string; label: [string, string] }[]> = {
   pt: [
-    { icon: "code", value: "3+", label: ["anos", "de experiência"] },
-    { icon: "layers", value: "10+", label: ["projetos", "entregues"] },
+    { icon: "code", value: "7", label: ["anos programando", "desde 2019"] },
+    { icon: "layers", value: "+40", label: ["projetos", "entregues"] },
     { icon: "users", value: "41", label: ["agentes de IA", "no meu time"] },
     { icon: "star", value: "Líder", label: ["técnico na", "LUSA Brasil"] },
   ],
   en: [
-    { icon: "code", value: "3+", label: ["years", "of experience"] },
-    { icon: "layers", value: "10+", label: ["projects", "delivered"] },
+    { icon: "code", value: "7", label: ["years coding", "since 2019"] },
+    { icon: "layers", value: "40+", label: ["projects", "delivered"] },
     { icon: "users", value: "41", label: ["AI agents", "on my team"] },
     { icon: "star", value: "Lead", label: ["tech lead at", "LUSA Brasil"] },
   ],
@@ -37,9 +37,9 @@ export const text = {
     techIUse: "TECNOLOGIAS QUE USO",
     handIdeas: ["DOMÍNIO", "CÓDIGO", "DADOS", "IA"],
     handWorld: ["SISTEMAS", "FEITOS", "PARA", "ESCALAR."],
-    metricLabel: "Ingestão de eventos",
-    metricValue: "3.031/s",
-    metricUnit: "consultas com p95 de 107 ms",
+    metricLabel: "Projetos entregues",
+    metricValue: "+40",
+    metricUnit: "desde 2019",
     books: ["Clean Architecture", "Data-Intensive Applications", "Domain-Driven Design", "Inteligência Artificial"],
     notebook: ["ARQUITETURA", "TESTES", "DEPLOY"],
 
@@ -59,7 +59,7 @@ export const text = {
 
     careerIndex: "CARREIRA",
     careerTitle: ["Experiência", "construindo", "sistemas", "em produção."],
-    careerLead: "Dos sistemas sob medida à liderança técnica: APIs, plataformas internas, pagamentos, apps e automação com IA, sempre com código rodando em produção.",
+    careerLead: "Programo desde 2019. Comecei estudando sozinho, passei pela Trybe e por projetos freelance, e hoje lidero a parte técnica de sistemas com APIs, pagamentos, apps e automação com IA em produção.",
     education: "FORMAÇÃO",
     degrees: [
       { period: "2025 — 2029", title: "Bacharelado em Ciência da Computação", school: "UniMAX — Centro Universitário Max Planck" },
@@ -67,12 +67,12 @@ export const text = {
     ],
     current: "Atual",
 
-    projectsIndex: "PROJETOS",
+    projectsIndex: "PROJETOS EM DESTAQUE",
     projectsTitle: ["Sistemas construídos", "para ", "rodar em produção."],
-    projectsLead: "Cada projeto abre um estudo de caso com o problema, a arquitetura, a stack e o resultado. As telas da LUSA usam dados de demonstração, sem dados reais de doadores.",
+    projectsLead: "Uma seleção entre os mais de 40 projetos que já entreguei, muitos deles em repositórios privados. Cada um abre um estudo de caso com o problema, a arquitetura, a stack e o resultado.",
     handProjects: ["ARQUITETURA", "ANTES DO", "CÓDIGO."],
-    deliveredValue: "+10",
-    deliveredLabel: ["sistemas entregues", "nos últimos 2 anos"],
+    deliveredValue: "+40",
+    deliveredLabel: ["projetos entregues", "desde 2019"],
     filters: [
       { id: "todos", label: "Todos" },
       { id: "proprios", label: "Projetos próprios" },
@@ -137,9 +137,9 @@ export const text = {
     techIUse: "TECHNOLOGIES I USE",
     handIdeas: ["DOMAIN", "CODE", "DATA", "AI"],
     handWorld: ["SYSTEMS", "BUILT", "TO", "SCALE."],
-    metricLabel: "Event ingestion",
-    metricValue: "3,031/s",
-    metricUnit: "queries with 107 ms p95",
+    metricLabel: "Projects delivered",
+    metricValue: "40+",
+    metricUnit: "since 2019",
     books: ["Clean Architecture", "Data-Intensive Applications", "Domain-Driven Design", "Artificial Intelligence"],
     notebook: ["ARCHITECTURE", "TESTS", "DEPLOY"],
 
@@ -159,7 +159,7 @@ export const text = {
 
     careerIndex: "CAREER",
     careerTitle: ["Experience", "building", "systems", "in production."],
-    careerLead: "From custom systems to technical leadership: APIs, internal platforms, payments, apps and AI automation, always with code running in production.",
+    careerLead: "I've been coding since 2019. I started self-taught, went through Trybe and freelance work, and today I lead the technical side of systems with APIs, payments, apps and AI automation in production.",
     education: "EDUCATION",
     degrees: [
       { period: "2025 — 2029", title: "Bachelor's Degree in Computer Science", school: "UniMAX — Centro Universitário Max Planck" },
@@ -167,12 +167,12 @@ export const text = {
     ],
     current: "Current",
 
-    projectsIndex: "PROJECTS",
+    projectsIndex: "FEATURED PROJECTS",
     projectsTitle: ["Systems built", "to ", "run in production."],
-    projectsLead: "Each project opens a case study with the problem, the architecture, the stack and the result. LUSA screens use demo data, with no real donor data.",
+    projectsLead: "A selection from the 40+ projects I've delivered, many of them in private repositories. Each one opens a case study with the problem, the architecture, the stack and the result.",
     handProjects: ["ARCHITECTURE", "BEFORE", "CODE."],
-    deliveredValue: "+10",
-    deliveredLabel: ["systems delivered", "in the last 2 years"],
+    deliveredValue: "40+",
+    deliveredLabel: ["projects delivered", "since 2019"],
     filters: [
       { id: "todos", label: "All" },
       { id: "proprios", label: "Personal projects" },
