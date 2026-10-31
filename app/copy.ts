@@ -38,7 +38,6 @@ export const text = {
     techIUse: "TECNOLOGIAS QUE USO",
     handIdeas: ["IDEIAS", "CÓDIGO", "IMPACTO", "PESSOAS"],
     handWorld: ["TECNOLOGIA", "PARA UM", "MUNDO", "MELHOR."],
-    handTransform: ["TRANSFORMANDO", "IDEIAS EM", "IMPACTO REAL."],
     metricLabel: "Campanhas ativas",
     metricValue: "+25.000",
     metricUnit: "acessos por dia",
@@ -115,13 +114,13 @@ export const text = {
     send: "Enviar mensagem",
     sending: "Enviando...",
     privacy: "Seus dados estão seguros. Não compartilho suas informações.",
-    availableFor: "DISPONÍVEL PARA",
-    availableTitle: ["Projetos que geram", "impacto positivo."],
+    availableFor: "DISPONÍVEL PARA FREELANCE",
+    availableTitle: ["Projetos sob medida", "para o seu negócio."],
     availability: [
-      { icon: "heart", title: "ONGs e causas sociais", text: "Tecnologia para arrecadação, automação e gestão." },
-      { icon: "layers", title: "Produtos digitais", text: "Sites, sistemas e aplicativos sob medida." },
-      { icon: "bolt", title: "Consultorias e parcerias", text: "Arquitetura, IA e performance para projetos existentes." },
-      { icon: "users", title: "Oportunidades na LUSA", text: "Sempre aberto a novos desafios no time." },
+      { icon: "server", title: "Sistemas web", text: "Painéis, APIs e plataformas sob medida." },
+      { icon: "brain", title: "IA aplicada", text: "Agentes, chatbots e integrações com LLMs." },
+      { icon: "globe", title: "Sites e páginas", text: "Rápidos, responsivos e feitos para converter." },
+      { icon: "bolt", title: "Automações", text: "Integrações e fluxos que eliminam trabalho manual." },
     ],
     backToTop: "Voltar ao topo",
   },
@@ -135,7 +134,6 @@ export const text = {
     techIUse: "TECHNOLOGIES I USE",
     handIdeas: ["IDEAS", "CODE", "IMPACT", "PEOPLE"],
     handWorld: ["TECHNOLOGY", "FOR A", "BETTER", "WORLD."],
-    handTransform: ["TURNING", "IDEAS INTO", "REAL IMPACT."],
     metricLabel: "Active campaigns",
     metricValue: "+25,000",
     metricUnit: "visits per day",
@@ -212,19 +210,19 @@ export const text = {
     send: "Send message",
     sending: "Sending...",
     privacy: "Your data is safe. I don't share your information.",
-    availableFor: "AVAILABLE FOR",
-    availableTitle: ["Projects that create", "positive impact."],
+    availableFor: "AVAILABLE FOR FREELANCE",
+    availableTitle: ["Custom projects", "for your business."],
     availability: [
-      { icon: "heart", title: "NGOs and social causes", text: "Technology for fundraising, automation and management." },
-      { icon: "layers", title: "Digital products", text: "Custom websites, systems and apps." },
-      { icon: "bolt", title: "Consulting and partnerships", text: "Architecture, AI and performance for existing projects." },
-      { icon: "users", title: "Opportunities at LUSA", text: "Always open to new challenges on the team." },
+      { icon: "server", title: "Web systems", text: "Custom dashboards, APIs and platforms." },
+      { icon: "brain", title: "Applied AI", text: "Agents, chatbots and LLM integrations." },
+      { icon: "globe", title: "Websites and pages", text: "Fast, responsive and built to convert." },
+      { icon: "bolt", title: "Automation", text: "Integrations and workflows that remove manual work." },
     ],
     backToTop: "Back to top",
   },
 } as const;
 
-export type CardVisual = "abajur" | "lusa" | "icharity" | "hub";
+export type CardVisual = "abajur" | "lusa" | "icharity" | "hub" | "bitenglish";
 
 export const projectCards: Record<Language, { id: CardVisual; badge: string; points: string[]; cta: string; filters: string[] }[]> = {
   pt: [
@@ -232,11 +230,13 @@ export const projectCards: Record<Language, { id: CardVisual; badge: string; poi
     { id: "lusa", badge: "LUSA BRASIL", points: ["Em produção nas lojas", "Pix e Pix Automático", "Failover entre gateways"], cta: "Ver estudo de caso", filters: ["lusa", "sistemas"] },
     { id: "icharity", badge: "LUSA BRASIL", points: ["100% para a ONG", "Conciliação automática", "~400 testes"], cta: "Ver estudo de caso", filters: ["lusa", "sistemas"] },
     { id: "hub", badge: "PROJETO PRÓPRIO", points: ["Lista de leads pontuados em minutos", "Abre com dois cliques", "100% automatizado"], cta: "Ver projeto completo", filters: ["proprios", "ia"] },
+    { id: "bitenglish", badge: "PROJETO PRÓPRIO", points: ["12 mini-jogos em pixel art", "~600 palavras do A1 ao B1", "Ranking de alunos e turmas"], cta: "Ver projeto completo", filters: ["proprios", "sistemas", "web"] },
   ],
   en: [
     { id: "abajur", badge: "PERSONAL PROJECT", points: ["~144 fps", "Thousands of tests", "Windows installer"], cta: "View full project", filters: ["proprios", "ia", "sistemas"] },
     { id: "lusa", badge: "LUSA BRASIL", points: ["Live on the app stores", "Pix and recurring Pix", "Gateway failover"], cta: "View case study", filters: ["lusa", "sistemas"] },
     { id: "icharity", badge: "LUSA BRASIL", points: ["100% to the NGO", "Automatic reconciliation", "~400 tests"], cta: "View case study", filters: ["lusa", "sistemas"] },
     { id: "hub", badge: "PERSONAL PROJECT", points: ["Scored lead list in minutes", "Opens with two clicks", "Fully automated"], cta: "View full project", filters: ["proprios", "ia"] },
+    { id: "bitenglish", badge: "PERSONAL PROJECT", points: ["12 pixel art mini-games", "~600 words from A1 to B1", "Student and class rankings"], cta: "View full project", filters: ["proprios", "sistemas", "web"] },
   ],
 };

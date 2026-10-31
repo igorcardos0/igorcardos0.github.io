@@ -345,22 +345,8 @@ export default function Home() {
         </section>
 
         <section className="about" id="sobre">
-          <div className="about-visual">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/igor.webp" alt={isEn ? "Igor de Souza Cardoso drinking coffee by a window" : "Igor de Souza Cardoso tomando café perto da janela"} loading="lazy" />
-            <span className="about-brand">DEV. IGOR CARDOSO <i /></span>
-            <Hand lines={t.handWorld} className="hand-about-world" />
-            <Hand lines={t.handTransform} className="hand-about-transform" />
-            <CurvedArrow className="arrow-about" />
-            <Books titles={t.books} />
-            <Laptop />
-            <div className="mug" aria-hidden="true">
-              <span className="mug-text">{t.handIdeas.map((line) => <span key={line}>{line}</span>)}</span>
-              <i className="mug-handle" />
-            </div>
-            <StatStrip items={siteStats} tone="dark" />
-          </div>
           <div className="about-content">
+            <div className="about-main">
             <Pill index="02" label={t.aboutIndex} />
             <h2 className="display">{t.aboutTitle[0]}<br /><em>{t.aboutTitle[1]}</em></h2>
             <p className="lead">{t.aboutLead.map(([chunk, bold]) => bold ? <strong key={chunk}>{chunk}</strong> : <span key={chunk}>{chunk}</span>)}</p>
@@ -374,7 +360,8 @@ export default function Home() {
                 </article>
               ))}
             </div>
-            <hr />
+            </div>
+            <div className="about-stack">
             <div className="stack-head">
               <div>
                 <p className="mini-label"><i /> {t.whatIDo}</p>
@@ -396,6 +383,7 @@ export default function Home() {
             <div className="also-work">
               <span className="also-work-label">{t.alsoWork}</span>
               {alsoWorkWith.map((name) => <span key={name} className="also-work-item"><BrandIcon name={name} />{name === "Meta Pixel e CAPI" && isEn ? "Meta Pixel & CAPI" : name}</span>)}
+            </div>
             </div>
           </div>
         </section>
