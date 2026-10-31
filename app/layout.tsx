@@ -7,7 +7,7 @@ const display = Inter_Tight({ variable: "--font-display", subsets: ["latin"], we
 const hand = Gochi_Hand({ variable: "--font-hand", subsets: ["latin"], weight: "400" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://igorcardos0.github.io";
 const title = "Igor de Souza Cardoso | Engenheiro de Software Full Stack";
-const description = "Portfólio de Igor de Souza Cardoso, engenheiro de software full stack e líder técnico. Tecnologia para campanhas de impacto social: pagamentos, apps e automações com IA, com NestJS, Next.js, React Native, Laravel e Python.";
+const description = "Portfólio de Igor de Souza Cardoso, engenheiro de software full stack e líder técnico. Arquitetura de software e de IA, back-end, APIs, pagamentos e sistemas em produção com NestJS, Next.js, React Native, Laravel e Python.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

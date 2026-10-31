@@ -87,20 +87,20 @@ export const skills: Record<Language, { icon: "brain" | "server" | "monitor" | "
 
 export const experience: Record<Language, Job[]> = {
   pt: [
-    { logo: "lusa", current: true, start: "Out 2026", end: "Atual", company: "LUSA Brasil", role: "Engenheiro de Software Full Stack Pleno · Líder Técnico", description: "Liderança técnica do setor animal: arquitetura, IA, agentes e automações, além do desenvolvimento de sistemas, páginas e aplicativo de doações.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "IA"] },
-    { logo: "lusa", start: "Jul 2026", end: "Set 2026", company: "LUSA Brasil", role: "Engenheiro de Software Full Stack Pleno", description: "Sistemas, páginas, checkout e app para campanhas de ONGs. Desenvolvimento do ecossistema de doações e integrações com gateways de pagamento.", tags: ["React Native", "Next.js", "NestJS", "MongoDB", "Pix"] },
+    { logo: "lusa", current: true, start: "Out 2026", end: "Atual", company: "LUSA Brasil", role: "Engenheiro de Software Full Stack Pleno · Líder Técnico", description: "Liderança técnica do setor animal: arquitetura dos sistemas, agentes de IA e automação, além do desenvolvimento do back-end, dos pagamentos e do app de doações.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "IA"] },
+    { logo: "lusa", start: "Jul 2026", end: "Set 2026", company: "LUSA Brasil", role: "Engenheiro de Software Full Stack Pleno", description: "Ecossistema de doações: app iOS e Android, API em NestJS, painel com checkout e a infraestrutura de pagamentos com failover entre gateways.", tags: ["React Native", "Next.js", "NestJS", "MongoDB", "Pix"] },
     { logo: "v4", start: "Dez 2025", end: "Jun 2026", company: "V4 Company", role: "Engenheiro de Software Full Stack Pleno", description: "Desenvolvimento de aplicações internas, automações e integrações para operação, marketing e gestão de dados.", tags: ["Next.js", "Node.js", "Python", "n8n", "Meta Ads", "APIs"] },
-    { logo: "v4", start: "Set 2025", end: "Dez 2025", company: "V4 Company", role: "Engenheiro de Software Full Stack · Martech", description: "Soluções digitais para campanhas, aquisição e presença online, apoiando marketing, tráfego, vendas e design.", tags: ["WordPress", "WooCommerce", "Next.js", "React", "IA"] },
-    { logo: "alplatech", start: "Nov 2024", end: "Set 2025", company: "ALPLATECH", role: "Engenheiro de Software Full Stack", description: "Sites, sistemas web e soluções digitais sob medida, da descoberta e prototipação à publicação.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
+    { logo: "v4", start: "Set 2025", end: "Dez 2025", company: "V4 Company", role: "Engenheiro de Software Full Stack · Martech", description: "Front-end e integrações para marketing e vendas: aplicações em React e Next.js, rastreamento de conversão e integrações com IA.", tags: ["WordPress", "WooCommerce", "Next.js", "React", "IA"] },
+    { logo: "alplatech", start: "Nov 2024", end: "Set 2025", company: "ALPLATECH", role: "Engenheiro de Software Full Stack", description: "Sistemas web sob medida, APIs e integrações com Node.js e PostgreSQL, da descoberta e prototipação ao deploy.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
     { logo: "games", start: "Jan 2024", end: "Ago 2024", company: "Studio Games Franchising", role: "Técnico de TI e Automação", description: "Suporte técnico, infraestrutura local e automação de rotinas.", tags: ["Python", "Redes", "Automação"] },
     { logo: "person", start: "Dez 2022", end: "Jan 2024", company: "Autônomo", role: "Desenvolvedor Web Freelance", description: "Projetos web para pequenos negócios, sites e lojas online.", tags: ["WordPress", "PHP", "React", "Node.js"] },
   ],
   en: [
-    { logo: "lusa", current: true, start: "Oct 2026", end: "Present", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer · Tech Lead", description: "Technical leadership of the animal sector: architecture, AI, agents and automation, plus building systems, pages and the donation app.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "AI"] },
-    { logo: "lusa", start: "Jul 2026", end: "Sep 2026", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer", description: "Systems, pages, checkout and app for NGO campaigns. Built the donation ecosystem and payment gateway integrations.", tags: ["React Native", "Next.js", "NestJS", "MongoDB", "Pix"] },
+    { logo: "lusa", current: true, start: "Oct 2026", end: "Present", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer · Tech Lead", description: "Technical leadership of the animal sector: system architecture, AI agents and automation, plus building the back-end, payments and the donation app.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "AI"] },
+    { logo: "lusa", start: "Jul 2026", end: "Sep 2026", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer", description: "Donation ecosystem: iOS and Android app, NestJS API, dashboard with checkout and the payment infrastructure with gateway failover.", tags: ["React Native", "Next.js", "NestJS", "MongoDB", "Pix"] },
     { logo: "v4", start: "Dec 2025", end: "Jun 2026", company: "V4 Company", role: "Mid-Level Full Stack Software Engineer", description: "Internal applications, automations and integrations for operations, marketing and data management.", tags: ["Next.js", "Node.js", "Python", "n8n", "Meta Ads", "APIs"] },
-    { logo: "v4", start: "Sep 2025", end: "Dec 2025", company: "V4 Company", role: "Full Stack Software Engineer · Martech", description: "Digital solutions for campaigns, acquisition and online presence, supporting marketing, paid media, sales and design.", tags: ["WordPress", "WooCommerce", "Next.js", "React", "AI"] },
-    { logo: "alplatech", start: "Nov 2024", end: "Sep 2025", company: "ALPLATECH", role: "Full Stack Software Engineer", description: "Custom websites, web systems and digital solutions, from discovery and prototyping to launch.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
+    { logo: "v4", start: "Sep 2025", end: "Dec 2025", company: "V4 Company", role: "Full Stack Software Engineer · Martech", description: "Front-end and integrations for marketing and sales: React and Next.js applications, conversion tracking and AI integrations.", tags: ["WordPress", "WooCommerce", "Next.js", "React", "AI"] },
+    { logo: "alplatech", start: "Nov 2024", end: "Sep 2025", company: "ALPLATECH", role: "Full Stack Software Engineer", description: "Custom web systems, APIs and integrations with Node.js and PostgreSQL, from discovery and prototyping to deploy.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
     { logo: "games", start: "Jan 2024", end: "Aug 2024", company: "Studio Games Franchising", role: "IT & Automation Technician", description: "Technical support, local infrastructure and automation of routines.", tags: ["Python", "Networking", "Automation"] },
     { logo: "person", start: "Dec 2022", end: "Jan 2024", company: "Self-employed", role: "Freelance Web Developer", description: "Web projects for small businesses: websites and online stores.", tags: ["WordPress", "PHP", "React", "Node.js"] },
   ],
@@ -573,30 +573,17 @@ export const caseStudies: Record<Language, CaseStudy[]> = {
   ],
 };
 
-const ngoSites = [
-  { label: "SOS Animal Help", href: "https://sosanimalhelp.org" },
-  { label: "Doe SOS Animal Help", href: "https://doe.sosanimalhelp.org" },
-  { label: "Caio Protetor", href: "https://caioprotetor.com" },
-  { label: "Doe Caio Protetor", href: "https://doe.caioprotetor.com" },
-  { label: "Cayo Rescatista", href: "https://cayorescatista.org" },
-  { label: "Kyle Rescuer", href: "https://donate.kylerescuer.org" },
-  { label: "Casa da Mili", href: "https://casadamili.org" },
-  { label: "Doe Casa da Mili", href: "https://doe.casadamili.org" },
-  { label: "Lar Joana D'arc", href: "https://doe.larjoanadarc.org" },
-  { label: "Siulsan Resgate", href: "https://siulsanresgate.org" },
-];
-
 export const deliveries: Record<Language, Delivery[]> = {
   pt: [
-    { id: "regua", icon: "chart", title: "Régua de tráfego com IA", context: "LUSA Brasil", description: "Automação que compara o gasto de cada campanha de Meta Ads com a receita e ajusta o orçamento pelo ROI, com travas de segurança.", filters: ["lusa", "ia"] },
-    { id: "sites", icon: "globe", title: "10 sites de ONGs em Next.js", context: "LUSA Brasil", description: "Migração de WordPress para Next.js com export estático, mantendo URLs e visual original. Validados por screenshot. Inclui versão em ES.", filters: ["lusa", "web"] },
-    { id: "taskflow", icon: "check", title: "TaskFlow", context: "LUSA Brasil", description: "Gestor de tarefas dos sites de arrecadação: aprovações, metas, cronômetro, calendário, cofre de acessos e notificações push.", filters: ["lusa", "sistemas"] },
+    { id: "regua", icon: "chart", title: "Régua de orçamento com IA", context: "LUSA Brasil", description: "Serviço em Docker que cruza o gasto de anúncios com a receita real e ajusta o orçamento por ROI, com travas de segurança e modo observação.", filters: ["lusa", "ia", "sistemas"] },
+    { id: "gateway", icon: "layers", title: "Pacote de gateway de pagamentos", context: "LUSA Brasil", description: "Biblioteca TypeScript que conecta os sistemas aos provedores de Pix, com failover entre gateways, Pix Automático e erros tipados.", filters: ["lusa", "sistemas"] },
+    { id: "taskflow", icon: "check", title: "TaskFlow", context: "LUSA Brasil", description: "Sistema de gestão de tarefas com aprovações, metas e cofre de acessos. API NestJS com Prisma e front Next.js no padrão BFF.", filters: ["lusa", "sistemas"] },
     { id: "atlas", icon: "layers", title: "Projeto Atlas", context: "V4 Company", description: "Plataforma interna que centralizou dados de operação, financeiro, comercial e mídia paga, antes espalhados em planilhas.", filters: ["sistemas", "ia"] },
   ],
   en: [
-    { id: "regua", icon: "chart", title: "AI traffic controller", context: "LUSA Brasil", description: "Automation that compares each Meta Ads campaign's spend with revenue and adjusts the budget by ROI, with safety limits.", filters: ["lusa", "ia"] },
-    { id: "sites", icon: "globe", title: "10 NGO websites in Next.js", context: "LUSA Brasil", description: "Migration from WordPress to statically exported Next.js, keeping URLs and the original design. Validated by screenshot. Includes a Spanish site.", filters: ["lusa", "web"] },
-    { id: "taskflow", icon: "check", title: "TaskFlow", context: "LUSA Brasil", description: "Task manager for the fundraising sites: approvals, goals, timer, calendar, credentials vault and push notifications.", filters: ["lusa", "sistemas"] },
+    { id: "regua", icon: "chart", title: "AI budget controller", context: "LUSA Brasil", description: "Docker service that matches ad spend with real revenue and adjusts budgets by ROI, with safety limits and an observation mode.", filters: ["lusa", "ia", "sistemas"] },
+    { id: "gateway", icon: "layers", title: "Payment gateway package", context: "LUSA Brasil", description: "TypeScript library connecting our systems to Pix providers, with gateway failover, recurring Pix and typed errors.", filters: ["lusa", "sistemas"] },
+    { id: "taskflow", icon: "check", title: "TaskFlow", context: "LUSA Brasil", description: "Task management system with approvals, goals and a credentials vault. NestJS API with Prisma and a Next.js front end using the BFF pattern.", filters: ["lusa", "sistemas"] },
     { id: "atlas", icon: "layers", title: "Atlas Project", context: "V4 Company", description: "Internal platform that centralized operations, finance, sales and paid media data that used to live in spreadsheets.", filters: ["sistemas", "ia"] },
   ],
 };
@@ -609,7 +596,7 @@ const shortStudy = (s: Partial<CaseStudy> & Pick<CaseStudy, "id" | "modalTitle" 
 export const deliveryStudies: Record<Language, CaseStudy[]> = {
   pt: [
     shortStudy({
-      id: "regua", modalTitle: "Régua de tráfego com IA", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
+      id: "regua", modalTitle: "Régua de orçamento com IA", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
       summary: "Uma vez por dia, a régua compara o gasto de cada campanha de Meta Ads com a receita que ela gerou no sistema de pagamentos e decide pausar, reduzir ou aumentar o orçamento.",
       challenge: ["Ajustar orçamento campanha a campanha, à mão, todos os dias.", "Campanha sem retorno continuava gastando até alguém perceber."],
       solution: "Automação em container Docker que cruza o gasto da Meta com a receita da LUSA, calcula o ROI por campanha e aplica a decisão dentro de travas de segurança. Um painel mostra o que a régua decidiu em cada rodada, e um fluxo n8n observa as decisões do gestor para a IA aprender com elas.",
@@ -617,12 +604,12 @@ export const deliveryStudies: Record<Language, CaseStudy[]> = {
       impact: ["Orçamento ajustado todo dia pelo ROI real, não pelo do Gerenciador de Anúncios.", "Modo observação para validar as decisões antes de agir."],
     }),
     shortStudy({
-      id: "sites", modalTitle: "10 sites de ONGs em Next.js", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
-      summary: "Sites de campanha e doação que estavam em WordPress e Elementor, migrados para Next.js com export estático, mantendo as URLs, os textos e o visual.",
-      solution: "Cada página foi convertida a partir do HTML publicado e comparada por screenshot com o original, em desktop e celular. O resultado é HTML estático servido por CDN, sem plugin, sem jQuery e sem banco.",
-      stack: [["Front", "Next.js · React · TypeScript · Tailwind CSS"], ["Entrega", "Export estático · imagens WebP geradas no build"]],
-      impact: ["Páginas mais leves e rápidas para os picos de campanha.", "Um dos sites em espanhol, para a campanha internacional."],
-      links: ngoSites,
+      id: "gateway", modalTitle: "Pacote de gateway de pagamentos", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
+      summary: "Biblioteca TypeScript que conecta os sistemas de doação aos provedores de pagamento: Pix avulso, Pix Automático, failover entre gateways, acompanhamento do pagamento e Pix pendente.",
+      challenge: ["Cada sistema falava com os provedores do seu jeito, com tratamento de erro duplicado.", "Quando um gateway caía, a doação falhava em vez de ir para outro provedor."],
+      solution: "Isolei toda a comunicação com os provedores num pacote único, sem tela e sem React. O gateway ativo é escolhido pelo painel, a falha de um provedor aciona o próximo, e todo erro sai com um tipo, para cada sistema decidir a mensagem. Os opcionais só entram no build de quem os importa.",
+      stack: [["Pacote", "TypeScript · tsup · ESM"], ["Pagamentos", "Pix · Pix Automático · múltiplos provedores com failover"], ["Qualidade", "Vitest com a rede simulada · nunca gera cobrança real em teste"]],
+      impact: ["Um contrato único de pagamento para todos os sistemas.", "Queda de um provedor não derruba a doação."],
     }),
     shortStudy({
       id: "taskflow", modalTitle: "TaskFlow", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
@@ -634,7 +621,7 @@ export const deliveryStudies: Record<Language, CaseStudy[]> = {
   ],
   en: [
     shortStudy({
-      id: "regua", modalTitle: "AI traffic controller", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
+      id: "regua", modalTitle: "AI budget controller", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
       summary: "Once a day, it compares each Meta Ads campaign's spend with the revenue it generated in the payment system and decides to pause, cut or scale its budget.",
       challenge: ["Adjusting budgets campaign by campaign, by hand, every day.", "Campaigns with no return kept spending until someone noticed."],
       solution: "A Docker automation that matches Meta spend with LUSA revenue, computes ROI per campaign and applies the decision within safety limits. A dashboard shows what it decided each round, and an n8n flow watches the media buyer's decisions so the AI can learn from them.",
@@ -642,12 +629,12 @@ export const deliveryStudies: Record<Language, CaseStudy[]> = {
       impact: ["Budgets adjusted daily by real ROI, not the Ads Manager estimate.", "Observation mode to validate decisions before acting."],
     }),
     shortStudy({
-      id: "sites", modalTitle: "10 NGO websites in Next.js", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
-      summary: "Campaign and donation sites built on WordPress and Elementor, migrated to statically exported Next.js while keeping URLs, copy and design.",
-      solution: "Each page was converted from the published HTML and compared by screenshot with the original on desktop and mobile. The result is static HTML served from a CDN, with no plugins, no jQuery and no database.",
-      stack: [["Front", "Next.js · React · TypeScript · Tailwind CSS"], ["Delivery", "Static export · WebP images generated at build time"]],
-      impact: ["Lighter, faster pages for campaign traffic peaks.", "One of the sites in Spanish, for the international campaign."],
-      links: ngoSites,
+      id: "gateway", modalTitle: "Payment gateway package", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
+      summary: "TypeScript library connecting the donation systems to payment providers: one-off Pix, recurring Pix, gateway failover, payment tracking and pending Pix.",
+      challenge: ["Each system talked to providers its own way, with duplicated error handling.", "When a gateway went down, the donation failed instead of moving to another provider."],
+      solution: "I isolated all provider communication in a single package, with no UI and no React. The active gateway is chosen from the dashboard, a provider failure triggers the next one, and every error comes out typed so each system picks its own message. Optional parts are only bundled for whoever imports them.",
+      stack: [["Package", "TypeScript · tsup · ESM"], ["Payments", "Pix · recurring Pix · multiple providers with failover"], ["Quality", "Vitest with a simulated network · never creates real charges in tests"]],
+      impact: ["One payment contract for every system.", "A provider outage doesn't take donations down."],
     }),
     shortStudy({
       id: "taskflow", modalTitle: "TaskFlow", modalCategory: "ALSO DELIVERED / LUSA BRASIL",

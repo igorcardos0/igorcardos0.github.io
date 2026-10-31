@@ -1,7 +1,7 @@
 import {
   siDocker, siFigma, siGithub, siGoogleanalytics, siGoogletagmanager, siLaravel, siMeta, siMongodb, siNestjs,
   siNextdotjs, siNodedotjs, siPostgresql, siPython, siReact, siRedis, siSupabase, siTailwindcss, siTypescript,
-  siWhatsapp, siWoocommerce, siWordpress,
+  siWhatsapp, siWoocommerce, siWordpress, siPrisma, siDrizzle, siVitest, siOpenapiinitiative, siGithubactions, siN8n,
 } from "simple-icons";
 
 type SimpleIcon = { path: string; hex: string; title: string };
@@ -28,6 +28,12 @@ const brands: Record<string, SimpleIcon> = {
   "Meta Pixel e CAPI": siMeta,
   GitHub: siGithub,
   WhatsApp: siWhatsapp,
+  Prisma: siPrisma,
+  Drizzle: siDrizzle,
+  Vitest: siVitest,
+  OpenAPI: siOpenapiinitiative,
+  "GitHub Actions": siGithubactions,
+  n8n: siN8n,
 };
 
 function AwsMark({ dark }: { dark?: boolean }) {

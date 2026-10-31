@@ -305,7 +305,7 @@ export default function Home() {
               <div className="code-top"><i /><i /><i /></div>
               <div className="code-body">
                 <ul className="code-tree">
-                  {["impacto", "apps", "web", "api", "automations", "ai-agents", "infra", "docs"].map((folder, index) => (
+                  {["platform", "api", "services", "ai-agents", "queues", "apps", "infra", "docs"].map((folder, index) => (
                     <li key={folder} className={index === 0 ? "root" : ""}>{index === 0 ? "▾" : "›"} <span>▢</span> {folder}</li>
                   ))}
                 </ul>
@@ -380,7 +380,7 @@ export default function Home() {
             </div>
             <div className="also-work">
               <span className="also-work-label">{t.alsoWork}</span>
-              {alsoWorkWith.map((name) => <span key={name} className="also-work-item"><BrandIcon name={name} />{name === "Meta Pixel e CAPI" && isEn ? "Meta Pixel & CAPI" : name}</span>)}
+              {alsoWorkWith.map((name) => <span key={name} className="also-work-item"><BrandIcon name={name} />{name}</span>)}
             </div>
             </div>
           </div>

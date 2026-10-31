@@ -14,7 +14,7 @@ export default function OpenGraphImage() {
         <div style={{ display: "flex", flexDirection: "column", marginTop: "auto", position: "relative" }}>
           <div style={{ fontSize: 72, fontWeight: 900, letterSpacing: "-5px", lineHeight: 1 }}>Igor de Souza Cardoso</div>
           <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: "-3px", lineHeight: 1.1, background: "linear-gradient(110deg, #A773FF, #4B79FF, #81EAFF)", backgroundClip: "text", color: "transparent" }}>Engenheiro de Software Full Stack.</div>
-          <div style={{ marginTop: 34, fontSize: 22, color: "#AAA6B7" }}>Pagamentos · Apps · Agentes de IA · NestJS · Next.js · React Native</div>
+          <div style={{ marginTop: 34, fontSize: 22, color: "#AAA6B7" }}>Arquitetura de software e IA · Back-end · NestJS · Next.js · Python</div>
         </div>
       </div>
     ),
