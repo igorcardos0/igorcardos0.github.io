@@ -4,9 +4,9 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Igor de Souza Cardoso — Desenvolvedor Full Stack",
+    name: "Igor de Souza Cardoso — Engenheiro de Software Full Stack",
     short_name: "Igor Cardoso",
-    description: "Portfólio profissional de Igor de Souza Cardoso, Desenvolvedor Full Stack.",
+    description: "Portfólio profissional de Igor de Souza Cardoso, Engenheiro de Software Full Stack.",
     start_url: "/",
     display: "standalone",
     background_color: "#000000",

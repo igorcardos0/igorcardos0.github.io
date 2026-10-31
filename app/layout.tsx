@@ -5,8 +5,8 @@ import "./globals.css";
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://igorcardos0.github.io";
-const title = "Igor de Souza Cardoso | Desenvolvedor Full Stack";
-const description = "Portfólio de Igor de Souza Cardoso, Desenvolvedor Full Stack e Software Engineer especializado em React, Next.js, TypeScript, automações, APIs e integrações.";
+const title = "Igor de Souza Cardoso | Engenheiro de Software Full Stack";
+const description = "Portfólio de Igor de Souza Cardoso, engenheiro de software full stack e líder técnico. Tecnologia para campanhas de impacto social: pagamentos, apps e automações com IA, com NestJS, Next.js, React Native, Laravel e Python.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   publisher: "Igor de Souza Cardoso",
   category: "technology",
   keywords: [
-    "Igor de Souza Cardoso", "Desenvolvedor Full Stack", "Software Engineer",
-    "Desenvolvedor Frontend", "React", "Next.js", "TypeScript", "Node.js",
-    "Python", "n8n", "Automações", "APIs", "Integrações", "Indaiatuba",
+    "Igor de Souza Cardoso", "Engenheiro de Software Full Stack", "Software Engineer",
+    "Líder Técnico", "Inteligência Artificial", "Agentes de IA", "NestJS", "Next.js",
+    "React Native", "Laravel", "Python", "TypeScript", "Pagamentos", "Pix", "AWS", "Indaiatuba",
   ],
   alternates: {
     canonical: "/",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Igor Cardoso — Software Engineer",
     firstName: "Igor",
     lastName: "Cardoso",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Igor de Souza Cardoso — Desenvolvedor Full Stack" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Igor de Souza Cardoso — Engenheiro de Software Full Stack" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -74,7 +74,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     name: "Igor de Souza Cardoso",
     url: siteUrl,
     image: `${siteUrl}/opengraph-image`,
-    jobTitle: "Desenvolvedor Full Stack",
+    jobTitle: "Engenheiro de Software Full Stack",
+    worksFor: { "@type": "Organization", name: "LUSA Brasil", url: "https://lusabrasil.com" },
     description,
     address: {
       "@type": "PostalAddress",
@@ -87,8 +88,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       "https://github.com/igorcardos0",
     ],
     knowsAbout: [
-      "React.js", "Next.js", "TypeScript", "Node.js", "Python",
-      "PostgreSQL", "Supabase", "n8n", "APIs REST", "Webhooks",
+      "NestJS", "Next.js", "React Native", "TypeScript", "Node.js", "Laravel",
+      "Python", "PostgreSQL", "AI agents", "LLMs", "Payments", "AWS", "Docker",
     ],
   };
 
