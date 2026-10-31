@@ -1,11 +1,14 @@
 export type Language = "pt" | "en";
 
 export interface Job {
-  role: string;
+  logo: "lusa" | "v4" | "alplatech" | "games" | "person";
+  current?: boolean;
+  start: string;
+  end: string;
   company: string;
-  period: string;
+  role: string;
   description: string;
-  bullets: string[];
+  tags: string[];
 }
 
 export interface CaseMedia {
@@ -36,219 +39,68 @@ export interface CaseStudy {
   modules: [string, string][];
   role: string[];
   impact: string[];
+  links?: { label: string; href: string }[];
 }
 
 export interface Delivery {
+  id: string;
+  icon: "chart" | "globe" | "check" | "layers";
   title: string;
   context: string;
   description: string;
-  caseStudy?: string;
-  links?: { label: string; href: string }[];
+  filters: string[];
 }
 
 export const nav = {
   pt: [
-    { id: "inicio", label: "Home", number: "01" },
-    { id: "sobre", label: "Sobre mim", number: "02" },
+    { id: "inicio", label: "Início", number: "01" },
+    { id: "sobre", label: "Sobre", number: "02" },
     { id: "experiencia", label: "Carreira", number: "03" },
     { id: "projetos", label: "Projetos", number: "04" },
     { id: "contato", label: "Contato", number: "05" },
   ],
   en: [
     { id: "inicio", label: "Home", number: "01" },
-    { id: "sobre", label: "About me", number: "02" },
+    { id: "sobre", label: "About", number: "02" },
     { id: "experiencia", label: "Career", number: "03" },
     { id: "projetos", label: "Projects", number: "04" },
     { id: "contato", label: "Contact", number: "05" },
   ],
 };
 
-export const skills: Record<Language, [string, string][]> = {
+export const skills: Record<Language, { icon: "brain" | "server" | "monitor" | "cloud"; title: string; items: string }[]> = {
   pt: [
-    ["IA aplicada", "LLMs · agentes com ferramentas · Claude Agent SDK · RAG · embeddings · vector store · n8n"],
-    ["Backend e dados", "NestJS · Node.js · Express · Laravel · PHP · Python · Rust · PostgreSQL · MongoDB · Supabase · Redis · MySQL"],
-    ["Frontend e mobile", "Next.js · React · React Native (Expo) · Angular · TypeScript · Tailwind CSS · Electron"],
-    ["Infra e DevOps", "Docker · AWS · DigitalOcean · VPS · CI/CD · GitHub Actions · Linux · Vercel · Git"],
+    { icon: "brain", title: "IA aplicada", items: "LLMs · Agentes · Claude SDK · RAG · Embeddings · Vector Store · n8n" },
+    { icon: "server", title: "Backend e dados", items: "NestJS · Node.js · Laravel · Python · Rust · PostgreSQL · MongoDB · Supabase · Redis · MySQL" },
+    { icon: "monitor", title: "Frontend e mobile", items: "Next.js · React · React Native (Expo) · Angular · TypeScript · Tailwind CSS · Electron" },
+    { icon: "cloud", title: "Infra e DevOps", items: "Docker · AWS · DigitalOcean · VPS · CI/CD · GitHub Actions · Linux · Vercel · Git" },
   ],
   en: [
-    ["Applied AI", "LLMs · tool-using agents · Claude Agent SDK · RAG · embeddings · vector store · n8n"],
-    ["Backend & data", "NestJS · Node.js · Express · Laravel · PHP · Python · Rust · PostgreSQL · MongoDB · Supabase · Redis · MySQL"],
-    ["Frontend & mobile", "Next.js · React · React Native (Expo) · Angular · TypeScript · Tailwind CSS · Electron"],
-    ["Infra & DevOps", "Docker · AWS · DigitalOcean · VPS · CI/CD · GitHub Actions · Linux · Vercel · Git"],
+    { icon: "brain", title: "Applied AI", items: "LLMs · Agents · Claude SDK · RAG · Embeddings · Vector Store · n8n" },
+    { icon: "server", title: "Backend & data", items: "NestJS · Node.js · Laravel · Python · Rust · PostgreSQL · MongoDB · Supabase · Redis · MySQL" },
+    { icon: "monitor", title: "Frontend & mobile", items: "Next.js · React · React Native (Expo) · Angular · TypeScript · Tailwind CSS · Electron" },
+    { icon: "cloud", title: "Infra & DevOps", items: "Docker · AWS · DigitalOcean · VPS · CI/CD · GitHub Actions · Linux · Vercel · Git" },
   ],
-};
-
-export const alsoWorkWith: Record<Language, string> = {
-  pt: "Também trabalho com: WordPress · WooCommerce · GA4 · GTM · Meta Pixel e Conversions API · Figma",
-  en: "I also work with: WordPress · WooCommerce · GA4 · GTM · Meta Pixel & Conversions API · Figma",
 };
 
 export const experience: Record<Language, Job[]> = {
   pt: [
-    {
-      role: "Engenheiro de Software Full Stack Pleno · Líder Técnico do Setor Animal",
-      company: "LUSA Brasil",
-      period: "Out 2026 — o momento",
-      description: "Liderança técnica do setor animal: arquitetura, prioridades e a frente de IA, agentes e automação, sem deixar de programar.",
-      bullets: [
-        "Lidero tecnicamente um desenvolvedor júnior: arquitetura, padrões, code review e distribuição das demandas",
-        "Régua de tráfego com IA que pausa, reduz ou aumenta o orçamento de Meta Ads conforme o ROI",
-        "iCharity: plataforma de doações com gateway próprio, split na origem e conciliação automática",
-        "Agentes e automações com IA para a operação; deploy e CI/CD com Docker, DigitalOcean e AWS",
-      ],
-    },
-    {
-      role: "Engenheiro de Software Full Stack Pleno",
-      company: "LUSA Brasil",
-      period: "Jul 2026 — Set 2026 · 3 meses",
-      description: "Sistemas, páginas, checkout e app para as campanhas de arrecadação de ONGs.",
-      bullets: [
-        "Ecossistema de doações: app iOS e Android (Expo), API em NestJS e painel em Next.js com checkout",
-        "Pipeline de webhooks e conversão com Facebook CAPI e Utmify; pacote de gateway com failover",
-        "10 sites de ONGs migrados de WordPress para Next.js, validados por screenshot contra o original",
-        "TaskFlow: gestor de tarefas com aprovações, metas, cofre de acessos e push, em NestJS e Next.js (PWA)",
-      ],
-    },
-    {
-      role: "Engenheiro de Software Full Stack Pleno",
-      company: "V4 Company",
-      period: "Dez 2025 — Jun 2026 · 7 meses",
-      description: "Desenvolvimento e evolução de aplicações internas, automações e integrações para operação, marketing, gestão e dados.",
-      bullets: [
-        "Interfaces e funcionalidades para sistemas internos com React e Next.js",
-        "APIs com Node.js, Express e Python; workflows avançados com n8n",
-        "Integrações com Meta Ads, Google Ads, WhatsApp e sistemas internos",
-        "Projeto Atlas, monitoramento de saldos, notificações, Docker e VPS",
-      ],
-    },
-    {
-      role: "Engenheiro de Software Full Stack · Martech",
-      company: "V4 Company",
-      period: "Set 2025 — Dez 2025 · 4 meses",
-      description: "Soluções digitais para campanhas, aquisição e presença online, apoiando marketing, tráfego, vendas e design.",
-      bullets: [
-        "Landing pages, sites institucionais, campanhas e e-commerces",
-        "WordPress, WooCommerce, Laravel, React, Next.js e Tailwind CSS",
-        "Formulários, pixels, eventos de conversão e integrações com IA",
-        "GA4, GTM, performance, SEO técnico e experiência do usuário",
-      ],
-    },
-    {
-      role: "Engenheiro de Software Full Stack",
-      company: "ALPLATECH",
-      period: "Nov 2024 — Set 2025 · 11 meses",
-      description: "Sites, sistemas web e soluções digitais sob medida, da descoberta e prototipação à publicação.",
-      bullets: [
-        "Interfaces responsivas com React e JavaScript",
-        "Aplicações com Node.js, Express e PostgreSQL",
-        "APIs, integrações e modelagem de bancos relacionais",
-        "Digitalização de processos, sites e landing pages",
-      ],
-    },
-    {
-      role: "Técnico de TI e Automação",
-      company: "Studio Games Franchising",
-      period: "Jan 2024 — Ago 2024 · 8 meses",
-      description: "Suporte técnico, infraestrutura local e automação de rotinas internas.",
-      bullets: [
-        "Manutenção de computadores, consoles e redes locais",
-        "Ferramentas e scripts de automação em Python",
-        "Automação de atualizações e sistemas internos de acesso",
-      ],
-    },
-    {
-      role: "Desenvolvedor Web Freelance",
-      company: "Autônomo",
-      period: "Dez 2022 — Jan 2024 · 1 ano e 2 meses",
-      description: "Projetos web para pequenos negócios, em paralelo à gerência de uma loja.",
-      bullets: [
-        "Sites e lojas em WordPress e PHP",
-        "Aplicações com React e Node.js",
-      ],
-    },
+    { logo: "lusa", current: true, start: "Out 2026", end: "Atual", company: "LUSA Brasil", role: "Engenheiro de Software Full Stack Pleno · Líder Técnico", description: "Liderança técnica do setor animal: arquitetura, IA, agentes e automações, além do desenvolvimento de sistemas, páginas e aplicativo de doações.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "IA"] },
+    { logo: "lusa", start: "Jul 2026", end: "Set 2026", company: "LUSA Brasil", role: "Engenheiro de Software Full Stack Pleno", description: "Sistemas, páginas, checkout e app para campanhas de ONGs. Desenvolvimento do ecossistema de doações e integrações com gateways de pagamento.", tags: ["React Native", "Next.js", "NestJS", "MongoDB", "Pix"] },
+    { logo: "v4", start: "Dez 2025", end: "Jun 2026", company: "V4 Company", role: "Engenheiro de Software Full Stack Pleno", description: "Desenvolvimento de aplicações internas, automações e integrações para operação, marketing e gestão de dados.", tags: ["Next.js", "Node.js", "Python", "n8n", "Meta Ads", "APIs"] },
+    { logo: "v4", start: "Set 2025", end: "Dez 2025", company: "V4 Company", role: "Engenheiro de Software Full Stack · Martech", description: "Soluções digitais para campanhas, aquisição e presença online, apoiando marketing, tráfego, vendas e design.", tags: ["WordPress", "WooCommerce", "Next.js", "React", "IA"] },
+    { logo: "alplatech", start: "Nov 2024", end: "Set 2025", company: "ALPLATECH", role: "Engenheiro de Software Full Stack", description: "Sites, sistemas web e soluções digitais sob medida, da descoberta e prototipação à publicação.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
+    { logo: "games", start: "Jan 2024", end: "Ago 2024", company: "Studio Games Franchising", role: "Técnico de TI e Automação", description: "Suporte técnico, infraestrutura local e automação de rotinas.", tags: ["Python", "Redes", "Automação"] },
+    { logo: "person", start: "Dez 2022", end: "Jan 2024", company: "Autônomo", role: "Desenvolvedor Web Freelance", description: "Projetos web para pequenos negócios, sites e lojas online.", tags: ["WordPress", "PHP", "React", "Node.js"] },
   ],
   en: [
-    {
-      role: "Mid-Level Full Stack Software Engineer · Animal Sector Tech Lead",
-      company: "LUSA Brasil",
-      period: "Oct 2026 — Present",
-      description: "Technical leadership of the animal sector: architecture, priorities and the AI, agents and automation front, while still writing code.",
-      bullets: [
-        "Lead a junior developer: architecture, standards, code review and task distribution",
-        "AI traffic controller that pauses, cuts or scales Meta Ads budgets based on ROI",
-        "iCharity: donation platform with its own payment gateway, split at source and automatic reconciliation",
-        "AI agents and automations for operations; deploy and CI/CD with Docker, DigitalOcean and AWS",
-      ],
-    },
-    {
-      role: "Mid-Level Full Stack Software Engineer",
-      company: "LUSA Brasil",
-      period: "Jul 2026 — Sep 2026 · 3 months",
-      description: "Systems, pages, checkout and apps for NGO fundraising campaigns.",
-      bullets: [
-        "Donation ecosystem: iOS and Android app (Expo), NestJS API and Next.js dashboard with checkout",
-        "Webhook and conversion pipeline with Facebook CAPI and Utmify; gateway package with failover",
-        "10 NGO websites migrated from WordPress to Next.js, validated by screenshot against the original",
-        "TaskFlow: task manager with approvals, goals, credentials vault and push, built with NestJS and Next.js (PWA)",
-      ],
-    },
-    {
-      role: "Mid-Level Full Stack Software Engineer",
-      company: "V4 Company",
-      period: "Dec 2025 — Jun 2026 · 7 months",
-      description: "Development and evolution of internal applications, automations and integrations for operations, marketing, management and data.",
-      bullets: [
-        "Interfaces and features for internal systems with React and Next.js",
-        "APIs with Node.js, Express and Python; advanced workflows with n8n",
-        "Integrations with Meta Ads, Google Ads, WhatsApp and internal systems",
-        "Atlas Project, balance monitoring, notifications, Docker and VPS",
-      ],
-    },
-    {
-      role: "Full Stack Software Engineer · Martech",
-      company: "V4 Company",
-      period: "Sep 2025 — Dec 2025 · 4 months",
-      description: "Digital solutions for campaigns, acquisition and online presence, supporting marketing, paid media, sales and design.",
-      bullets: [
-        "Landing pages, institutional websites, campaigns and e-commerce",
-        "WordPress, WooCommerce, Laravel, React, Next.js and Tailwind CSS",
-        "Forms, pixels, conversion events and AI integrations",
-        "GA4, GTM, performance, technical SEO and user experience",
-      ],
-    },
-    {
-      role: "Full Stack Software Engineer",
-      company: "ALPLATECH",
-      period: "Nov 2024 — Sep 2025 · 11 months",
-      description: "Custom websites, web systems and digital solutions, from discovery and prototyping to launch.",
-      bullets: [
-        "Responsive interfaces with React and JavaScript",
-        "Applications with Node.js, Express and PostgreSQL",
-        "APIs, integrations and relational database modeling",
-        "Process digitization, websites and landing pages",
-      ],
-    },
-    {
-      role: "IT & Automation Technician",
-      company: "Studio Games Franchising",
-      period: "Jan 2024 — Aug 2024 · 8 months",
-      description: "Technical support, local infrastructure and automation of internal routines.",
-      bullets: [
-        "Computer, console and local network maintenance",
-        "Automation tools and scripts in Python",
-        "Update automation and internal access systems",
-      ],
-    },
-    {
-      role: "Freelance Web Developer",
-      company: "Self-employed",
-      period: "Dec 2022 — Jan 2024 · 1 year 2 months",
-      description: "Web projects for small businesses, alongside managing a retail store.",
-      bullets: [
-        "Websites and stores with WordPress and PHP",
-        "Applications with React and Node.js",
-      ],
-    },
+    { logo: "lusa", current: true, start: "Oct 2026", end: "Present", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer · Tech Lead", description: "Technical leadership of the animal sector: architecture, AI, agents and automation, plus building systems, pages and the donation app.", tags: ["Next.js", "NestJS", "React", "Docker", "AWS", "AI"] },
+    { logo: "lusa", start: "Jul 2026", end: "Sep 2026", company: "LUSA Brasil", role: "Mid-Level Full Stack Software Engineer", description: "Systems, pages, checkout and app for NGO campaigns. Built the donation ecosystem and payment gateway integrations.", tags: ["React Native", "Next.js", "NestJS", "MongoDB", "Pix"] },
+    { logo: "v4", start: "Dec 2025", end: "Jun 2026", company: "V4 Company", role: "Mid-Level Full Stack Software Engineer", description: "Internal applications, automations and integrations for operations, marketing and data management.", tags: ["Next.js", "Node.js", "Python", "n8n", "Meta Ads", "APIs"] },
+    { logo: "v4", start: "Sep 2025", end: "Dec 2025", company: "V4 Company", role: "Full Stack Software Engineer · Martech", description: "Digital solutions for campaigns, acquisition and online presence, supporting marketing, paid media, sales and design.", tags: ["WordPress", "WooCommerce", "Next.js", "React", "AI"] },
+    { logo: "alplatech", start: "Nov 2024", end: "Sep 2025", company: "ALPLATECH", role: "Full Stack Software Engineer", description: "Custom websites, web systems and digital solutions, from discovery and prototyping to launch.", tags: ["React", "Node.js", "PostgreSQL", "APIs", "WordPress"] },
+    { logo: "games", start: "Jan 2024", end: "Aug 2024", company: "Studio Games Franchising", role: "IT & Automation Technician", description: "Technical support, local infrastructure and automation of routines.", tags: ["Python", "Networking", "Automation"] },
+    { logo: "person", start: "Dec 2022", end: "Jan 2024", company: "Self-employed", role: "Freelance Web Developer", description: "Web projects for small businesses: websites and online stores.", tags: ["WordPress", "PHP", "React", "Node.js"] },
   ],
 };
 
@@ -640,52 +492,74 @@ const ngoSites = [
 
 export const deliveries: Record<Language, Delivery[]> = {
   pt: [
-    {
-      title: "Régua de tráfego com IA",
-      context: "LUSA Brasil",
-      description: "Automação diária que compara o gasto de cada campanha de Meta Ads com a receita no sistema de pagamentos e pausa, reduz ou aumenta o orçamento pelo ROI, com travas de segurança. Roda em Docker, com painel próprio.",
-    },
-    {
-      title: "10 sites de ONGs em Next.js",
-      context: "LUSA Brasil",
-      description: "Migração de WordPress e Elementor para Next.js com export estático, mantendo URLs e visual, validados por screenshot contra o original. Um deles em espanhol.",
-      links: ngoSites,
-    },
-    {
-      title: "TaskFlow",
-      context: "LUSA Brasil",
-      description: "Gestor de tarefas dos sites de arrecadação: aprovações, metas, cronômetro, calendário, cofre de acessos e notificações push. NestJS e Prisma no backend, Next.js instalável (PWA) no front.",
-    },
-    {
-      title: "Projeto Atlas",
-      context: "V4 Company",
-      description: "Plataforma interna que centralizou dados de operação, financeiro, comercial e mídia paga, antes espalhados em planilhas.",
-      caseStudy: "atlas",
-    },
+    { id: "regua", icon: "chart", title: "Régua de tráfego com IA", context: "LUSA Brasil", description: "Automação que compara o gasto de cada campanha de Meta Ads com a receita e ajusta o orçamento pelo ROI, com travas de segurança.", filters: ["lusa", "ia"] },
+    { id: "sites", icon: "globe", title: "10 sites de ONGs em Next.js", context: "LUSA Brasil", description: "Migração de WordPress para Next.js com export estático, mantendo URLs e visual original. Validados por screenshot. Inclui versão em ES.", filters: ["lusa", "web"] },
+    { id: "taskflow", icon: "check", title: "TaskFlow", context: "LUSA Brasil", description: "Gestor de tarefas dos sites de arrecadação: aprovações, metas, cronômetro, calendário, cofre de acessos e notificações push.", filters: ["lusa", "sistemas"] },
+    { id: "atlas", icon: "layers", title: "Projeto Atlas", context: "V4 Company", description: "Plataforma interna que centralizou dados de operação, financeiro, comercial e mídia paga, antes espalhados em planilhas.", filters: ["sistemas", "ia"] },
   ],
   en: [
-    {
-      title: "AI traffic controller",
-      context: "LUSA Brasil",
-      description: "Daily automation that compares each Meta Ads campaign's spend with the revenue in the payment system and pauses, cuts or scales its budget by ROI, with safety limits. Runs in Docker, with its own dashboard.",
-    },
-    {
-      title: "10 NGO websites in Next.js",
-      context: "LUSA Brasil",
-      description: "Migration from WordPress and Elementor to statically exported Next.js, keeping URLs and design, validated by screenshot against the original. One of them in Spanish.",
+    { id: "regua", icon: "chart", title: "AI traffic controller", context: "LUSA Brasil", description: "Automation that compares each Meta Ads campaign's spend with revenue and adjusts the budget by ROI, with safety limits.", filters: ["lusa", "ia"] },
+    { id: "sites", icon: "globe", title: "10 NGO websites in Next.js", context: "LUSA Brasil", description: "Migration from WordPress to statically exported Next.js, keeping URLs and the original design. Validated by screenshot. Includes a Spanish site.", filters: ["lusa", "web"] },
+    { id: "taskflow", icon: "check", title: "TaskFlow", context: "LUSA Brasil", description: "Task manager for the fundraising sites: approvals, goals, timer, calendar, credentials vault and push notifications.", filters: ["lusa", "sistemas"] },
+    { id: "atlas", icon: "layers", title: "Atlas Project", context: "V4 Company", description: "Internal platform that centralized operations, finance, sales and paid media data that used to live in spreadsheets.", filters: ["sistemas", "ia"] },
+  ],
+};
+
+const shortStudy = (s: Partial<CaseStudy> & Pick<CaseStudy, "id" | "modalTitle" | "modalCategory" | "summary">): CaseStudy => ({
+  number: "", title: s.modalTitle, owner: "", category: "", description: "", result: "", tags: [],
+  challenge: [], solution: "", stack: [], modules: [], role: [], impact: [], ...s,
+});
+
+export const deliveryStudies: Record<Language, CaseStudy[]> = {
+  pt: [
+    shortStudy({
+      id: "regua", modalTitle: "Régua de tráfego com IA", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
+      summary: "Uma vez por dia, a régua compara o gasto de cada campanha de Meta Ads com a receita que ela gerou no sistema de pagamentos e decide pausar, reduzir ou aumentar o orçamento.",
+      challenge: ["Ajustar orçamento campanha a campanha, à mão, todos os dias.", "Campanha sem retorno continuava gastando até alguém perceber."],
+      solution: "Automação em container Docker que cruza o gasto da Meta com a receita da LUSA, calcula o ROI por campanha e aplica a decisão dentro de travas de segurança. Um painel mostra o que a régua decidiu em cada rodada, e um fluxo n8n observa as decisões do gestor para a IA aprender com elas.",
+      stack: [["Automação", "Node.js · Docker · n8n"], ["Integrações", "Meta Marketing API · sistema de pagamentos LUSA"], ["Painel", "Next.js · somente leitura"]],
+      impact: ["Orçamento ajustado todo dia pelo ROI real, não pelo do Gerenciador de Anúncios.", "Modo observação para validar as decisões antes de agir."],
+    }),
+    shortStudy({
+      id: "sites", modalTitle: "10 sites de ONGs em Next.js", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
+      summary: "Sites de campanha e doação que estavam em WordPress e Elementor, migrados para Next.js com export estático, mantendo as URLs, os textos e o visual.",
+      solution: "Cada página foi convertida a partir do HTML publicado e comparada por screenshot com o original, em desktop e celular. O resultado é HTML estático servido por CDN, sem plugin, sem jQuery e sem banco.",
+      stack: [["Front", "Next.js · React · TypeScript · Tailwind CSS"], ["Entrega", "Export estático · imagens WebP geradas no build"]],
+      impact: ["Páginas mais leves e rápidas para os picos de campanha.", "Um dos sites em espanhol, para a campanha internacional."],
       links: ngoSites,
-    },
-    {
-      title: "TaskFlow",
-      context: "LUSA Brasil",
-      description: "Task manager for the fundraising websites: approvals, goals, timer, calendar, credentials vault and push notifications. NestJS and Prisma on the backend, installable Next.js (PWA) on the front.",
-    },
-    {
-      title: "Atlas Project",
-      context: "V4 Company",
-      description: "Internal platform that centralized operations, finance, sales and paid media data that used to live in spreadsheets.",
-      caseStudy: "atlas",
-    },
+    }),
+    shortStudy({
+      id: "taskflow", modalTitle: "TaskFlow", modalCategory: "TAMBÉM ENTREGUEI / LUSA BRASIL",
+      summary: "Gestor de tarefas dos sites de arrecadação da LUSA, com aprovações, metas, cronômetro, calendário, cofre de acessos, sugestões e notificações push.",
+      solution: "Front em Next.js instalável (PWA) e API em NestJS com Prisma e MySQL. O navegador fala só com o Next, que repassa o JWT guardado em cookie httpOnly para a API (padrão BFF), então o token nunca fica exposto ao JavaScript.",
+      stack: [["Front", "Next.js · React · PWA"], ["API", "NestJS · Prisma · MySQL · WebSockets"], ["Segurança", "BFF com cookie httpOnly · rate limiting"]],
+      impact: ["Fluxo de aprovação das páginas num lugar só.", "Acessos dos sites guardados num cofre, fora de planilhas e conversas."],
+    }),
+  ],
+  en: [
+    shortStudy({
+      id: "regua", modalTitle: "AI traffic controller", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
+      summary: "Once a day, it compares each Meta Ads campaign's spend with the revenue it generated in the payment system and decides to pause, cut or scale its budget.",
+      challenge: ["Adjusting budgets campaign by campaign, by hand, every day.", "Campaigns with no return kept spending until someone noticed."],
+      solution: "A Docker automation that matches Meta spend with LUSA revenue, computes ROI per campaign and applies the decision within safety limits. A dashboard shows what it decided each round, and an n8n flow watches the media buyer's decisions so the AI can learn from them.",
+      stack: [["Automation", "Node.js · Docker · n8n"], ["Integrations", "Meta Marketing API · LUSA payment system"], ["Dashboard", "Next.js · read-only"]],
+      impact: ["Budgets adjusted daily by real ROI, not the Ads Manager estimate.", "Observation mode to validate decisions before acting."],
+    }),
+    shortStudy({
+      id: "sites", modalTitle: "10 NGO websites in Next.js", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
+      summary: "Campaign and donation sites built on WordPress and Elementor, migrated to statically exported Next.js while keeping URLs, copy and design.",
+      solution: "Each page was converted from the published HTML and compared by screenshot with the original on desktop and mobile. The result is static HTML served from a CDN, with no plugins, no jQuery and no database.",
+      stack: [["Front", "Next.js · React · TypeScript · Tailwind CSS"], ["Delivery", "Static export · WebP images generated at build time"]],
+      impact: ["Lighter, faster pages for campaign traffic peaks.", "One of the sites in Spanish, for the international campaign."],
+      links: ngoSites,
+    }),
+    shortStudy({
+      id: "taskflow", modalTitle: "TaskFlow", modalCategory: "ALSO DELIVERED / LUSA BRASIL",
+      summary: "Task manager for LUSA's fundraising sites, with approvals, goals, timer, calendar, credentials vault, suggestions and push notifications.",
+      solution: "Installable Next.js front end (PWA) and a NestJS API with Prisma and MySQL. The browser only talks to Next, which forwards the JWT stored in an httpOnly cookie to the API (BFF pattern), so the token is never exposed to JavaScript.",
+      stack: [["Front", "Next.js · React · PWA"], ["API", "NestJS · Prisma · MySQL · WebSockets"], ["Security", "BFF with httpOnly cookie · rate limiting"]],
+      impact: ["Page approval flow in one place.", "Site credentials kept in a vault, out of spreadsheets and chats."],
+    }),
   ],
 };
 

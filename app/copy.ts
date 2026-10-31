@@ -1,0 +1,242 @@
+import type { Language } from "./content";
+
+export type StatIcon = "code" | "layers" | "users" | "star";
+
+export const stats: Record<Language, { icon: StatIcon; value: string; label: [string, string] }[]> = {
+  pt: [
+    { icon: "code", value: "3+", label: ["anos", "de experiência"] },
+    { icon: "layers", value: "10+", label: ["projetos", "entregues"] },
+    { icon: "users", value: "41", label: ["agentes de IA", "em operação"] },
+    { icon: "star", value: "100%", label: ["foco em", "impacto real"] },
+  ],
+  en: [
+    { icon: "code", value: "3+", label: ["years", "of experience"] },
+    { icon: "layers", value: "10+", label: ["projects", "delivered"] },
+    { icon: "users", value: "41", label: ["AI agents", "in operation"] },
+    { icon: "star", value: "100%", label: ["focused on", "real impact"] },
+  ],
+};
+
+export const heroTech = ["Next.js", "NestJS", "React", "TypeScript", "Python", "Docker", "AWS", "PostgreSQL"];
+
+export const careerTech = [
+  "Next.js", "NestJS", "React", "TypeScript", "Python",
+  "Docker", "AWS", "PostgreSQL", "Supabase", "Redis",
+  "Laravel", "Node.js", "MongoDB", "Tailwind CSS", "Figma",
+];
+
+export const alsoWorkWith = ["WordPress", "WooCommerce", "GA4", "GTM", "Meta Pixel e CAPI", "Figma"];
+
+export const text = {
+  pt: {
+    available: "DISPONÍVEL PARA PROJETOS FREELANCE",
+    eyebrow: "SOFTWARE ENGINEER · FULL STACK & IA",
+    heroTitle: ["Tecnologia", "que gera", "impacto", "real."],
+    heroLead: [["Construo ", false], ["páginas", true], [", checkout, apps e automações ", false], ["com IA", true], [" para campanhas de arrecadação que transformam vidas.", false]] as [string, boolean][],
+    seeProjects: "Ver projetos",
+    talk: "Falar comigo",
+    techIUse: "TECNOLOGIAS QUE USO",
+    handIdeas: ["IDEIAS", "CÓDIGO", "IMPACTO", "PESSOAS"],
+    handWorld: ["TECNOLOGIA", "PARA UM", "MUNDO", "MELHOR."],
+    handTransform: ["TRANSFORMANDO", "IDEIAS EM", "IMPACTO REAL."],
+    metricLabel: "Campanhas ativas",
+    metricValue: "+25.000",
+    metricUnit: "acessos por dia",
+    books: ["Clean Architecture", "Inteligência Artificial", "Design de Produtos Digitais", "Building a Better World"],
+    notebook: ["PROJETOS", "APRENDIZADO", "LIBERDADE"],
+
+    aboutIndex: "SOBRE MIM",
+    aboutTitle: ["Mais do que código,", "tecnologia com propósito."],
+    aboutLead: [["Sou ", false], ["Igor de Souza Cardoso", true], [", engenheiro de software full stack na LUSA Brasil, onde lidero tecnicamente o setor animal e construo a tecnologia das campanhas de arrecadação para ", false], ["ONGs:", true], [" páginas, checkout, apps e automações com IA.", false]] as [string, boolean][],
+    aboutBody: "Gosto de resolver problemas complexos, automatizar processos e transformar ideias em produtos que realmente geram impacto na vida das pessoas e dos animais.",
+    values: [
+      { icon: "target", title: "Foco em impacto", text: "Tecnologia a serviço de causas reais." },
+      { icon: "users", title: "Liderança técnica", text: "Arquitetura, equipe e resultados." },
+      { icon: "bolt", title: "Execução completa", text: "Da ideia ao deploy, com autonomia." },
+    ],
+    whatIDo: "O QUE EU FAÇO",
+    stackTitle: ["Stack completa", "para grandes ideias."],
+    handStack: ["TECNOLOGIA", "FERRAMENTA", "IMPACTO", "O RESULTADO", "É O QUE IMPORTA."],
+    alsoWork: "Também trabalho com:",
+
+    careerIndex: "CARREIRA",
+    careerTitle: ["Experiência", "que transforma", "ideias em", "impacto real."],
+    careerLead: "Ao longo da minha carreira, atuei em diferentes contextos, sempre com o mesmo foco: resolver problemas reais com tecnologia, gerar resultados e construir soluções que realmente fazem a diferença.",
+    techIUtilize: "TECNOLOGIAS QUE UTILIZO",
+    current: "Atual",
+
+    projectsIndex: "PROJETOS",
+    projectsTitle: ["Produtos construídos", "para ", "gerar impacto."],
+    projectsLead: "Projetos próprios aparecem por inteiro. Os construídos na LUSA são apresentados como estudos de caso, sem telas internas nem dados de doadores.",
+    handProjects: ["TECNOLOGIA", "APLICADA A", "PROBLEMAS REAIS."],
+    deliveredValue: "+10",
+    deliveredLabel: ["projetos entregues", "nos últimos 2 anos"],
+    filters: [
+      { id: "todos", label: "Todos" },
+      { id: "proprios", label: "Projetos próprios" },
+      { id: "lusa", label: "LUSA Brasil" },
+      { id: "sistemas", label: "Sistemas" },
+      { id: "ia", label: "IA e automação" },
+      { id: "web", label: "Web e campanhas" },
+    ],
+    alsoDelivered: "TAMBÉM ENTREGUEI",
+    noResults: "Nenhum projeto nesta categoria.",
+
+    processIndex: "PROCESSO",
+    processTitle: ["Como transformo", "ideias em ", "impacto real."],
+    processLead: "Meu processo combina estratégia, tecnologia e execução para entregar soluções completas, do planejamento ao resultado. Cada projeto é tratado de forma única, com foco em resolver problemas reais e gerar impacto mensurável.",
+    steps: [
+      { icon: "search", title: "Entendo o problema", text: "Analiso o contexto, os objetivos e os desafios para encontrar a melhor abordagem técnica.", items: ["Reunião e briefing", "Levantamento de requisitos", "Análise de viabilidade", "Definição de metas"] },
+      { icon: "bulb", title: "Planejo a solução", text: "Desenho a arquitetura, escolho as tecnologias e defino o plano de execução com foco em resultado.", items: ["Arquitetura da solução", "Definição de tecnologias", "Roadmap e cronograma", "Validação da estratégia"] },
+      { icon: "code", title: "Desenvolvo e integro", text: "Construo o produto com boas práticas, código limpo e integrações com ferramentas e APIs.", items: ["Desenvolvimento full stack", "Integrações e automações", "Testes e validações", "Deploy em ambiente seguro"] },
+      { icon: "gear", title: "Acompanho e otimizo", text: "Monitoro o desempenho, analiso os dados e faço melhorias contínuas para aumentar o impacto.", items: ["Monitoramento e métricas", "Otimizações de performance", "Ajustes com base em dados", "Evolução de funcionalidades"] },
+      { icon: "chart", title: "Entrego resultados", text: "O projeto vai para produção com o acompanhamento necessário, gerando valor real para o cliente e a causa.", items: ["Projeto em produção", "Suporte e manutenção", "Relatórios e insights", "Escalabilidade para o futuro"] },
+    ],
+    focusLabel: "FOCO NO QUE IMPORTA",
+    focusTitle: ["Tecnologia aplicada para resolver problemas reais", "e gerar ", "impacto na vida das pessoas e dos animais."],
+    focusCta: "Vamos conversar?",
+    focusNote: "Novos projetos e parcerias são bem-vindos.",
+
+    contactIndex: "CONTATO",
+    contactTitle: ["Vamos construir", "algo de impacto", "juntos?"],
+    contactLead: "Estou sempre aberto a novos projetos, parcerias e oportunidades para resolver problemas reais com tecnologia. Se você tem uma ideia, precisa de ajuda técnica ou quer conversar sobre um projeto, será um prazer falar com você.",
+    channels: [
+      { id: "whatsapp", title: "WhatsApp", text: "Conversa rápida e direta.", link: "Falar no WhatsApp" },
+      { id: "email", title: "E-mail", text: "Para detalhes e propostas.", link: "Enviar e-mail" },
+      { id: "linkedin", title: "LinkedIn", text: "Vamos nos conectar!", link: "Ver meu perfil" },
+      { id: "github", title: "GitHub", text: "Veja meus projetos e contribuições.", link: "github.com/igorcardos0" },
+    ],
+    formTitle: "Me envie uma mensagem",
+    formLead: "Conte um pouco sobre o seu projeto. Respondo o mais rápido possível.",
+    name: "Seu nome",
+    email: "Seu e-mail",
+    company: "Empresa (opcional)",
+    message: "Como posso ajudar?",
+    send: "Enviar mensagem",
+    sending: "Enviando...",
+    privacy: "Seus dados estão seguros. Não compartilho suas informações.",
+    availableFor: "DISPONÍVEL PARA",
+    availableTitle: ["Projetos que geram", "impacto positivo."],
+    availability: [
+      { icon: "heart", title: "ONGs e causas sociais", text: "Tecnologia para arrecadação, automação e gestão." },
+      { icon: "layers", title: "Produtos digitais", text: "Sites, sistemas e aplicativos sob medida." },
+      { icon: "bolt", title: "Consultorias e parcerias", text: "Arquitetura, IA e performance para projetos existentes." },
+      { icon: "users", title: "Oportunidades na LUSA", text: "Sempre aberto a novos desafios no time." },
+    ],
+    backToTop: "Voltar ao topo",
+  },
+  en: {
+    available: "AVAILABLE FOR FREELANCE PROJECTS",
+    eyebrow: "SOFTWARE ENGINEER · FULL STACK & AI",
+    heroTitle: ["Technology", "that creates", "real", "impact."],
+    heroLead: [["I build ", false], ["pages", true], [", checkout, apps and ", false], ["AI", true], [" automations for fundraising campaigns that change lives.", false]] as [string, boolean][],
+    seeProjects: "View projects",
+    talk: "Talk to me",
+    techIUse: "TECHNOLOGIES I USE",
+    handIdeas: ["IDEAS", "CODE", "IMPACT", "PEOPLE"],
+    handWorld: ["TECHNOLOGY", "FOR A", "BETTER", "WORLD."],
+    handTransform: ["TURNING", "IDEAS INTO", "REAL IMPACT."],
+    metricLabel: "Active campaigns",
+    metricValue: "+25,000",
+    metricUnit: "visits per day",
+    books: ["Clean Architecture", "Artificial Intelligence", "Digital Product Design", "Building a Better World"],
+    notebook: ["PROJECTS", "LEARNING", "FREEDOM"],
+
+    aboutIndex: "ABOUT ME",
+    aboutTitle: ["More than code,", "technology with purpose."],
+    aboutLead: [["I'm ", false], ["Igor de Souza Cardoso", true], [", a full stack software engineer at LUSA Brasil, where I lead the technology of the animal sector and build the tech behind fundraising campaigns for ", false], ["NGOs:", true], [" pages, checkout, apps and AI automations.", false]] as [string, boolean][],
+    aboutBody: "I like solving complex problems, automating processes and turning ideas into products that make a real difference in the lives of people and animals.",
+    values: [
+      { icon: "target", title: "Impact first", text: "Technology serving real causes." },
+      { icon: "users", title: "Technical leadership", text: "Architecture, team and results." },
+      { icon: "bolt", title: "End-to-end delivery", text: "From idea to deploy, autonomously." },
+    ],
+    whatIDo: "WHAT I DO",
+    stackTitle: ["A complete stack", "for big ideas."],
+    handStack: ["TECHNOLOGY", "IS A TOOL", "IMPACT", "THE RESULT", "IS WHAT MATTERS."],
+    alsoWork: "I also work with:",
+
+    careerIndex: "CAREER",
+    careerTitle: ["Experience", "that turns", "ideas into", "real impact."],
+    careerLead: "Throughout my career I've worked in different contexts, always with the same focus: solving real problems with technology, delivering results and building solutions that make a difference.",
+    techIUtilize: "TECHNOLOGIES I WORK WITH",
+    current: "Current",
+
+    projectsIndex: "PROJECTS",
+    projectsTitle: ["Products built", "to ", "create impact."],
+    projectsLead: "Personal projects are shown in full. Work built at LUSA is presented as case studies, with no internal screens or donor data.",
+    handProjects: ["TECHNOLOGY", "APPLIED TO", "REAL PROBLEMS."],
+    deliveredValue: "+10",
+    deliveredLabel: ["projects delivered", "in the last 2 years"],
+    filters: [
+      { id: "todos", label: "All" },
+      { id: "proprios", label: "Personal projects" },
+      { id: "lusa", label: "LUSA Brasil" },
+      { id: "sistemas", label: "Systems" },
+      { id: "ia", label: "AI & automation" },
+      { id: "web", label: "Web & campaigns" },
+    ],
+    alsoDelivered: "ALSO DELIVERED",
+    noResults: "No projects in this category.",
+
+    processIndex: "PROCESS",
+    processTitle: ["How I turn", "ideas into ", "real impact."],
+    processLead: "My process combines strategy, technology and execution to deliver complete solutions, from planning to results. Every project is treated as unique, focused on solving real problems and creating measurable impact.",
+    steps: [
+      { icon: "search", title: "I understand the problem", text: "I analyze the context, goals and challenges to find the best technical approach.", items: ["Meeting and briefing", "Requirements gathering", "Feasibility analysis", "Goal setting"] },
+      { icon: "bulb", title: "I plan the solution", text: "I design the architecture, choose the technologies and define an execution plan focused on results.", items: ["Solution architecture", "Technology choices", "Roadmap and timeline", "Strategy validation"] },
+      { icon: "code", title: "I build and integrate", text: "I build the product with good practices, clean code and integrations with tools and APIs.", items: ["Full stack development", "Integrations and automation", "Tests and validation", "Secure deployment"] },
+      { icon: "gear", title: "I monitor and optimize", text: "I track performance, analyze the data and keep improving to increase the impact.", items: ["Monitoring and metrics", "Performance tuning", "Data-driven adjustments", "Feature evolution"] },
+      { icon: "chart", title: "I deliver results", text: "The project goes to production with the support it needs, creating real value for the client and the cause.", items: ["Project in production", "Support and maintenance", "Reports and insights", "Ready to scale"] },
+    ],
+    focusLabel: "FOCUS ON WHAT MATTERS",
+    focusTitle: ["Technology applied to solve real problems", "and create ", "impact on the lives of people and animals."],
+    focusCta: "Let's talk?",
+    focusNote: "New projects and partnerships are welcome.",
+
+    contactIndex: "CONTACT",
+    contactTitle: ["Let's build", "something meaningful", "together?"],
+    contactLead: "I'm always open to new projects, partnerships and opportunities to solve real problems with technology. If you have an idea, need technical help or want to talk about a project, I'd love to hear from you.",
+    channels: [
+      { id: "whatsapp", title: "WhatsApp", text: "Quick, direct conversation.", link: "Chat on WhatsApp" },
+      { id: "email", title: "Email", text: "For details and proposals.", link: "Send an email" },
+      { id: "linkedin", title: "LinkedIn", text: "Let's connect!", link: "View my profile" },
+      { id: "github", title: "GitHub", text: "See my projects and contributions.", link: "github.com/igorcardos0" },
+    ],
+    formTitle: "Send me a message",
+    formLead: "Tell me a bit about your project. I'll reply as soon as I can.",
+    name: "Your name",
+    email: "Your email",
+    company: "Company (optional)",
+    message: "How can I help?",
+    send: "Send message",
+    sending: "Sending...",
+    privacy: "Your data is safe. I don't share your information.",
+    availableFor: "AVAILABLE FOR",
+    availableTitle: ["Projects that create", "positive impact."],
+    availability: [
+      { icon: "heart", title: "NGOs and social causes", text: "Technology for fundraising, automation and management." },
+      { icon: "layers", title: "Digital products", text: "Custom websites, systems and apps." },
+      { icon: "bolt", title: "Consulting and partnerships", text: "Architecture, AI and performance for existing projects." },
+      { icon: "users", title: "Opportunities at LUSA", text: "Always open to new challenges on the team." },
+    ],
+    backToTop: "Back to top",
+  },
+} as const;
+
+export type CardVisual = "abajur" | "lusa" | "icharity" | "hub";
+
+export const projectCards: Record<Language, { id: CardVisual; badge: string; points: string[]; cta: string; filters: string[] }[]> = {
+  pt: [
+    { id: "abajur", badge: "PROJETO PRÓPRIO", points: ["~144 fps", "Milhares de testes", "Instalador para Windows"], cta: "Ver projeto completo", filters: ["proprios", "ia", "sistemas"] },
+    { id: "lusa", badge: "LUSA BRASIL", points: ["Em produção nas lojas", "Pix e Pix Automático", "Failover entre gateways"], cta: "Ver estudo de caso", filters: ["lusa", "sistemas"] },
+    { id: "icharity", badge: "LUSA BRASIL", points: ["100% para a ONG", "Conciliação automática", "~400 testes"], cta: "Ver estudo de caso", filters: ["lusa", "sistemas"] },
+    { id: "hub", badge: "PROJETO PRÓPRIO", points: ["Lista de leads pontuados em minutos", "Abre com dois cliques", "100% automatizado"], cta: "Ver projeto completo", filters: ["proprios", "ia"] },
+  ],
+  en: [
+    { id: "abajur", badge: "PERSONAL PROJECT", points: ["~144 fps", "Thousands of tests", "Windows installer"], cta: "View full project", filters: ["proprios", "ia", "sistemas"] },
+    { id: "lusa", badge: "LUSA BRASIL", points: ["Live on the app stores", "Pix and recurring Pix", "Gateway failover"], cta: "View case study", filters: ["lusa", "sistemas"] },
+    { id: "icharity", badge: "LUSA BRASIL", points: ["100% to the NGO", "Automatic reconciliation", "~400 tests"], cta: "View case study", filters: ["lusa", "sistemas"] },
+    { id: "hub", badge: "PERSONAL PROJECT", points: ["Scored lead list in minutes", "Opens with two clicks", "Fully automated"], cta: "View full project", filters: ["proprios", "ia"] },
+  ],
+};

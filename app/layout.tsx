@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Gochi_Hand, Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
-const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
+const sans = Inter({ variable: "--font-sans", subsets: ["latin"] });
+const display = Inter_Tight({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
+const hand = Gochi_Hand({ variable: "--font-hand", subsets: ["latin"], weight: "400" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://igorcardos0.github.io";
 const title = "Igor de Souza Cardoso | Engenheiro de Software Full Stack";
 const description = "Portfólio de Igor de Souza Cardoso, engenheiro de software full stack e líder técnico. Tecnologia para campanhas de impacto social: pagamentos, apps e automações com IA, com NestJS, Next.js, React Native, Laravel e Python.";
@@ -62,8 +63,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
-  colorScheme: "dark",
+  themeColor: "#0b0a12",
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -94,7 +95,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="pt-BR" className={`${geist.variable} ${mono.variable}`}>
+    <html lang="pt-BR" className={`${sans.variable} ${display.variable} ${hand.variable}`}>
       <body>
         {children}
         <script
