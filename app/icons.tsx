@@ -32,7 +32,7 @@ const brands: Record<string, SimpleIcon> = {
 
 function AwsMark({ dark }: { dark?: boolean }) {
   return (
-    <svg viewBox="0 0 48 30" role="img" aria-label="AWS">
+    <svg viewBox="0 0 48 30" aria-hidden="true">
       <text x="24" y="17" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="17" fill={dark ? "#fff" : "#232F3E"}>aws</text>
       <path d="M8 21.5c9 5 23 5 31-.5" fill="none" stroke="#FF9900" strokeWidth="2.4" strokeLinecap="round" />
       <path d="M36 19.5l4 1.3-1.6 3.8" fill="none" stroke="#FF9900" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,7 +57,7 @@ export function BrandIcon({ name, dark = false }: { name: string; dark?: boolean
   const isBlack = icon.hex === "000000" || icon.hex === "181717";
   const fill = dark && isBlack ? "#ffffff" : `#${icon.hex}`;
   return (
-    <svg viewBox="0 0 24 24" role="img" aria-label={icon.title}>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d={icon.path} fill={fill} />
     </svg>
   );

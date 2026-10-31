@@ -57,14 +57,16 @@ export const nav = {
     { id: "sobre", label: "Sobre", number: "02" },
     { id: "experiencia", label: "Carreira", number: "03" },
     { id: "projetos", label: "Projetos", number: "04" },
-    { id: "contato", label: "Contato", number: "05" },
+    { id: "processo", label: "Processo", number: "05" },
+    { id: "contato", label: "Contato", number: "06" },
   ],
   en: [
     { id: "inicio", label: "Home", number: "01" },
     { id: "sobre", label: "About", number: "02" },
     { id: "experiencia", label: "Career", number: "03" },
     { id: "projetos", label: "Projects", number: "04" },
-    { id: "contato", label: "Contact", number: "05" },
+    { id: "processo", label: "Process", number: "05" },
+    { id: "contato", label: "Contact", number: "06" },
   ],
 };
 

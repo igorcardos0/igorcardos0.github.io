@@ -6,26 +6,25 @@ export const stats: Record<Language, { icon: StatIcon; value: string; label: [st
   pt: [
     { icon: "code", value: "3+", label: ["anos", "de experiência"] },
     { icon: "layers", value: "10+", label: ["projetos", "entregues"] },
-    { icon: "users", value: "41", label: ["agentes de IA", "em operação"] },
-    { icon: "star", value: "100%", label: ["foco em", "impacto real"] },
+    { icon: "users", value: "41", label: ["agentes de IA", "no meu time"] },
+    { icon: "star", value: "Líder", label: ["técnico na", "LUSA Brasil"] },
   ],
   en: [
     { icon: "code", value: "3+", label: ["years", "of experience"] },
     { icon: "layers", value: "10+", label: ["projects", "delivered"] },
-    { icon: "users", value: "41", label: ["AI agents", "in operation"] },
-    { icon: "star", value: "100%", label: ["focused on", "real impact"] },
+    { icon: "users", value: "41", label: ["AI agents", "on my team"] },
+    { icon: "star", value: "Lead", label: ["tech lead at", "LUSA Brasil"] },
   ],
 };
 
 export const heroTech = ["Next.js", "NestJS", "React", "TypeScript", "Python", "Docker", "AWS", "PostgreSQL"];
 
-export const careerTech = [
-  "Next.js", "NestJS", "React", "TypeScript", "Python",
-  "Docker", "AWS", "PostgreSQL", "Supabase", "Redis",
-  "Laravel", "Node.js", "MongoDB", "Tailwind CSS", "Figma",
-];
-
 export const alsoWorkWith = ["WordPress", "WooCommerce", "GA4", "GTM", "Meta Pixel e CAPI", "Figma"];
+
+export const hubVisual = {
+  pt: { stats: ["Leads encontrados", "Oportunidades", "Sites analisados", "Propostas geradas"], name: "Restaurante Exemplo", level: "Oportunidade alta", checks: ["CNPJ encontrado", "PageSpeed: 42", "Proposta gerada"] },
+  en: { stats: ["Leads found", "Opportunities", "Sites analyzed", "Proposals drafted"], name: "Example Restaurant", level: "High opportunity", checks: ["Company ID found", "PageSpeed: 42", "Proposal drafted"] },
+};
 
 export const text = {
   pt: {
@@ -61,12 +60,16 @@ export const text = {
     careerIndex: "CARREIRA",
     careerTitle: ["Experiência", "que transforma", "ideias em", "impacto real."],
     careerLead: "Ao longo da minha carreira, atuei em diferentes contextos, sempre com o mesmo foco: resolver problemas reais com tecnologia, gerar resultados e construir soluções que realmente fazem a diferença.",
-    techIUtilize: "TECNOLOGIAS QUE UTILIZO",
+    education: "FORMAÇÃO",
+    degrees: [
+      { period: "2025 — 2029", title: "Bacharelado em Ciência da Computação", school: "UniMAX — Centro Universitário Max Planck" },
+      { period: "2020 — 2022 · 1.500h+", title: "Desenvolvimento Web Full Stack", school: "Trybe" },
+    ],
     current: "Atual",
 
     projectsIndex: "PROJETOS",
     projectsTitle: ["Produtos construídos", "para ", "gerar impacto."],
-    projectsLead: "Projetos próprios aparecem por inteiro. Os construídos na LUSA são apresentados como estudos de caso, sem telas internas nem dados de doadores.",
+    projectsLead: "Cada projeto abre um estudo de caso com o problema, o que construí, a stack e o resultado. As telas da LUSA usam dados de demonstração, sem dados reais de doadores.",
     handProjects: ["TECNOLOGIA", "APLICADA A", "PROBLEMAS REAIS."],
     deliveredValue: "+10",
     deliveredLabel: ["projetos entregues", "nos últimos 2 anos"],
@@ -157,12 +160,16 @@ export const text = {
     careerIndex: "CAREER",
     careerTitle: ["Experience", "that turns", "ideas into", "real impact."],
     careerLead: "Throughout my career I've worked in different contexts, always with the same focus: solving real problems with technology, delivering results and building solutions that make a difference.",
-    techIUtilize: "TECHNOLOGIES I WORK WITH",
+    education: "EDUCATION",
+    degrees: [
+      { period: "2025 — 2029", title: "Bachelor's Degree in Computer Science", school: "UniMAX — Centro Universitário Max Planck" },
+      { period: "2020 — 2022 · 1,500h+", title: "Full Stack Web Development Program", school: "Trybe" },
+    ],
     current: "Current",
 
     projectsIndex: "PROJECTS",
     projectsTitle: ["Products built", "to ", "create impact."],
-    projectsLead: "Personal projects are shown in full. Work built at LUSA is presented as case studies, with no internal screens or donor data.",
+    projectsLead: "Each project opens a case study with the problem, what I built, the stack and the result. LUSA screens use demo data, with no real donor data.",
     handProjects: ["TECHNOLOGY", "APPLIED TO", "REAL PROBLEMS."],
     deliveredValue: "+10",
     deliveredLabel: ["projects delivered", "in the last 2 years"],
@@ -226,17 +233,17 @@ export type CardVisual = "abajur" | "lusa" | "icharity" | "hub" | "bitenglish";
 
 export const projectCards: Record<Language, { id: CardVisual; badge: string; points: string[]; cta: string; filters: string[] }[]> = {
   pt: [
-    { id: "abajur", badge: "PROJETO PRÓPRIO", points: ["~144 fps", "Milhares de testes", "Instalador para Windows"], cta: "Ver projeto completo", filters: ["proprios", "ia", "sistemas"] },
+    { id: "abajur", badge: "PROJETO PRÓPRIO", points: ["~144 fps", "Milhares de testes", "Instalador para Windows"], cta: "Ver estudo de caso", filters: ["proprios", "ia", "sistemas"] },
     { id: "lusa", badge: "LUSA BRASIL", points: ["Em produção nas lojas", "Pix e Pix Automático", "Failover entre gateways"], cta: "Ver estudo de caso", filters: ["lusa", "sistemas"] },
     { id: "icharity", badge: "LUSA BRASIL", points: ["100% para a ONG", "Conciliação automática", "~400 testes"], cta: "Ver estudo de caso", filters: ["lusa", "sistemas"] },
-    { id: "hub", badge: "PROJETO PRÓPRIO", points: ["Lista de leads pontuados em minutos", "Abre com dois cliques", "100% automatizado"], cta: "Ver projeto completo", filters: ["proprios", "ia"] },
-    { id: "bitenglish", badge: "PROJETO PRÓPRIO", points: ["12 mini-jogos em pixel art", "~600 palavras do A1 ao B1", "Ranking de alunos e turmas"], cta: "Ver projeto completo", filters: ["proprios", "sistemas", "web"] },
+    { id: "hub", badge: "PROJETO PRÓPRIO", points: ["Lista de leads pontuados em minutos", "Abre com dois cliques", "Proposta escrita com IA"], cta: "Ver estudo de caso", filters: ["proprios", "ia"] },
+    { id: "bitenglish", badge: "PROJETO PRÓPRIO", points: ["12 mini-jogos em pixel art", "~600 palavras do A1 ao B1", "Ranking de alunos e turmas"], cta: "Ver estudo de caso", filters: ["proprios", "sistemas", "web"] },
   ],
   en: [
-    { id: "abajur", badge: "PERSONAL PROJECT", points: ["~144 fps", "Thousands of tests", "Windows installer"], cta: "View full project", filters: ["proprios", "ia", "sistemas"] },
+    { id: "abajur", badge: "PERSONAL PROJECT", points: ["~144 fps", "Thousands of tests", "Windows installer"], cta: "View case study", filters: ["proprios", "ia", "sistemas"] },
     { id: "lusa", badge: "LUSA BRASIL", points: ["Live on the app stores", "Pix and recurring Pix", "Gateway failover"], cta: "View case study", filters: ["lusa", "sistemas"] },
     { id: "icharity", badge: "LUSA BRASIL", points: ["100% to the NGO", "Automatic reconciliation", "~400 tests"], cta: "View case study", filters: ["lusa", "sistemas"] },
-    { id: "hub", badge: "PERSONAL PROJECT", points: ["Scored lead list in minutes", "Opens with two clicks", "Fully automated"], cta: "View full project", filters: ["proprios", "ia"] },
-    { id: "bitenglish", badge: "PERSONAL PROJECT", points: ["12 pixel art mini-games", "~600 words from A1 to B1", "Student and class rankings"], cta: "View full project", filters: ["proprios", "sistemas", "web"] },
+    { id: "hub", badge: "PERSONAL PROJECT", points: ["Scored lead list in minutes", "Opens with two clicks", "AI-written proposals"], cta: "View case study", filters: ["proprios", "ia"] },
+    { id: "bitenglish", badge: "PERSONAL PROJECT", points: ["12 pixel art mini-games", "~600 words from A1 to B1", "Student and class rankings"], cta: "View case study", filters: ["proprios", "sistemas", "web"] },
   ],
 };

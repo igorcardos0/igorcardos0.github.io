@@ -3,12 +3,12 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
-  ArrowRight, ArrowUpRight, BrainCircuit, Building2, ChartColumn, CircleCheck, Cloud, CodeXml, Database, ExternalLink,
+  ArrowRight, ArrowUpRight, BrainCircuit, Building2, ChartColumn, CircleCheck, Cloud, CodeXml, Database, 
   Globe, Heart, Layers, Lightbulb, Lock, Mail, Menu, MessageCircle, MessageSquare, Monitor, Search, Settings,
   Star, Target, User, Users, X, Zap, type LucideIcon,
 } from "lucide-react";
 import { atlasCaseStudy, caseStudies, deliveries, deliveryStudies, experience, nav, skills, type Job } from "./content";
-import { alsoWorkWith, careerTech, heroTech, projectCards, stats, text, type CardVisual } from "./copy";
+import { alsoWorkWith, heroTech, hubVisual, projectCards, stats, text, type CardVisual } from "./copy";
 import { BrandIcon, LinkedinMark } from "./icons";
 
 interface ContactFormData {
@@ -112,34 +112,32 @@ function JobLogo({ logo }: { logo: Job["logo"] }) {
     <span className={`job-logo logo-${logo}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt="" loading="lazy" />
-      <small>{name}</small>
+      <small aria-hidden="true">{name}</small>
     </span>
   );
 }
 
-function HubVisual() {
+function HubVisual({ language }: { language: "pt" | "en" }) {
+  const h = hubVisual[language];
   const pins = [[22, 18], [40, 30], [58, 14], [72, 40], [34, 58], [62, 64], [84, 22], [48, 46], [80, 72], [26, 80]];
   return (
     <div className="hub-visual">
       <div className="hub-map">{pins.map(([x, y]) => <i key={`${x}-${y}`} style={{ left: `${x}%`, top: `${y}%` }} />)}</div>
       <strong className="hub-title">Hub<br />Freelance</strong>
       <dl className="hub-stats">
-        <div><dt>Leads encontrados</dt><dd>247</dd></div>
-        <div><dt>Oportunidades</dt><dd>89</dd></div>
-        <div><dt>Sites analisados</dt><dd>247</dd></div>
-        <div><dt>Propostas geradas</dt><dd>89</dd></div>
+        {h.stats.map((label, index) => <div key={label}><dt>{label}</dt><dd>{index % 2 === 0 ? 247 : 89}</dd></div>)}
       </dl>
       <div className="hub-popup">
-        <b>Restaurante Exemplo</b>
-        <span>Oportunidade alta</span>
-        <ul><li>CNPJ encontrado</li><li>PageSpeed: 42</li><li>Proposta gerada</li></ul>
+        <b>{h.name}</b>
+        <span>{h.level}</span>
+        <ul>{h.checks.map((check) => <li key={check}>{check}</li>)}</ul>
       </div>
     </div>
   );
 }
 
-function CardVisualArt({ id }: { id: CardVisual }) {
-  if (id === "hub") return <HubVisual />;
+function CardVisualArt({ id, language }: { id: CardVisual; language: "pt" | "en" }) {
+  if (id === "hub") return <HubVisual language={language} />;
   return (
     <>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -393,11 +391,16 @@ export default function Home() {
             <Pill index="03" label={t.careerIndex} />
             <h2 className="display xl">{t.careerTitle[0]}<br />{t.careerTitle[1]}<br />{t.careerTitle[2]}<br /><em>{t.careerTitle[3]}</em></h2>
             <p className="lead">{t.careerLead}</p>
-            <StatStrip items={siteStats} tone="light" />
-            <p className="tech-label dark">{t.techIUtilize}</p>
-            <ul className="tech-chips">
-              {careerTech.map((name) => <li key={name}><BrandIcon name={name} />{name}</li>)}
-            </ul>
+            <div className="education">
+              <p className="tech-label dark">{t.education}</p>
+              {t.degrees.map((degree) => (
+                <article key={degree.title} className="degree">
+                  <span>{degree.period}</span>
+                  <h3>{degree.title}</h3>
+                  <p>{degree.school}</p>
+                </article>
+              ))}
+            </div>
           </div>
           <ol className="timeline">
             {experience[language].map((job) => (
@@ -449,7 +452,7 @@ export default function Home() {
                     <div className="project-art">
                       <span className="project-badge">{card.badge}</span>
                       <span className="project-number">{study.number}</span>
-                      <CardVisualArt id={card.id} />
+                      <CardVisualArt id={card.id} language={language} />
                     </div>
                     <div className="project-body">
                       <h3>{study.title}</h3>
@@ -458,7 +461,6 @@ export default function Home() {
                       <div className="chips">{study.tags.map((tag) => <span key={tag}>{tag === "Claude Agent SDK" ? "Claude SDK" : tag}</span>)}</div>
                       <div className="project-actions">
                         <button className="btn btn-dark" type="button" onClick={() => setSelectedProject(card.id)}>{card.cta} <ArrowUpRight size={16} /></button>
-                        <button className="icon-button" type="button" aria-label={`${card.cta}: ${study.title}`} onClick={() => setSelectedProject(card.id)}><ExternalLink size={18} /></button>
                       </div>
                     </div>
                   </article>
