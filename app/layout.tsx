@@ -6,22 +6,27 @@ const sans = Inter({ variable: "--font-sans", subsets: ["latin"] });
 const display = Inter_Tight({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
 const hand = Gochi_Hand({ variable: "--font-hand", subsets: ["latin"], weight: "400" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://igorcardos0.github.io";
-const title = "Igor de Souza Cardoso | Engenheiro de Software Full Stack";
-const description = "Portfólio de Igor de Souza Cardoso, engenheiro de software full stack e líder técnico. Arquitetura de software e de IA, back-end, APIs, pagamentos e sistemas em produção com NestJS, Next.js, React Native, Laravel e Python.";
+const title = "Igor de Souza Cardoso | Engenheiro de Software e IA";
+const shareTitle = "Igor Cardoso — Engenharia de software com IA no núcleo";
+const shareDescription = "Engenheiro de software full stack e líder técnico. Mais de 40 projetos desde 2019: back-end, APIs, pagamentos e agentes de IA em produção.";
+const ogAlt = "Igor de Souza Cardoso — Engenheiro de Software Full Stack. Engenharia de software com IA no núcleo.";
+const description = "Engenheiro de software full stack e líder técnico. Arquitetura de software e de IA, back-end, APIs e sistemas em produção. Mais de 40 projetos desde 2019.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
-  applicationName: "Portfólio Igor Cardoso",
+  applicationName: "Igor de Souza Cardoso · Portfólio",
   authors: [{ name: "Igor de Souza Cardoso", url: siteUrl }],
   creator: "Igor de Souza Cardoso",
   publisher: "Igor de Souza Cardoso",
   category: "technology",
   keywords: [
-    "Igor de Souza Cardoso", "Engenheiro de Software Full Stack", "Software Engineer",
-    "Líder Técnico", "Inteligência Artificial", "Agentes de IA", "NestJS", "Next.js",
-    "React Native", "Laravel", "Python", "TypeScript", "Pagamentos", "Pix", "AWS", "Indaiatuba",
+    "Igor de Souza Cardoso", "Igor Cardoso", "Engenheiro de Software", "Engenheiro de Software Full Stack",
+    "Software Engineer", "Full Stack Engineer", "Líder Técnico", "Tech Lead", "Arquitetura de Software",
+    "Arquitetura de IA", "Agentes de IA", "LLM", "RAG", "Back-end", "APIs", "NestJS", "Node.js", "Next.js",
+    "React", "React Native", "TypeScript", "Python", "Laravel", "PostgreSQL", "Docker", "AWS",
+    "Sistemas de pagamento", "Indaiatuba", "São Paulo",
   ],
   alternates: {
     canonical: "/",
@@ -31,18 +36,19 @@ export const metadata: Metadata = {
     type: "profile",
     locale: "pt_BR",
     url: "/",
-    title,
-    description,
-    siteName: "Igor Cardoso — Software Engineer",
+    title: shareTitle,
+    description: shareDescription,
+    siteName: "Igor de Souza Cardoso · Portfólio",
     firstName: "Igor",
-    lastName: "Cardoso",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Igor de Souza Cardoso — Engenheiro de Software Full Stack" }],
+    lastName: "de Souza Cardoso",
+    username: "igor-s-cardoso",
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: ogAlt, type: "image/png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: ["/opengraph-image"],
+    title: shareTitle,
+    description: shareDescription,
+    images: [{ url: "/opengraph-image.png", alt: ogAlt }],
   },
   robots: {
     index: true,
@@ -68,29 +74,40 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const structuredData = {
-    "@context": "https://schema.org",
+  const person = {
     "@type": "Person",
     "@id": `${siteUrl}/#person`,
     name: "Igor de Souza Cardoso",
+    alternateName: "Igor Cardoso",
     url: siteUrl,
-    image: `${siteUrl}/opengraph-image`,
-    jobTitle: "Engenheiro de Software Full Stack",
-    worksFor: { "@type": "Organization", name: "LUSA Brasil", url: "https://lusabrasil.com" },
+    image: `${siteUrl}/images/igor.webp`,
+    jobTitle: "Engenheiro de Software Full Stack · Líder Técnico",
     description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Indaiatuba",
-      addressRegion: "SP",
-      addressCountry: "BR",
-    },
-    sameAs: [
-      "https://www.linkedin.com/in/igor-s-cardoso",
-      "https://github.com/igorcardos0",
+    worksFor: { "@type": "Organization", name: "LUSA Brasil", url: "https://lusabrasil.com" },
+    alumniOf: [
+      { "@type": "CollegeOrUniversity", name: "UniMAX — Centro Universitário Max Planck" },
+      { "@type": "EducationalOrganization", name: "Trybe" },
     ],
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Engenheiro de Software",
+      skills: "Arquitetura de software, arquitetura de IA, back-end, APIs, sistemas de pagamento, agentes de IA",
+    },
+    address: { "@type": "PostalAddress", addressLocality: "Indaiatuba", addressRegion: "SP", addressCountry: "BR" },
+    knowsLanguage: ["pt-BR", "en"],
+    sameAs: ["https://www.linkedin.com/in/igor-s-cardoso", "https://github.com/igorcardos0"],
     knowsAbout: [
-      "NestJS", "Next.js", "React Native", "TypeScript", "Node.js", "Laravel",
-      "Python", "PostgreSQL", "AI agents", "LLMs", "Payments", "AWS", "Docker",
+      "Software architecture", "AI architecture", "AI agents", "LLMs", "RAG", "Back-end development", "APIs",
+      "Payment systems", "NestJS", "Node.js", "Next.js", "React", "React Native", "TypeScript", "Python",
+      "Laravel", "PostgreSQL", "Docker", "AWS",
+    ],
+  };
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      person,
+      { "@type": "WebSite", "@id": `${siteUrl}/#website`, url: siteUrl, name: "Igor de Souza Cardoso · Portfólio", inLanguage: "pt-BR", publisher: { "@id": `${siteUrl}/#person` } },
+      { "@type": "ProfilePage", "@id": `${siteUrl}/#profile`, url: siteUrl, name: title, description, inLanguage: "pt-BR", isPartOf: { "@id": `${siteUrl}/#website` }, mainEntity: { "@id": `${siteUrl}/#person` }, primaryImageOfPage: `${siteUrl}/opengraph-image.png` },
     ],
   };
 
