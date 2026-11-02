@@ -96,15 +96,6 @@ const jobLogos: Record<Exclude<Job["logo"], "person" | "study">, { src: string; 
   games: { src: "/logos/studio-games.webp", name: "STUDIO GAMES" },
 };
 
-function Laptop() {
-  return (
-    <div className="laptop" aria-hidden="true">
-      <div className="laptop-lid"><i /></div>
-      <div className="laptop-base" />
-    </div>
-  );
-}
-
 function JobLogo({ logo }: { logo: Job["logo"] }) {
   if (logo === "person") return <span className="job-logo"><User size={30} strokeWidth={1.6} /></span>;
   if (logo === "study") return <span className="job-logo"><GraduationCap size={30} strokeWidth={1.6} /></span>;
@@ -313,11 +304,7 @@ export default function Home() {
                 <div className="code-lines">{Array.from({ length: 14 }, (_, index) => <i key={index} style={{ width: `${35 + ((index * 37) % 55)}%`, marginLeft: `${(index % 4) * 8}%` }} />)}</div>
               </div>
             </div>
-            <Hand lines={t.handIdeas} className="hand-ideas" />
-            <CurvedArrow className="arrow-ideas" />
-            <Hand lines={t.handWorld} className="hand-world" />
             <Books titles={t.books} />
-            <Laptop />
             <div className="notebook">
               {t.notebook.map((item) => <span key={item}><b>☑</b> {item}</span>)}
             </div>
