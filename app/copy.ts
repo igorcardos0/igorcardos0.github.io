@@ -7,13 +7,13 @@ export const stats: Record<Language, { icon: StatIcon; value: string; label: [st
     { icon: "code", value: "7", label: ["anos programando", "desde 2019"] },
     { icon: "layers", value: "+40", label: ["projetos", "entregues"] },
     { icon: "users", value: "41", label: ["agentes de IA", "no meu time"] },
-    { icon: "star", value: "Líder", label: ["técnico na", "LUSA Brasil"] },
+    { icon: "star", value: "5", label: ["áreas, do back-end", "ao mobile e à IA"] },
   ],
   en: [
     { icon: "code", value: "7", label: ["years coding", "since 2019"] },
     { icon: "layers", value: "40+", label: ["projects", "delivered"] },
     { icon: "users", value: "41", label: ["AI agents", "on my team"] },
-    { icon: "star", value: "Lead", label: ["tech lead at", "LUSA Brasil"] },
+    { icon: "star", value: "5", label: ["areas, from back-end", "to mobile and AI"] },
   ],
 };
 
@@ -43,11 +43,11 @@ export const text = {
 
     aboutIndex: "SOBRE MIM",
     aboutTitle: ["Mais do que código,", "engenharia de verdade."],
-    aboutLead: [["Sou ", false], ["Igor de Souza Cardoso", true], [", engenheiro de software full stack e ", false], ["líder técnico", true], [" na LUSA Brasil. Respondo pela arquitetura dos sistemas do setor animal: APIs, pagamentos com gateway próprio, apps e agentes de IA.", false]] as [string, boolean][],
+    aboutLead: [["Sou ", false], ["Igor de Souza Cardoso", true], [", engenheiro de software full stack na ", false], ["LUSA Brasil", true], [". Projeto e desenvolvo os sistemas do setor animal: APIs, pagamentos com gateway próprio, apps e agentes de IA.", false]] as [string, boolean][],
     aboutBody: "Gosto dos problemas difíceis de sistema: modelagem de dados, integrações, filas, consistência de pagamentos e arquiteturas de IA que funcionam em produção, não só em demo.",
     values: [
       { icon: "layers", title: "Arquitetura", text: "Domínios, contratos e decisões técnicas." },
-      { icon: "users", title: "Liderança técnica", text: "Padrões, code review e evolução do time." },
+      { icon: "users", title: "Back-end sólido", text: "APIs, dados, filas e integrações." },
       { icon: "bolt", title: "Ponta a ponta", text: "Do desenho ao deploy, com testes." },
     ],
     whatIDo: "O QUE EU FAÇO",
@@ -57,7 +57,7 @@ export const text = {
 
     careerIndex: "CARREIRA",
     careerTitle: ["Experiência", "construindo", "sistemas", "em produção."],
-    careerLead: "Programo desde 2019. Comecei estudando sozinho, passei pela Trybe e por projetos freelance, e hoje lidero a parte técnica de sistemas com APIs, pagamentos, apps e automação com IA em produção.",
+    careerLead: "Programo desde 2019. Comecei estudando sozinho, passei pela Trybe e por projetos freelance, e hoje projeto e construo sistemas com APIs, pagamentos, apps e automação com IA em produção.",
     education: "FORMAÇÃO",
     degrees: [
       { period: "2025 — 2029", title: "Bacharelado em Ciência da Computação", school: "UniMAX — Centro Universitário Max Planck" },
@@ -99,7 +99,7 @@ export const text = {
 
     contactIndex: "CONTATO",
     contactTitle: ["Vamos construir", "um sistema", "sólido juntos?"],
-    contactLead: "Se você precisa de um back-end confiável, de uma arquitetura com IA ou de alguém para liderar a parte técnica de um produto, me conte o contexto. Respondo com uma proposta técnica, não com um orçamento genérico.",
+    contactLead: "Se você precisa de um back-end confiável, de uma arquitetura com IA ou de alguém para assumir a parte técnica de um produto, me conte o contexto. Respondo com uma proposta técnica, não com um orçamento genérico.",
     channels: [
       { id: "whatsapp", title: "WhatsApp", text: "Conversa rápida e direta.", link: "Falar no WhatsApp" },
       { id: "email", title: "E-mail", text: "Para detalhes e propostas.", link: "Enviar e-mail" },
@@ -141,11 +141,11 @@ export const text = {
 
     aboutIndex: "ABOUT ME",
     aboutTitle: ["More than code,", "real engineering."],
-    aboutLead: [["I'm ", false], ["Igor de Souza Cardoso", true], [", a full stack software engineer and ", false], ["tech lead", true], [" at LUSA Brasil. I own the architecture of the animal sector's systems: APIs, payments with our own gateway, apps and AI agents.", false]] as [string, boolean][],
+    aboutLead: [["I'm ", false], ["Igor de Souza Cardoso", true], [", a full stack software engineer at ", false], ["LUSA Brasil", true], [". I design and build the animal sector's systems: APIs, payments with our own gateway, apps and AI agents.", false]] as [string, boolean][],
     aboutBody: "I enjoy the hard system problems: data modeling, integrations, queues, payment consistency and AI architectures that work in production, not just in a demo.",
     values: [
       { icon: "layers", title: "Architecture", text: "Domains, contracts and technical decisions." },
-      { icon: "users", title: "Technical leadership", text: "Standards, code review and team growth." },
+      { icon: "users", title: "Solid back-end", text: "APIs, data, queues and integrations." },
       { icon: "bolt", title: "End to end", text: "From design to deploy, with tests." },
     ],
     whatIDo: "WHAT I DO",
@@ -155,7 +155,7 @@ export const text = {
 
     careerIndex: "CAREER",
     careerTitle: ["Experience", "building", "systems", "in production."],
-    careerLead: "I've been coding since 2019. I started self-taught, went through Trybe and freelance work, and today I lead the technical side of systems with APIs, payments, apps and AI automation in production.",
+    careerLead: "I've been coding since 2019. I started self-taught, went through Trybe and freelance work, and today I design and build systems with APIs, payments, apps and AI automation in production.",
     education: "EDUCATION",
     degrees: [
       { period: "2025 — 2029", title: "Bachelor's Degree in Computer Science", school: "UniMAX — Centro Universitário Max Planck" },
@@ -197,7 +197,7 @@ export const text = {
 
     contactIndex: "CONTACT",
     contactTitle: ["Let's build", "a solid system", "together?"],
-    contactLead: "If you need a reliable back-end, an AI architecture or someone to lead the technical side of a product, tell me the context. I'll reply with a technical proposal, not a generic quote.",
+    contactLead: "If you need a reliable back-end, an AI architecture or someone to own the technical side of a product, tell me the context. I'll reply with a technical proposal, not a generic quote.",
     channels: [
       { id: "whatsapp", title: "WhatsApp", text: "Quick, direct conversation.", link: "Chat on WhatsApp" },
       { id: "email", title: "Email", text: "For details and proposals.", link: "Send an email" },

@@ -8,9 +8,9 @@ const hand = Gochi_Hand({ variable: "--font-hand", subsets: ["latin"], weight: "
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://igorcardos0.github.io";
 const title = "Igor de Souza Cardoso | Engenheiro de Software e IA";
 const shareTitle = "Igor Cardoso — Engenharia de software com IA no núcleo";
-const shareDescription = "Engenheiro de software full stack e líder técnico. Mais de 40 projetos desde 2019: back-end, APIs, pagamentos e agentes de IA em produção.";
+const shareDescription = "Engenheiro de software full stack. Mais de 40 projetos desde 2019: back-end, APIs, pagamentos e agentes de IA em produção.";
 const ogAlt = "Igor de Souza Cardoso — Engenheiro de Software Full Stack. Engenharia de software com IA no núcleo.";
-const description = "Engenheiro de software full stack e líder técnico. Arquitetura de software e de IA, back-end, APIs e sistemas em produção. Mais de 40 projetos desde 2019.";
+const description = "Engenheiro de software full stack. Arquitetura de software e de IA, back-end, APIs e sistemas em produção. Mais de 40 projetos desde 2019.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   category: "technology",
   keywords: [
     "Igor de Souza Cardoso", "Igor Cardoso", "Engenheiro de Software", "Engenheiro de Software Full Stack",
-    "Software Engineer", "Full Stack Engineer", "Líder Técnico", "Tech Lead", "Arquitetura de Software",
+    "Software Engineer", "Full Stack Engineer", "Arquitetura de Software",
     "Arquitetura de IA", "Agentes de IA", "LLM", "RAG", "Back-end", "APIs", "NestJS", "Node.js", "Next.js",
     "React", "React Native", "TypeScript", "Python", "Laravel", "PostgreSQL", "Docker", "AWS",
     "Sistemas de pagamento", "Indaiatuba", "São Paulo",
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     alternateName: "Igor Cardoso",
     url: siteUrl,
     image: `${siteUrl}/images/igor.webp`,
-    jobTitle: "Engenheiro de Software Full Stack · Líder Técnico",
+    jobTitle: "Engenheiro de Software Full Stack",
     description,
     worksFor: { "@type": "Organization", name: "LUSA Brasil", url: "https://lusabrasil.com" },
     alumniOf: [
