@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Gochi_Hand, Inter, Inter_Tight } from "next/font/google";
+import { Geist_Mono, Homemade_Apple, Inter } from "next/font/google";
 import "./globals.css";
 
-const sans = Inter({ variable: "--font-sans", subsets: ["latin"] });
-const display = Inter_Tight({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
-const hand = Gochi_Hand({ variable: "--font-hand", subsets: ["latin"], weight: "400" });
+const sans = Inter({ variable: "--font-sans", subsets: ["latin"], weight: ["300", "400", "500"] });
+const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"], weight: ["400", "500"] });
+const hand = Homemade_Apple({ variable: "--font-hand", subsets: ["latin"], weight: "400" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://igorcardos0.github.io";
 const title = "Igor de Souza Cardoso | Engenheiro de Software e IA";
 const shareTitle = "Igor Cardoso — Engenharia de software com IA no núcleo";
@@ -69,8 +69,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b0a12",
-  colorScheme: "light dark",
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -112,7 +112,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="pt-BR" className={`${sans.variable} ${display.variable} ${hand.variable}`}>
+    <html lang="pt-BR" className={`${sans.variable} ${mono.variable} ${hand.variable}`}>
       <body>
         {children}
         <script

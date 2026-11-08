@@ -2,14 +2,10 @@
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import emailjs from "@emailjs/browser";
-import {
-  ArrowRight, ArrowUpRight, BrainCircuit, Building2, ChartColumn, CircleCheck, Cloud, CodeXml, Database, 
-  Globe, GraduationCap, Heart, Layers, Lightbulb, Lock, Mail, Menu, MessageCircle, MessageSquare, Monitor, Search, Settings,
-  Star, Target, User, Users, X, Zap, type LucideIcon,
-} from "lucide-react";
-import { atlasCaseStudy, caseStudies, deliveries, deliveryStudies, experience, nav, skills, type Job } from "./content";
-import { alsoWorkWith, heroTech, hubVisual, projectCards, stats, text, type CardVisual } from "./copy";
-import { BrandIcon, LinkedinMark } from "./icons";
+import { ArrowUpRight, Cloud, MousePointer2, Orbit, X } from "lucide-react";
+import { atlasCaseStudy, caseStudies, deliveries, deliveryStudies, experience, skills } from "./content";
+import { alsoWorkWith, text } from "./copy";
+import { ui } from "./ui";
 
 interface ContactFormData {
   name: string;
@@ -25,187 +21,95 @@ const emailjsConfig = {
   toEmail: process.env.NEXT_PUBLIC_EMAILJS_TO_EMAIL || "dev.igordesouzacardoso@gmail.com",
 };
 
-const links = {
-  whatsapp: "https://wa.me/5519999223452",
-  email: "mailto:dev.igordesouzacardoso@gmail.com",
-  linkedin: "https://www.linkedin.com/in/igor-s-cardoso",
-  github: "https://github.com/igorcardos0",
-};
+const links = [
+  ["Email", "mailto:dev.igordesouzacardoso@gmail.com"],
+  ["WhatsApp", "https://wa.me/5519999223452"],
+  ["LinkedIn", "https://www.linkedin.com/in/igor-s-cardoso"],
+  ["GitHub", "https://github.com/igorcardos0"],
+] as const;
 
-const messageLimit = 500;
+const rev = process.env.NEXT_PUBLIC_REV || "local";
 
-const uiIcons: Record<string, LucideIcon> = {
-  code: CodeXml, layers: Layers, users: Users, star: Star, target: Target, bolt: Zap, brain: BrainCircuit,
-  server: Database, monitor: Monitor, cloud: Cloud, search: Search, bulb: Lightbulb, gear: Settings,
-  chart: ChartColumn, globe: Globe, check: CircleCheck, heart: Heart,
-};
-
-function Icon({ name, size = 22 }: { name: string; size?: number }) {
-  const Component = uiIcons[name] ?? Star;
-  return <Component size={size} strokeWidth={1.8} aria-hidden="true" />;
-}
-
-function Pill({ index, label }: { index: string; label: string }) {
-  return <span className="pill">{index} <span className="pill-sep">/</span> {label} <i /></span>;
-}
-
-function Hand({ lines, className = "" }: { lines: readonly string[]; className?: string }) {
+function Dots({ items }: { items: readonly React.ReactNode[] }) {
   return (
-    <p className={`hand ${className}`} aria-hidden="true">
-      {lines.map((line) => <span key={line}>{line}</span>)}
-      <svg className="hand-underline" viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M3 9C35 3 80 2 117 4" /></svg>
-    </p>
+    <ul className="dots">
+      {items.map((item, index) => (
+        <li key={index}>{item}{index < items.length - 1 && <span className="faint" aria-hidden="true"> · </span>}</li>
+      ))}
+    </ul>
   );
 }
 
-function CurvedArrow({ className = "" }: { className?: string }) {
+function Mark() {
   return (
-    <svg className={`curved-arrow ${className}`} viewBox="0 0 80 60" aria-hidden="true">
-      <path d="M6 6c-4 22 12 40 52 44" />
-      <path d="M48 41l11 9-13 5" />
+    <svg className="mark" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M5 11 16 3l11 8-11 18Z" />
+      <path d="M5 11h22M11 11l5 18 5-18M11 11l5-8 5 8" />
     </svg>
   );
 }
 
-function StatStrip({ items, tone }: { items: (typeof stats)["pt"]; tone: "dark" | "light" }) {
+function Signature() {
   return (
-    <div className={`stat-strip ${tone}`}>
-      {items.map((item) => (
-        <div className="stat" key={item.value + item.label[0]}>
-          <span className="stat-icon"><Icon name={item.icon} size={tone === "light" ? 22 : 26} /></span>
-          <strong>{item.value}</strong>
-          <span className="stat-label">{item.label[0]}<br />{item.label[1]}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function Books({ titles }: { titles: readonly string[] }) {
-  return (
-    <div className="books" aria-hidden="true">
-      {titles.map((title, index) => <span key={title} className={`book book-${index}`}><b>⌇</b>{title}</span>)}
-    </div>
-  );
-}
-
-const jobLogos: Record<Exclude<Job["logo"], "person" | "study">, { src: string; name: string }> = {
-  lusa: { src: "/logos/lusa.webp", name: "LUSA" },
-  v4: { src: "/logos/v4.png", name: "COMPANY" },
-  alplatech: { src: "/logos/alplatech.svg", name: "ALPLATECH" },
-  games: { src: "/logos/studio-games.webp", name: "STUDIO GAMES" },
-};
-
-function JobLogo({ logo }: { logo: Job["logo"] }) {
-  if (logo === "person") return <span className="job-logo"><User size={30} strokeWidth={1.6} /></span>;
-  if (logo === "study") return <span className="job-logo"><GraduationCap size={30} strokeWidth={1.6} /></span>;
-  const { src, name } = jobLogos[logo];
-  return (
-    <span className={`job-logo logo-${logo}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" loading="lazy" />
-      <small aria-hidden="true">{name}</small>
+    <span className="sig" aria-hidden="true">
+      <span>Igor</span>
+      <svg viewBox="0 0 120 30"><path d="M4 22c22 6 58 7 112-12" /></svg>
     </span>
   );
 }
 
-function HubVisual({ language }: { language: "pt" | "en" }) {
-  const h = hubVisual[language];
-  const pins = [[22, 18], [40, 30], [58, 14], [72, 40], [34, 58], [62, 64], [84, 22], [48, 46], [80, 72], [26, 80]];
-  return (
-    <div className="hub-visual">
-      <div className="hub-map">{pins.map(([x, y]) => <i key={`${x}-${y}`} style={{ left: `${x}%`, top: `${y}%` }} />)}</div>
-      <strong className="hub-title">Hub<br />Freelance</strong>
-      <dl className="hub-stats">
-        {h.stats.map((label, index) => <div key={label}><dt>{label}</dt><dd>{index % 2 === 0 ? 247 : 89}</dd></div>)}
-      </dl>
-      <div className="hub-popup">
-        <b>{h.name}</b>
-        <span>{h.level}</span>
-        <ul>{h.checks.map((check) => <li key={check}>{check}</li>)}</ul>
-      </div>
-    </div>
-  );
-}
-
-function CardVisualArt({ id, language }: { id: CardVisual; language: "pt" | "en" }) {
-  if (id === "hub") return <HubVisual language={language} />;
-  return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`/images/card-${id}.webp`} alt="" loading="lazy" decoding="async" />
-      {id === "abajur" && <span className="abajur-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l3 8H4zM11 11h2v7h-2zM7 19h10v2H7z" /></svg>abajur</span>}
-    </>
-  );
-}
-
 export default function Home() {
-  const [active, setActive] = useState("inicio");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [language, setLanguage] = useState<"pt" | "en">("pt");
-  const [filter, setFilter] = useState("todos");
+  const [selected, setSelected] = useState<string | null>(null);
+  const [clock, setClock] = useState("");
+  const [viewport, setViewport] = useState("");
   const [formData, setFormData] = useState<ContactFormData>({ name: "", email: "", company: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
   const isEn = language === "en";
+  const u = ui[language];
   const t = text[language];
-  const siteNav = nav[language];
-  const siteStats = stats[language];
-  const siteCases = caseStudies[language];
-  const cards = projectCards[language].filter((card) => filter === "todos" || card.filters.includes(filter));
-  const siteDeliveries = deliveries[language].filter((item) => filter === "todos" || item.filters.includes(filter));
-  const selectedCaseStudy = useMemo(() => {
-    if (!selectedProject) return null;
-    if (selectedProject === "atlas") return atlasCaseStudy[language];
-    return [...caseStudies[language], ...deliveryStudies[language]].find((study) => study.id === selectedProject) ?? null;
-  }, [selectedProject, language]);
 
-  function toggleLanguage() {
-    const nextLanguage = isEn ? "pt" : "en";
-    setLanguage(nextLanguage);
-    document.documentElement.lang = nextLanguage === "en" ? "en" : "pt-BR";
-  }
+  const study = useMemo(() => {
+    if (!selected) return null;
+    if (selected === "atlas") return atlasCaseStudy[language];
+    return [...caseStudies[language], ...deliveryStudies[language]].find((item) => item.id === selected) ?? null;
+  }, [selected, language]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-25% 0px -55% 0px", threshold: [0.05, 0.25, 0.5] },
-    );
-    siteNav.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-    return () => observer.disconnect();
-  }, [siteNav]);
-
-  useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > window.innerHeight * 0.75);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const format = new Intl.DateTimeFormat("pt-BR", { timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit" });
+    const tick = () => setClock(format.format(new Date()));
+    const resize = () => setViewport(`${window.innerWidth}×${window.innerHeight}`);
+    tick();
+    resize();
+    const timer = window.setInterval(tick, 15000);
+    window.addEventListener("resize", resize);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
   useEffect(() => {
-    if (!selectedProject) return;
-    function closeOnEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") setSelectedProject(null);
-    }
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [selectedProject]);
+    if (!selected) return;
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setSelected(null);
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [selected]);
+
+  function toggleLanguage() {
+    const next = isEn ? "pt" : "en";
+    setLanguage(next);
+    document.documentElement.lang = next === "en" ? "en" : "pt-BR";
+  }
 
   function handleFormChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = event.target;
-    setFormData((previous) => ({ ...previous, [name]: name === "message" ? value.slice(0, messageLimit) : value }));
+    setFormData((previous) => ({ ...previous, [name]: value }));
   }
 
   async function sendEmail(event: FormEvent<HTMLFormElement>) {
@@ -213,12 +117,6 @@ export default function Home() {
 
     if (!formData.name || !formData.email || !formData.message) {
       window.alert(isEn ? "Please fill in all required fields." : "Por favor, preencha todos os campos obrigatórios.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      window.alert(isEn ? "Please enter a valid email address." : "Por favor, insira um endereço de email válido.");
       return;
     }
 
@@ -233,7 +131,6 @@ export default function Home() {
     }
 
     setIsSubmitting(true);
-
     try {
       const company = formData.company ? ` (${formData.company})` : "";
       await emailjs.send(
@@ -248,414 +145,239 @@ export default function Home() {
         },
         publicKey,
       );
-
       setFormData({ name: "", email: "", company: "", message: "" });
-      setShowSuccessModal(true);
+      setSent(true);
     } catch (error: unknown) {
       const errorMessage = error && typeof error === "object" && "text" in error ? String(error.text) : undefined;
-      window.alert(errorMessage || (isEn ? "An error occurred while sending the message. Please check the EmailJS configuration." : "Ocorreu um erro ao enviar a mensagem. Verifique as configurações do EmailJS."));
+      window.alert(errorMessage || (isEn ? "An error occurred while sending the message." : "Ocorreu um erro ao enviar a mensagem."));
     } finally {
       setIsSubmitting(false);
     }
   }
 
+  function renderLead() {
+    return u.lead.map(([chunk, target]) => {
+      if (!target) return <span key={chunk}>{chunk}</span>;
+      if (target.startsWith("case:")) {
+        const id = target.slice(5);
+        return <button key={chunk} type="button" className="prose-link" onClick={() => setSelected(id)}>{chunk}</button>;
+      }
+      const external = target.startsWith("http");
+      return <a key={chunk} className="prose-link" href={target} target={external ? "_blank" : undefined} rel={external ? "noreferrer noopener" : undefined}>{chunk}</a>;
+    });
+  }
+
   return (
     <>
-      <header className={`topbar ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
-        <a className="brand" href="#inicio" onClick={() => setMenuOpen(false)}><span className="brand-chevron">›</span> DEV. IGOR CARDOSO <i /></a>
-        <nav className={menuOpen ? "open" : ""} aria-label={isEn ? "Main navigation" : "Navegação principal"}>
-          {siteNav.map((item) => (
-            <a key={item.id} className={active === item.id ? "active" : ""} href={`#${item.id}`} onClick={() => setMenuOpen(false)}><span className="nav-num">{item.number}</span>{item.label}</a>
-          ))}
-          <a className="nav-cta" href="#contato" onClick={() => setMenuOpen(false)}><i /> {t.available}</a>
-        </nav>
-        <div className="topbar-actions">
-          <button className="lang" type="button" onClick={toggleLanguage} aria-label={isEn ? "Mudar para português" : "Switch to English"}>{isEn ? "PT" : "EN"}</button>
-          <a className="available" href="#contato"><i /> {t.available}</a>
-          <button className="menu-button" type="button" aria-label={menuOpen ? (isEn ? "Close menu" : "Fechar menu") : (isEn ? "Open menu" : "Abrir menu")} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+      <a className="corner" href="#topo" aria-label={u.top}><Mark /></a>
+      <div className="grid-bg" aria-hidden="true" />
+
+      <main id="topo">
+        <header className="intro">
+          <h1>Igor de Souza<br />Cardoso</h1>
+          <p className="meta">{u.meta[0]}<br />{u.meta[1]}</p>
+        </header>
+
+        <p className="lead">{renderLead()}</p>
+
+        <div className="nav-row">
+          <nav aria-label={isEn ? "Sections" : "Seções"}>
+            <Dots
+              items={[
+                ...u.nav.map(([label, href]) => <a key={href} className="ui-link" href={href}>{label}</a>),
+                <button key="lang" type="button" className="ui-link" onClick={toggleLanguage} aria-label={isEn ? "Mudar para português" : "Switch to English"}>{u.lang}</button>,
+              ]}
+            />
+          </nav>
+          <Signature />
         </div>
-      </header>
 
-      <main>
-        <section className="hero" id="inicio">
-          <div className="hero-bg" aria-hidden="true">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="hero-photo" src="/images/igor.webp" alt="" fetchPriority="high" />
-            <i className="glow glow-a" /><i className="glow glow-b" />
-          </div>
+        <div className="meta muted stats"><Dots items={u.stats} /></div>
 
-          <div className="hero-deco" aria-hidden="true">
-            <div className="metric-card">
-              <span className="metric-label">{t.metricLabel} <i /></span>
-              <strong>{t.metricValue}</strong>
-              <span className="metric-unit">{t.metricUnit}</span>
-              <span className="metric-bars"><i /><i /><i /><i /><i /><i /></span>
-            </div>
-            <div className="code-panel">
-              <div className="code-top"><i /><i /><i /></div>
-              <div className="code-body">
-                <ul className="code-tree">
-                  {["platform", "api", "services", "ai-agents", "queues", "apps", "infra", "docs"].map((folder, index) => (
-                    <li key={folder} className={index === 0 ? "root" : ""}>{index === 0 ? "▾" : "›"} <span>▢</span> {folder}</li>
-                  ))}
-                </ul>
-                <div className="code-lines">{Array.from({ length: 14 }, (_, index) => <i key={index} style={{ width: `${35 + ((index * 37) % 55)}%`, marginLeft: `${(index % 4) * 8}%` }} />)}</div>
-              </div>
-            </div>
-            <Books titles={t.books} />
-            <div className="notebook">
-              {t.notebook.map((item) => <span key={item}><b>☑</b> {item}</span>)}
-            </div>
-          </div>
+        <section id="projetos" aria-labelledby="projetos-title">
+          <h2 id="projetos-title" className="label">{u.featured}</h2>
+          <ul className="list">
+            {caseStudies[language].map((item) => (
+              <li key={item.id}>
+                <button type="button" className="row" onClick={() => setSelected(item.id)} aria-label={`${u.openCase}: ${item.title}`}>
+                  <MousePointer2 className="cursor" size={15} strokeWidth={1.6} aria-hidden="true" />
+                  <span className="row-title">{item.title}</span>
+                  <span className="row-note">{item.category}</span>
+                  <span className="row-desc">{item.description}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
 
-          <div className="hero-inner">
-            <p className="eyebrow">{t.eyebrow}</p>
-            <h1>
-              <span>{t.heroTitle[0]}</span>
-              <span>{t.heroTitle[1]}</span>
-              <span><em>{t.heroTitle[2]}</em> {t.heroTitle[3]}</span>
-            </h1>
-            <p className="hero-lead">{t.heroLead.map(([chunk, bold]) => bold ? <strong key={chunk}>{chunk}</strong> : <span key={chunk}>{chunk}</span>)}</p>
-            <div className="hero-actions">
-              <a className="btn btn-primary" href="#projetos"><ArrowUpRight size={18} /> {t.seeProjects}</a>
-              <a className="btn btn-outline" href="#contato"><MessageSquare size={18} /> {t.talk}</a>
-            </div>
-            <StatStrip items={siteStats} tone="dark" />
-            <p className="tech-label">{t.techIUse}</p>
-            <ul className="hero-tech">
-              {heroTech.map((name) => <li key={name}><span><BrandIcon name={name} dark /></span>{name}</li>)}
-            </ul>
-          </div>
+          <h3 className="label sub">{u.alsoDelivered}</h3>
+          <ul className="list">
+            {deliveries[language].map((item) => (
+              <li key={item.id}>
+                <button type="button" className="row" onClick={() => setSelected(item.id)} aria-label={`${u.openCase}: ${item.title}`}>
+                  <MousePointer2 className="cursor" size={15} strokeWidth={1.6} aria-hidden="true" />
+                  <span className="row-title">{item.title}</span>
+                  <span className="row-note">{item.context}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <section className="about" id="sobre">
-          <div className="about-content">
-            <div className="about-main">
-            <Pill index="02" label={t.aboutIndex} />
-            <h2 className="display">{t.aboutTitle[0]}<br /><em>{t.aboutTitle[1]}</em></h2>
-            <p className="lead">{t.aboutLead.map(([chunk, bold]) => bold ? <strong key={chunk}>{chunk}</strong> : <span key={chunk}>{chunk}</span>)}</p>
-            <p className="lead">{t.aboutBody}</p>
-            <div className="value-cards">
-              {t.values.map((value) => (
-                <article key={value.title} className={`value-card value-${value.icon}`}>
-                  <span className="round-icon"><Icon name={value.icon} /></span>
-                  <h3>{value.title}</h3>
-                  <p>{value.text}</p>
-                </article>
-              ))}
-            </div>
-            </div>
-            <div className="about-stack">
-            <div className="stack-head">
-              <div>
-                <p className="mini-label"><i /> {t.whatIDo}</p>
-                <h3 className="stack-title"><i />{t.stackTitle[0]}<br />{t.stackTitle[1]}</h3>
-              </div>
-              <div className="stack-hand">
-                <CurvedArrow className="arrow-stack" />
-                <Hand lines={t.handStack} className="hand-stack" />
-              </div>
-            </div>
-            <div className="stack-cards">
-              {skills[language].map((skill) => (
-                <article key={skill.title} className={`stack-card stack-${skill.icon}`}>
-                  <span className="square-icon"><Icon name={skill.icon} /></span>
-                  <div><h4>{skill.title}</h4><p>{skill.items}</p></div>
-                </article>
-              ))}
-            </div>
-            <div className="also-work">
-              <span className="also-work-label">{t.alsoWork}</span>
-              {alsoWorkWith.map((name) => <span key={name} className="also-work-item"><BrandIcon name={name} />{name}</span>)}
-            </div>
-            </div>
-          </div>
+        <section id="sobre" aria-labelledby="sobre-title">
+          <h2 id="sobre-title" className="label">{u.about}</h2>
+          <p>{t.aboutLead.map(([chunk]) => chunk).join("")}</p>
+          <p>{t.aboutBody}</p>
+          <dl className="pairs">
+            {t.values.map((value) => (
+              <div key={value.title}><dt>{value.title}</dt><dd>{value.text}</dd></div>
+            ))}
+          </dl>
         </section>
 
-        <section className="career" id="experiencia">
-          <div className="career-intro">
-            <Pill index="03" label={t.careerIndex} />
-            <h2 className="display xl">{t.careerTitle[0]}<br />{t.careerTitle[1]}<br />{t.careerTitle[2]}<br /><em>{t.careerTitle[3]}</em></h2>
-            <p className="lead">{t.careerLead}</p>
-            <div className="education">
-              <p className="tech-label dark">{t.education}</p>
-              {t.degrees.map((degree) => (
-                <article key={degree.title} className="degree">
-                  <span>{degree.period}</span>
-                  <h3>{degree.title}</h3>
-                  <p>{degree.school}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+        <section id="carreira" aria-labelledby="carreira-title">
+          <h2 id="carreira-title" className="label">{u.career}</h2>
           <ol className="timeline">
             {experience[language].map((job) => (
-              <li key={`${job.company}-${job.start}`} className="timeline-item">
-                <div className="timeline-date"><strong>{job.start}</strong><span>— {job.end}</span></div>
-                <i className="timeline-dot" />
-                <article className="job-card">
-                  <JobLogo logo={job.logo} />
-                  <div>
-                    <h3>{job.company} {job.current && <span className="badge">{t.current}</span>}</h3>
-                    <p className="job-role">{job.role}</p>
-                    <p className="job-desc">{job.description}</p>
-                    <div className="chips">{job.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  </div>
-                </article>
+              <li key={`${job.company}-${job.start}`}>
+                <span className="when">{job.start} — {job.current ? u.present : job.end}</span>
+                <div>
+                  <p className="what">{job.role} <span className="muted">· {job.company}</span></p>
+                  <p className="desc">{job.description}</p>
+                </div>
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="projects" id="projetos">
-          <div className="projects-head">
-            <div>
-              <Pill index="04" label={t.projectsIndex} />
-              <h2 className="display">{t.projectsTitle[0]}<br />{t.projectsTitle[1]}<em>{t.projectsTitle[2]}</em></h2>
-              <p className="lead">{t.projectsLead}</p>
-            </div>
-            <div className="projects-aside">
-              <div className="projects-hand"><Hand lines={t.handProjects} className="hand-projects" /><CurvedArrow className="arrow-projects" /></div>
-              <div className="delivered-card">
-                <span className="square-icon"><Icon name="chart" /></span>
-                <strong>{t.deliveredValue}</strong>
-                <span>{t.deliveredLabel[0]}<br />{t.deliveredLabel[1]}</span>
-              </div>
-            </div>
-          </div>
-          <div className="filters" role="tablist" aria-label={isEn ? "Filter projects" : "Filtrar projetos"}>
-            {t.filters.map((item) => (
-              <button key={item.id} type="button" role="tab" aria-selected={filter === item.id} className={filter === item.id ? "active" : ""} onClick={() => setFilter(item.id)}>{item.label}</button>
+        <section aria-labelledby="stack-title">
+          <h2 id="stack-title" className="label">{u.stack}</h2>
+          <dl className="pairs">
+            {skills[language].map((skill) => (
+              <div key={skill.title}><dt>{skill.title}</dt><dd>{skill.items}</dd></div>
             ))}
-          </div>
-          {cards.length > 0 ? (
-            <div className="project-grid">
-              {cards.map((card) => {
-                const study = siteCases.find((item) => item.id === card.id);
-                if (!study) return null;
-                return (
-                  <article key={card.id} className={`project-card card-${card.id}`}>
-                    <div className="project-art">
-                      <span className="project-badge">{card.badge}</span>
-                      <span className="project-number">{study.number}</span>
-                      <CardVisualArt id={card.id} language={language} />
-                    </div>
-                    <div className="project-body">
-                      <h3>{study.title}</h3>
-                      <p>{study.description}</p>
-                      <ul className="checks">{card.points.map((point) => <li key={point}><CircleCheck size={17} fill="currentColor" stroke="#fff" />{point}</li>)}</ul>
-                      <div className="chips">{study.tags.map((tag) => <span key={tag}>{tag === "Claude Agent SDK" ? "Claude SDK" : tag}</span>)}</div>
-                      <div className="project-actions">
-                        <button className="btn btn-dark" type="button" onClick={() => setSelectedProject(card.id)}>{card.cta} <ArrowUpRight size={16} /></button>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          ) : (
-            siteDeliveries.length === 0 && <p className="empty">{t.noResults}</p>
-          )}
-          {siteDeliveries.length > 0 && (
-            <div className="delivered">
-              <p className="delivered-label">{t.alsoDelivered}</p>
-              <div className="delivered-grid">
-                {siteDeliveries.map((item) => (
-                  <button key={item.id} type="button" className="delivered-item" onClick={() => setSelectedProject(item.id)}>
-                    <span className="square-icon"><Icon name={item.icon} /></span>
-                    <span className="delivered-text">
-                      <strong>{item.title}</strong>
-                      <small>{item.context}</small>
-                      <span>{item.description}</span>
-                    </span>
-                    <span className="delivered-arrow"><ArrowRight size={16} /></span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+            <div><dt>{u.alsoUse}</dt><dd>{alsoWorkWith.join(" · ")}</dd></div>
+          </dl>
         </section>
 
-        <section className="process" id="processo">
-          <div className="process-head">
-            <div>
-              <Pill index="05" label={t.processIndex} />
-              <h2 className="display">{t.processTitle[0]}<br />{t.processTitle[1]}<em>{t.processTitle[2]}</em></h2>
-            </div>
-            <p className="lead">{t.processLead}</p>
-          </div>
-          <ol className="steps">
+        <section aria-labelledby="processo-title">
+          <h2 id="processo-title" className="label">{u.process}</h2>
+          <ol className="timeline">
             {t.steps.map((step, index) => (
-              <li key={step.title} className="step">
-                <span className="step-number">0{index + 1}</span>
-                <span className="step-icon"><Icon name={step.icon} size={34} /></span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-                <ul className="checks">{step.items.map((item) => <li key={item}><CircleCheck size={17} fill="currentColor" stroke="#fff" />{item}</li>)}</ul>
+              <li key={step.title}>
+                <span className="when">0{index + 1}</span>
+                <div><p className="what">{step.title}</p><p className="desc">{step.text}</p></div>
               </li>
             ))}
           </ol>
-          <p className="swipe-hint" aria-hidden="true">{isEn ? "Swipe to see all 5 steps" : "Deslize para ver as 5 etapas"} <ArrowRight size={14} /></p>
-          <div className="focus-banner">
-            <span className="focus-icon"><Zap size={40} fill="currentColor" strokeWidth={0} /></span>
-            <div>
-              <p className="mini-label plain">{t.focusLabel}</p>
-              <p className="focus-title">{t.focusTitle[0]}<br />{t.focusTitle[1]}<em>{t.focusTitle[2]}</em></p>
-            </div>
-            <div className="focus-cta">
-              <a className="btn btn-primary" href="#contato">{t.focusCta} <ArrowRight size={17} /></a>
-              <small>{t.focusNote}</small>
-            </div>
-          </div>
         </section>
 
-        <section className="contact" id="contato">
-          <div className="contact-grid">
-            <div>
-              <Pill index="06" label={t.contactIndex} />
-              <h2 className="display">{t.contactTitle[0]}<br />{t.contactTitle[1]}<br /><em>{t.contactTitle[2]}</em></h2>
-              <p className="lead">{t.contactLead}</p>
-              <div className="channels">
-                {t.channels.map((channel) => (
-                  <a key={channel.id} className="channel" href={links[channel.id]} target={channel.id === "email" ? undefined : "_blank"} rel="noopener noreferrer">
-                    <span className="channel-icon">
-                      {channel.id === "whatsapp" && <MessageCircle size={24} />}
-                      {channel.id === "email" && <Mail size={24} />}
-                      {channel.id === "linkedin" && <LinkedinMark />}
-                      {channel.id === "github" && <BrandIcon name="GitHub" />}
-                    </span>
-                    <strong>{channel.title}</strong>
-                    <span>{channel.text}</span>
-                    <em>{channel.link} <ArrowRight size={14} /></em>
-                  </a>
-                ))}
-              </div>
-            </div>
-            <form className="contact-form" onSubmit={sendEmail}>
-              <h3>{t.formTitle}</h3>
-              <p>{t.formLead}</p>
-              <div className="form-row">
-                <label className="input"><User size={18} /><span className="sr-only">{t.name}</span><input name="name" placeholder={t.name} value={formData.name} onChange={handleFormChange} required autoComplete="name" /></label>
-                <label className="input"><Mail size={18} /><span className="sr-only">{t.email}</span><input name="email" type="email" placeholder={t.email} value={formData.email} onChange={handleFormChange} required autoComplete="email" /></label>
-              </div>
-              <label className="input"><Building2 size={18} /><span className="sr-only">{t.company}</span><input name="company" placeholder={t.company} value={formData.company} onChange={handleFormChange} autoComplete="organization" /></label>
-              <label className="input textarea"><MessageSquare size={18} /><span className="sr-only">{t.message}</span><textarea name="message" placeholder={t.message} value={formData.message} onChange={handleFormChange} rows={6} required maxLength={messageLimit} /><small>{formData.message.length}/{messageLimit}</small></label>
-              <button className="btn btn-primary btn-block" type="submit" disabled={isSubmitting}>{isSubmitting ? t.sending : t.send} <ArrowRight size={17} /></button>
-              <p className="privacy"><Lock size={14} /> {t.privacy}</p>
-            </form>
-          </div>
-          <div className="availability">
-            <div>
-              <p className="mini-label"><i /> {t.availableFor}</p>
-              <p className="availability-title">{t.availableTitle[0]}<br /><em>{t.availableTitle[1]}</em></p>
-            </div>
-            {t.availability.map((item) => (
-              <div key={item.title} className="availability-item">
-                <span className="square-icon filled"><Icon name={item.icon} /></span>
-                <strong>{item.title}</strong>
-                <span>{item.text}</span>
-              </div>
+        <section aria-labelledby="formacao-title">
+          <h2 id="formacao-title" className="label">{u.education}</h2>
+          <ol className="timeline">
+            {t.degrees.map((degree) => (
+              <li key={degree.title}>
+                <span className="when">{degree.period}</span>
+                <div><p className="what">{degree.title}</p><p className="desc">{degree.school}</p></div>
+              </li>
             ))}
-          </div>
-          <footer>
-            <span>© 2026 Igor de Souza Cardoso</span>
-            <a href="#inicio">{t.backToTop} ↑</a>
-          </footer>
+          </ol>
         </section>
+
+        <section id="contato" aria-labelledby="contato-title">
+          <h2 id="contato-title" className="label">{u.contact}</h2>
+          <p>{t.contactLead}</p>
+          <p className="meta muted avail">{u.available}: {t.availability.map((item) => item.title).join(" · ")}</p>
+          {sent ? (
+            <p className="sent">{isEn ? "Message sent. I'll get back to you soon." : "Mensagem enviada. Respondo em breve."}</p>
+          ) : (
+            <form className="form" onSubmit={sendEmail}>
+              <label><span className="sr-only">{u.namePh}</span><input name="name" placeholder={u.namePh} value={formData.name} onChange={handleFormChange} required autoComplete="name" /></label>
+              <label><span className="sr-only">{u.emailPh}</span><input name="email" type="email" placeholder={u.emailPh} value={formData.email} onChange={handleFormChange} required autoComplete="email" /></label>
+              <label className="full"><span className="sr-only">{u.companyPh}</span><input name="company" placeholder={u.companyPh} value={formData.company} onChange={handleFormChange} autoComplete="organization" /></label>
+              <label className="full"><span className="sr-only">{u.messagePh}</span><textarea name="message" placeholder={u.messagePh} value={formData.message} onChange={handleFormChange} rows={4} required maxLength={500} /></label>
+              <button className="submit ui-link" type="submit" disabled={isSubmitting}>{isSubmitting ? u.sending : u.send} <ArrowUpRight size={13} /></button>
+            </form>
+          )}
+          <p className="meta muted note">{u.formNote}</p>
+          <Dots items={links.map(([label, href]) => <a key={label} className="ui-link" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer noopener">{label}</a>)} />
+        </section>
+
+        <footer>
+          <ul className="status">
+            <li><Orbit size={13} aria-hidden="true" /> {u.status}</li>
+            <li><Cloud size={13} aria-hidden="true" /> {u.location}{clock && ` · ${clock}`}</li>
+          </ul>
+          <p className="meta faint">© 2026 Igor Cardoso · {u.rev} {rev} · {u.viewport} {viewport || "—"} · {u.footer}</p>
+        </footer>
       </main>
 
-      {showSuccessModal && (
-        <div className="modal-backdrop" role="presentation" onClick={() => setShowSuccessModal(false)}>
-          <section className="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title" onClick={(event) => event.stopPropagation()}>
-            <button className="modal-close" type="button" aria-label={isEn ? "Close confirmation" : "Fechar confirmação"} onClick={() => setShowSuccessModal(false)}><X size={18} /></button>
-            <span className="success-icon" aria-hidden="true"><CircleCheck size={30} /></span>
-            <h2 id="success-modal-title">{isEn ? "Your email has been sent." : "Seu email foi enviado."}<em>{isEn ? "Let's keep in touch." : "Vamos manter contato."}</em></h2>
-            <p>{isEn ? "Thank you for reaching out. I will get back to you soon." : "Obrigado por entrar em contato. Responderei o mais breve possível."}</p>
-            <div className="modal-actions">
-              <button className="btn btn-outline-dark" type="button" onClick={() => setShowSuccessModal(false)}>{isEn ? "Back to site" : "Voltar ao site"}</button>
-              <a className="btn btn-primary" href={links.whatsapp} target="_blank" rel="noreferrer">{isEn ? "Talk on WhatsApp" : "Falar no WhatsApp"} <ArrowUpRight size={16} /></a>
-            </div>
-          </section>
-        </div>
-      )}
+      {study && (
+        <div className="backdrop" role="presentation" onClick={() => setSelected(null)}>
+          <article className="sheet" role="dialog" aria-modal="true" aria-labelledby="case-title" onClick={(event) => event.stopPropagation()}>
+            <button className="close ui-link" type="button" onClick={() => setSelected(null)} aria-label={u.close}><X size={16} /></button>
+            <p className="meta muted">{study.modalCategory}</p>
+            <h2 id="case-title">{study.modalTitle}</h2>
+            <p>{study.summary}</p>
 
-      {selectedCaseStudy && (
-        <div className="modal-backdrop" role="presentation" onClick={() => setSelectedProject(null)}>
-          <section className="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-study-title" onClick={(event) => event.stopPropagation()}>
-            <button className="modal-close" type="button" aria-label={isEn ? "Close case study" : "Fechar estudo de caso"} onClick={() => setSelectedProject(null)}><X size={18} /></button>
-            <header className="case-header">
-              <span className="mini-label plain">{selectedCaseStudy.modalCategory}</span>
-              <h2 id="case-study-title">{selectedCaseStudy.modalTitle}</h2>
-              <p>{selectedCaseStudy.summary}</p>
-            </header>
-
-            {selectedCaseStudy.media && (
-              <figure className="case-media">
-                {selectedCaseStudy.media.kind === "video" ? (
-                  <video autoPlay muted loop playsInline preload="metadata" poster={selectedCaseStudy.media.poster} aria-label={selectedCaseStudy.media.alt}>
-                    <source src={selectedCaseStudy.media.src} type="video/webm" />
-                    {selectedCaseStudy.media.fallback && <source src={selectedCaseStudy.media.fallback} type="video/mp4" />}
+            {study.media && (
+              <figure>
+                {study.media.kind === "video" ? (
+                  <video autoPlay muted loop playsInline preload="metadata" poster={study.media.poster} aria-label={study.media.alt}>
+                    <source src={study.media.src} type="video/webm" />
+                    {study.media.fallback && <source src={study.media.fallback} type="video/mp4" />}
                   </video>
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={selectedCaseStudy.media.src} alt={selectedCaseStudy.media.alt} loading="lazy" decoding="async" />
+                  <img src={study.media.src} alt={study.media.alt} loading="lazy" decoding="async" />
                 )}
-                <figcaption>{selectedCaseStudy.media.caption}</figcaption>
+                <figcaption className="meta muted">{study.media.caption}</figcaption>
               </figure>
             )}
 
-            <div className="case-content">
-              {selectedCaseStudy.challenge.length > 0 && (
-                <div className="case-section">
-                  <span className="case-label">{isEn ? "THE PROBLEM" : "O PROBLEMA"}</span>
-                  <ul>{selectedCaseStudy.challenge.map((item) => <li key={item}>{item}</li>)}</ul>
-                </div>
-              )}
-              {selectedCaseStudy.solution && (
-                <div className="case-section">
-                  <span className="case-label">{isEn ? "WHAT I BUILT" : "O QUE CONSTRUÍ"}</span>
-                  <p>{selectedCaseStudy.solution}</p>
-                </div>
-              )}
-              {selectedCaseStudy.stack.length > 0 && (
-                <div className="case-section">
-                  <span className="case-label">{isEn ? "ARCHITECTURE & STACK" : "ARQUITETURA & STACK"}</span>
-                  <div className="case-stack">{selectedCaseStudy.stack.map(([label, value]) => <div key={label}><strong>{label}</strong><span>{value}</span></div>)}</div>
-                </div>
-              )}
-              {selectedCaseStudy.modules.length > 0 && (
-                <div className="case-section">
-                  <span className="case-label">{isEn ? "KEY MODULES" : "PRINCIPAIS MÓDULOS"}</span>
-                  <div className="case-modules">{selectedCaseStudy.modules.map(([title, description]) => <article key={title}><strong>{title}</strong><p>{description}</p></article>)}</div>
-                </div>
-              )}
-              {selectedCaseStudy.links && (
-                <div className="case-section">
-                  <span className="case-label">{isEn ? "LIVE SITES" : "SITES NO AR"}</span>
-                  <div className="case-links">{selectedCaseStudy.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <ArrowUpRight size={14} /></a>)}</div>
-                </div>
-              )}
-              {(selectedCaseStudy.role.length > 0 || selectedCaseStudy.impact.length > 0) && (
-                <div className="case-columns">
-                  {selectedCaseStudy.role.length > 0 && (
-                    <div className="case-section">
-                      <span className="case-label">{isEn ? "MY ROLE" : "MEU PAPEL"}</span>
-                      <ul>{selectedCaseStudy.role.map((item) => <li key={item}>{item}</li>)}</ul>
-                    </div>
-                  )}
-                  {selectedCaseStudy.impact.length > 0 && (
-                    <div className="case-section">
-                      <span className="case-label">{isEn ? "RESULT" : "RESULTADO"}</span>
-                      <ul>{selectedCaseStudy.impact.map((item) => <li key={item}>{item}</li>)}</ul>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            <button className="btn btn-primary" type="button" onClick={() => setSelectedProject(null)}>{isEn ? "Back to projects" : "Voltar aos projetos"}</button>
-          </section>
+            {study.challenge.length > 0 && (
+              <>
+                <h3 className="label">{isEn ? "The problem" : "O problema"}</h3>
+                <ul className="bullets">{study.challenge.map((item) => <li key={item}>{item}</li>)}</ul>
+              </>
+            )}
+            {study.solution && (
+              <>
+                <h3 className="label">{isEn ? "What I built" : "O que construí"}</h3>
+                <p>{study.solution}</p>
+              </>
+            )}
+            {study.stack.length > 0 && (
+              <>
+                <h3 className="label">Stack</h3>
+                <dl className="pairs">{study.stack.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+              </>
+            )}
+            {study.modules.length > 0 && (
+              <>
+                <h3 className="label">{isEn ? "Key modules" : "Principais módulos"}</h3>
+                <dl className="pairs">{study.modules.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+              </>
+            )}
+            {study.links && (
+              <>
+                <h3 className="label">{isEn ? "Live sites" : "Sites no ar"}</h3>
+                <Dots items={study.links.map((link) => <a key={link.href} className="ui-link" href={link.href} target="_blank" rel="noreferrer noopener">{link.label}</a>)} />
+              </>
+            )}
+            {study.role.length > 0 && (
+              <>
+                <h3 className="label">{isEn ? "My role" : "Meu papel"}</h3>
+                <ul className="bullets">{study.role.map((item) => <li key={item}>{item}</li>)}</ul>
+              </>
+            )}
+            {study.impact.length > 0 && (
+              <>
+                <h3 className="label">{isEn ? "Result" : "Resultado"}</h3>
+                <ul className="bullets">{study.impact.map((item) => <li key={item}>{item}</li>)}</ul>
+              </>
+            )}
+            <button className="ui-link back" type="button" onClick={() => setSelected(null)}>← {u.back}</button>
+          </article>
         </div>
       )}
     </>
