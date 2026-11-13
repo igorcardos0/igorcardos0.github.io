@@ -7,7 +7,7 @@ import {
   Gamepad2, House, Layers, Mail, Menu, MessageCircle, PawPrint, User, X, type LucideIcon,
 } from "lucide-react";
 import { atlasCaseStudy, caseStudies, deliveries, deliveryStudies, experience, skills, type CaseStudy } from "./content";
-import { alsoWorkWith, projectCards, text } from "./copy";
+import { alsoWorkWith, hubVisual, projectCards, text } from "./copy";
 import { ui } from "./ui";
 
 const EMAIL = "dev.igordesouzacardoso@gmail.com";
@@ -28,6 +28,7 @@ const navIcons: Record<string, LucideIcon> = {
   inicio: House, sobre: User, projetos: FolderKanban, experiencia: BriefcaseBusiness, tecnologias: Cpu, contato: Mail,
 };
 const featuredIds = ["lusa", "icharity", "bitenglish"] as const;
+const projectImages: Record<string, string> = { abajur: "/images/card-abajur.webp", lusa: "/images/card-lusa.webp", icharity: "/images/card-icharity.webp", bitenglish: "/images/card-bitenglish.webp" };
 const featuredIcons: Record<string, LucideIcon> = { lusa: PawPrint, icharity: Layers, bitenglish: Gamepad2 };
 
 function GithubIcon() {
@@ -322,6 +323,8 @@ export default function Home() {
                     const Icon = featuredIcons[id];
                     return (
                       <button key={id} type="button" className="mini-card" onClick={() => setSelected(id)}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img className="mini-media" src={projectImages[id]} alt="" loading="lazy" />
                         <Icon size={28} strokeWidth={1.7} aria-hidden="true" />
                         <ArrowUpRight className="mini-arrow" size={18} aria-hidden="true" />
                         <strong>{id === "lusa" ? "LUSA Brasil" : item.title}</strong>
@@ -373,6 +376,17 @@ export default function Home() {
                   const card = projectCards[language].find((entry) => entry.id === item.id);
                   return (
                     <button key={item.id} type="button" className="project" onClick={() => setSelected(item.id)}>
+                      <span className="project-media" aria-hidden="true">
+                        {projectImages[item.id] ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={projectImages[item.id]} alt="" loading="lazy" />
+                        ) : (
+                          <span className="hub-mock">
+                            <span className="hub-stats">{hubVisual[language].stats.map((label, position) => <span key={label}><b>{[128, 37, 94, 21][position]}</b>{label}</span>)}</span>
+                            <span className="hub-lead"><b>{hubVisual[language].name}</b><em>{hubVisual[language].level}</em>{hubVisual[language].checks.map((check) => <i key={check}>✓ {check}</i>)}</span>
+                          </span>
+                        )}
+                      </span>
                       <span className="project-top"><span>{item.number}</span><span>{item.owner}</span></span>
                       <strong>{item.title}</strong>
                       <span className="project-cat">{item.category}</span>
