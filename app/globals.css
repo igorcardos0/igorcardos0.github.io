@@ -255,7 +255,7 @@ img, video, svg { display: block; max-width: 100%; }
   .hero h1 { font-size: clamp(38px, 10.5vw, 52px); }
   .hero-role { font-size: 18px; margin-top: 12px; }
   .actions { gap: 12px; }
-  .hero-photo { height: 340px; }
+  .hero-photo { order: -1; height: 320px; }
   .photo-bg, .hero-photo img { right: 0; width: 92%; }
   .home-about { grid-template-columns: 1fr; gap: 24px; margin-top: 36px; }
   .stats div { padding: 2px 12px; }
