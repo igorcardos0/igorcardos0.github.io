@@ -86,7 +86,10 @@ export default function Home() {
   const [sent, setSent] = useState(false);
   const wheelLock = useRef(0);
   const lastWheel = useRef(0);
+  const lastDelta = useRef(0);
   const scrolledAt = useRef(0);
+  const scrollAnim = useRef<{ slide: HTMLElement; target: number; frame: number } | null>(null);
+  const stageRef = useRef<HTMLElement>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const isEn = language === "en";
   const u = ui[language];
@@ -143,38 +146,76 @@ export default function Home() {
   }, [selected, menuOpen]);
 
   /**
-   * Desktop: the mouse wheel moves between slides. A slide taller than the screen scrolls first,
-   * and only a new wheel gesture that starts at its top or bottom edge changes slide, so a long
-   * inertial scroll never skips past content.
+   * Desktop: the mouse wheel drives everything. It scrolls the current slide while it has content
+   * left in that direction; once at the edge, the next tick moves to the next or previous slide.
+   * Scrolling is done in code because the browser does not reliably scroll a slide that was just
+   * moved into view with a transform.
    */
-  function onWheel(event: React.WheelEvent<HTMLElement>) {
-    if (!isDesktop || selected) return;
-    const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-    const delta = horizontal ? event.deltaX : event.deltaY;
-    if (Math.abs(delta) < 4) return;
-    const now = Date.now();
-    const gestureContinues = now - lastWheel.current < 220;
-    lastWheel.current = now;
-    if (now - wheelLock.current < 900) {
-      if (gestureContinues) wheelLock.current = now;
-      return;
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage || !isDesktop || selected) return;
+    function stopScroll() {
+      if (scrollAnim.current) cancelAnimationFrame(scrollAnim.current.frame);
+      scrollAnim.current = null;
     }
-    const slide = event.currentTarget.querySelectorAll<HTMLElement>(".slide")[index];
-    if (!slide) return;
-    const atTop = slide.scrollTop <= 1;
-    const atBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 2;
-    const direction = delta > 0 ? 1 : -1;
-    if (!horizontal) {
-      if ((direction > 0 && !atBottom) || (direction < 0 && !atTop)) { scrolledAt.current = now; return; }
-      if (now - scrolledAt.current < 350) { scrolledAt.current = now; return; }
-    } else if (Math.abs(delta) < 30) return;
-    const next = index + direction;
-    if (next < 0 || next >= total) return;
-    wheelLock.current = now;
-    const target = event.currentTarget.querySelectorAll<HTMLElement>(".slide")[next];
-    if (target) target.scrollTop = direction > 0 ? 0 : target.scrollHeight;
-    setIndex(next);
-  }
+    /** Eases a slide's scrollTop toward a target; new wheel ticks just move the target. */
+    function scrollTo(slide: HTMLElement, target: number) {
+      const running = scrollAnim.current;
+      if (running && running.slide === slide) { running.target = target; return; }
+      stopScroll();
+      const state = { slide, target, frame: 0 };
+      const step = () => {
+        const distance = state.target - slide.scrollTop;
+        if (Math.abs(distance) < 1) { slide.scrollTop = state.target; scrollAnim.current = null; return; }
+        const before = slide.scrollTop;
+        slide.scrollTop = before + Math.sign(distance) * Math.max(1, Math.abs(distance) * 0.22);
+        if (slide.scrollTop === before) { scrollAnim.current = null; return; }
+        state.frame = requestAnimationFrame(step);
+      };
+      scrollAnim.current = state;
+      state.frame = requestAnimationFrame(step);
+    }
+    function onWheel(event: WheelEvent) {
+      if (event.ctrlKey) return;
+      event.preventDefault();
+      const unit = event.deltaMode === 1 ? 40 : event.deltaMode === 2 ? window.innerHeight : 1;
+      const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+      const delta = (horizontal ? event.deltaX : event.deltaY) * unit;
+      const size = Math.abs(delta);
+      if (size < 1) return;
+      const now = Date.now();
+      const sameGesture = now - lastWheel.current < 120;
+      const decaying = sameGesture && size < 40 && size <= lastDelta.current;
+      lastWheel.current = now;
+      lastDelta.current = size;
+      if (now - wheelLock.current < 420) return;
+      const slides = stage!.querySelectorAll<HTMLElement>(".slide");
+      const slide = slides[index];
+      if (!slide) return;
+      const direction = delta > 0 ? 1 : -1;
+      if (!horizontal) {
+        const max = slide.scrollHeight - slide.clientHeight;
+        const anim = scrollAnim.current;
+        const from = anim && anim.slide === slide ? anim.target : slide.scrollTop;
+        const room = direction > 0 ? max - from : from;
+        if (room > 2) {
+          scrolledAt.current = now;
+          scrollTo(slide, Math.max(0, Math.min(max, from + delta)));
+          return;
+        }
+        if (decaying || now - scrolledAt.current < 300) return;
+      } else if (size < 30 || decaying) return;
+      const next = index + direction;
+      if (next < 0 || next >= total) return;
+      wheelLock.current = now;
+      stopScroll();
+      const target = slides[next];
+      if (target) target.scrollTop = direction > 0 ? 0 : target.scrollHeight;
+      setIndex(next);
+    }
+    stage.addEventListener("wheel", onWheel, { passive: false });
+    return () => { stage.removeEventListener("wheel", onWheel); stopScroll(); };
+  }, [isDesktop, selected, index, total]);
 
   function onTouchStart(event: React.TouchEvent) {
     const touch = event.touches[0];
@@ -288,7 +329,7 @@ export default function Home() {
         <p className="available"><i aria-hidden="true" /> {u.available[0]} {u.available[1]}</p>
       </nav>
 
-      <main className="stage" onWheel={onWheel} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <main className="stage" ref={stageRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div className="track" style={isDesktop ? { transform: `translateX(-${index * 100}%)` } : undefined}>
           {/* ---------- 01 Início ---------- */}
           <section className="slide" {...slideProps(0)}>
