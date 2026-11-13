@@ -16,7 +16,6 @@ const asset = (file: string) => readFile(join(process.cwd(), "assets/og", file))
 const stats = [
   ["7 anos", "programando"],
   ["+40", "projetos entregues"],
-  ["41 agentes", "de IA no meu time"],
 ];
 
 const stack = ["NestJS", "Next.js", "TypeScript", "Python", "PostgreSQL", "AWS"];

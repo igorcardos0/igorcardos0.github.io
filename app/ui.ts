@@ -23,7 +23,7 @@ export const ui = {
     talk: "Fale comigo",
     aboutTitle: "Sobre mim",
     aboutShort: "Sou engenheiro de software com foco em arquitetura, desenvolvimento full stack e soluções com IA. Programo desde 2019 e hoje projeto e desenvolvo sistemas na LUSA Brasil.",
-    stats: [["7 anos", "programando"], ["40+", "projetos entregues"], ["41", "agentes de IA"]],
+    stats: [["7 anos", "programando"], ["40+", "projetos entregues"]],
     featured: "Projetos em destaque",
     seeAll: "Ver todos",
     short: {
@@ -74,7 +74,7 @@ export const ui = {
     talk: "Talk to me",
     aboutTitle: "About me",
     aboutShort: "I'm a software engineer focused on architecture, full stack development and AI solutions. I've been coding since 2019 and today I design and build systems at LUSA Brasil.",
-    stats: [["7 years", "coding"], ["40+", "projects shipped"], ["41", "AI agents"]],
+    stats: [["7 years", "coding"], ["40+", "projects shipped"]],
     featured: "Featured projects",
     seeAll: "See all",
     short: {

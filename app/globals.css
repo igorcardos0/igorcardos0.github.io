@@ -101,7 +101,7 @@ img, video, svg { display: block; max-width: 100%; }
 .home-about { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; align-items: center; margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
 .home-about h2, .row-head h2 { font-size: 27px; font-weight: 800; letter-spacing: -0.025em; }
 .home-about p { margin-top: 10px; font-size: 15.5px; color: var(--ink-2); }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); }
 .stats div { padding: 4px 18px; border-left: 1px solid var(--line-2); }
 .stats dt { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
 .stats dd { margin-top: 4px; font-size: 13px; color: var(--muted); line-height: 1.3; }

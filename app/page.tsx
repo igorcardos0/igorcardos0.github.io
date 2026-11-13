@@ -3,7 +3,7 @@
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
-  ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, BriefcaseBusiness, Check, Code2, Copy, Cpu, FolderKanban,
+  ArrowDownToLine, ArrowRight, ArrowUpRight, BarChart3, BriefcaseBusiness, Check, Code2, Copy, Cpu, FolderKanban,
   Gamepad2, House, Layers, Mail, Menu, MessageCircle, PawPrint, User, X, type LucideIcon,
 } from "lucide-react";
 import { atlasCaseStudy, caseStudies, deliveries, deliveryStudies, experience, skills, type CaseStudy } from "./content";
@@ -85,6 +85,8 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const wheelLock = useRef(0);
+  const lastWheel = useRef(0);
+  const scrolledAt = useRef(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const isEn = language === "en";
   const u = ui[language];
@@ -140,13 +142,38 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKey);
   }, [selected, menuOpen]);
 
-  /** Horizontal trackpad swipe moves between slides on desktop. */
-  function onWheel(event: React.WheelEvent) {
-    if (!isDesktop || Math.abs(event.deltaX) < Math.abs(event.deltaY) || Math.abs(event.deltaX) < 30) return;
+  /**
+   * Desktop: the mouse wheel moves between slides. A slide taller than the screen scrolls first,
+   * and only a new wheel gesture that starts at its top or bottom edge changes slide, so a long
+   * inertial scroll never skips past content.
+   */
+  function onWheel(event: React.WheelEvent<HTMLElement>) {
+    if (!isDesktop || selected) return;
+    const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    const delta = horizontal ? event.deltaX : event.deltaY;
+    if (Math.abs(delta) < 4) return;
     const now = Date.now();
-    if (now - wheelLock.current < 700) return;
+    const gestureContinues = now - lastWheel.current < 220;
+    lastWheel.current = now;
+    if (now - wheelLock.current < 900) {
+      if (gestureContinues) wheelLock.current = now;
+      return;
+    }
+    const slide = event.currentTarget.querySelectorAll<HTMLElement>(".slide")[index];
+    if (!slide) return;
+    const atTop = slide.scrollTop <= 1;
+    const atBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 2;
+    const direction = delta > 0 ? 1 : -1;
+    if (!horizontal) {
+      if ((direction > 0 && !atBottom) || (direction < 0 && !atTop)) { scrolledAt.current = now; return; }
+      if (now - scrolledAt.current < 350) { scrolledAt.current = now; return; }
+    } else if (Math.abs(delta) < 30) return;
+    const next = index + direction;
+    if (next < 0 || next >= total) return;
     wheelLock.current = now;
-    setIndex((value) => Math.max(0, Math.min(total - 1, value + (event.deltaX > 0 ? 1 : -1))));
+    const target = event.currentTarget.querySelectorAll<HTMLElement>(".slide")[next];
+    if (target) target.scrollTop = direction > 0 ? 0 : target.scrollHeight;
+    setIndex(next);
   }
 
   function onTouchStart(event: React.TouchEvent) {
@@ -226,19 +253,6 @@ export default function Home() {
   });
 
   const slideProps = (position: number) => ({ id: ui.pt.nav[position].id, inert: isDesktop && index !== position, "aria-hidden": isDesktop && index !== position ? true : undefined });
-
-  const slideNav = (position: number) => (
-    <div className="slide-nav">
-      <span className="slide-count">{String(position + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</span>
-      <div>
-        <button type="button" className="icon-btn" onClick={() => go(position - 1)} disabled={position === 0} aria-label={u.prev}><ArrowLeft size={18} /></button>
-        <button type="button" className="icon-btn dark" onClick={() => go(position + 1)} disabled={position === total - 1} aria-label={u.next}>
-          {position < total - 1 && <span className="next-label">{u.nav[position + 1].label}</span>}
-          <ArrowRight size={18} />
-        </button>
-      </div>
-    </div>
-  );
 
   return (
     <div className="app">
@@ -334,7 +348,6 @@ export default function Home() {
                   })}
                 </div>
               </div>
-              {slideNav(0)}
             </div>
           </section>
 
@@ -361,7 +374,6 @@ export default function Home() {
                   </ol>
                 </div>
               </div>
-              {slideNav(1)}
             </div>
           </section>
 
@@ -410,7 +422,6 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              {slideNav(2)}
             </div>
           </section>
 
@@ -435,7 +446,6 @@ export default function Home() {
               <ul className="edu">
                 {t.degrees.map((degree) => <li key={degree.title}><strong>{degree.title}</strong><span>{degree.school}</span><em>{degree.period}</em></li>)}
               </ul>
-              {slideNav(3)}
             </div>
           </section>
 
@@ -453,7 +463,6 @@ export default function Home() {
                 ))}
               </div>
               <p className="also-use"><strong>{u.alsoUse}:</strong> {alsoWorkWith.join(" · ")}</p>
-              {slideNav(4)}
             </div>
           </section>
 
@@ -486,7 +495,6 @@ export default function Home() {
                   )}
                 </div>
               </div>
-              {slideNav(5)}
             </div>
           </section>
         </div>
